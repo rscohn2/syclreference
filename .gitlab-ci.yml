@@ -1,0 +1,13 @@
+image: ubuntu:latest
+
+build:
+  stage: build
+  script:
+    - apt-get -qqq update
+    - apt-get install -y python3-pip
+    - pip3 install -r requirements.txt
+    - make html latexpdf
+  artifact:
+    paths:
+    - build/html
+    - build/latex

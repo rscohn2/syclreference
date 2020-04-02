@@ -7,10 +7,15 @@ Welcome to DPC++ Language Guide's documentation!
 ================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
-   outline
+   introduction
+   programming-model
+   programs
+   dpc++
+   libraries
+   appendices
 
 Indices and tables
 ==================

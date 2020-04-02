@@ -2,6 +2,8 @@
  Outline
 =========
 
+* Introduction
+  
 * Programming model
 
   * DPC++

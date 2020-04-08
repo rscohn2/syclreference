@@ -1,13 +1,13 @@
-image: ubuntu:latest
+variables:
+  PUBLISH_DIR: $PUBLISH_ROOT/dpcpp-lang-guide/$CI_COMMIT_REF_NAME
+  SSH_ARGS: -oStrictHostKeyChecking=no -i
+
+image: rscohn2/oneapi-spec:latest
 
 build:
   stage: build
   script:
-    - apt-get -qqq update
-    - apt-get install -y python3-pip
-    - pip3 install -r requirements.txt
-    - make html latexpdf
-  artifact:
-    paths:
-    - build/html
-    - build/latex
+    - make html
+    - chmod 600 $PUBLISH_KEY
+    - ssh $SSH_ARGS $PUBLISH_KEY $PUBLISH_HOST "rm -rf $PUBLISH_DIR; mkdir -p $PUBLISH_DIR"
+    - scp $SSH_ARGS $PUBLISH_KEY -r build $PUBLISH_HOST:$PUBLISH_DIR

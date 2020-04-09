@@ -7,7 +7,7 @@ image: rscohn2/oneapi-spec:latest
 build:
   stage: build
   script:
-    - make html
+    - make html latexpdf spelling
     - chmod 600 $PUBLISH_KEY
     - ssh $SSH_ARGS $PUBLISH_KEY $PUBLISH_HOST "rm -rf $PUBLISH_DIR; mkdir -p $PUBLISH_DIR"
     - scp $SSH_ARGS $PUBLISH_KEY -r build $PUBLISH_HOST:$PUBLISH_DIR

@@ -29,27 +29,12 @@ Use this guide to learn about:
    description of the programming model with specifics about the Data
    Parallel C++ (DPC++) language options
 
-
--  `API-based
-   Programming <api-based-programming.html>`__: A
-   brief introduction to common APIs and related libraries
-
-
--  `Software Development
-   Process <software-development-process.html>`__: An
-   overview of the software development process using various oneAPI
-   tools, such as debuggers and performance analyzers, and optimizing
-   code for a specific accelerator (CPU, FPGA, etc.)
-
 .. toctree::
    :maxdepth: 4
 
    
    introduction-to-oneapi-programming
    oneapi-programming-model
-   programming-interface
    data-parallel-cpp-dpcpp-programming-language-and-runtime
-   api-based-programming
-   software-development-process
    glossary
    notices-and-disclaimers

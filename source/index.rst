@@ -7,8 +7,8 @@
 .. toctree::
    :maxdepth: 4
 
-   
-   introduction-to-oneapi-programming
+
+   intro/index
    programming-model/index
    language-runtime/index
    glossary

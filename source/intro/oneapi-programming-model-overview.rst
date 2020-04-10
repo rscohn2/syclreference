@@ -45,7 +45,7 @@ Intel® DPC++ Compatibility Tool, select libraries, and analysis tools.
    Advisor**.
 
 
-.. |image0| image:: image/GUID-5758F720-3C7C-4919-9BB5-F650F88DBD01-low.jpg
+.. |image0| image:: /image/GUID-5758F720-3C7C-4919-9BB5-F650F88DBD01-low.jpg
 
 .. toctree::
    :maxdepth: 4

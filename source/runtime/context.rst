@@ -5,8 +5,7 @@ Context
 
 
 A context encapsulates a platform and a collection of devices. For more
-information, see the `Platform
-Model <platform-model.html>`__ section.
+information, see :ref:`platform-model`.
 
 
 The class contains multiple constructors enabling creation from

@@ -6,17 +6,16 @@ Platform Model
 
 The platform model for oneAPI is based upon the SYCL\* platform model.
 It specifies a host controlling one or more devices. A host is the
-computer, typically a CPU-based system executing the primary portion of
-a program, specifically the application scope and the command group
+computer, typically a CPU-based system executing the primary portion
+of a program, specifically the application scope and the command group
 scope. The host coordinates and controls the compute work that is
 performed on the devices. A device is an accelerator, a specialized
-component containing compute resources that can quickly execute a subset
-of operations typically more efficiently than the CPUs in the system.
-Each device contains one or more compute units that can execute several
-operations in parallel. Each compute unit contains one or more
-`processing
-elements <glossary.html>`__
-that serve as the individual engine for computation.
+component containing compute resources that can quickly execute a
+subset of operations typically more efficiently than the CPUs in the
+system.  Each device contains one or more compute units that can
+execute several operations in parallel. Each compute unit contains one
+or more :term:`Processing Elements <Processing Element>` that serve as
+the individual engine for computation.
 
 
 A system can instantiate and execute several platforms simultaneously,

@@ -5,7 +5,7 @@ DPC++ Classes, Class Templates, and Defines
 
 
 The following table summarizes the DPC++ classes, class templates, and
-defines of the programming language. In addition, the specific include
+defines of the programming model. In addition, the specific include
 file for the definition of these items are mentioned along with a
 description of each.
 

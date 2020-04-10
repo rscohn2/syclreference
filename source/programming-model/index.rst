@@ -1,7 +1,8 @@
 .. _oneapi-programming-model:
 
-oneAPI Programming Model
-========================
+===================
+ Programming Model
+===================
 
 
 The oneAPI programming model is based upon the `SYCL\*
@@ -13,19 +14,13 @@ Aspects of these models appear in every program that employs the oneAPI
 programming model. These models are summarized as:
 
 
--  `Platform model <platform-model.html>`__ -
-   Specifies the
-   `host <glossary.html>`__ and
-   `device <glossary.html>`__\ (s).
--  `Execution model <execution-model.html>`__
-   - Specifies the `command
-   queues <glossary.html>`__
-   and issuing commands for execution on the device(s).
--  `Memory model <memory-model.html>`__ -
-   Defines how the host and devices interact with memory.
--  `Kernel model <kernel-programming-model.html>`__ -
-   Defines the code that executes on the device(s). This code is known
-   as the kernel.
+- :ref:`platform-model`: Specifies the :term:`Host` and :term:`Device`.
+- :ref:`execution-model`: Specifies the :term:`Command Queue` and
+  issuing commands for execution on the device(s).
+- :ref:`memory-model`: Defines how the host and devices interact with
+  memory.
+- :ref:`kernel-programming-model`: Defines the code that executes on
+  the device(s). This code is known as the kernel.
 
 
 The programming language for oneAPI is Data Parallel C++ (DPC++) and

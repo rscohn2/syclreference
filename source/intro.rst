@@ -1,8 +1,8 @@
 .. _introduction-to-oneapi-programming:
 
-====================================
- Introduction to oneAPI Programming
-====================================
+==============
+ Introduction
+==============
 
 
 Obtaining high compute performance on today’s modern computer
@@ -15,9 +15,8 @@ high performance computing (HPC).
 Modern workload diversity has resulted in a need for architectural
 diversity; no single architecture is best for every workload. A mix of
 scalar, vector, matrix, and spatial (SVMS) architectures deployed in
-CPU, GPU, AI, and FPGA
-`accelerators <glossary.html>`__
-is required to extract the needed performance.
+CPU, GPU, AI, and FPGA :term:`accelerators <Accelerator>` is required
+to extract the needed performance.
 
 
 Today, coding for CPUs and accelerators requires different languages,
@@ -51,8 +50,8 @@ on platforms that do not have an accelerator available.
    
 .. _oneapi-programming-model-overview:
 
-oneAPI Programming Model Overview
-=================================
+Overview
+========
 
 
 The oneAPI programming model provides a comprehensive and unified

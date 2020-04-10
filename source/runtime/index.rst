@@ -1,7 +1,8 @@
 .. _data-parallel-cpp-dpcpp-programming-language-and-runtime:
 
-Data Parallel C++ (DPC++) Programming Language and Runtime
-==========================================================
+=========
+ Runtime
+=========
 
 
 The Data Parallel C++ (DPC++) programming language and runtime consists
@@ -13,9 +14,5 @@ templates, and runtime libraries used to program.
    :maxdepth: 4
 
    
-   cpp-version-support
-   header-files-and-namespaces
    dpcpp-classes-class-templates-and-defines
    memory-types
-   keywords
-   preprocessor-directives-and-macros

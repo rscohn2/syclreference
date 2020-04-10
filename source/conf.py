@@ -1,3 +1,5 @@
+import string
+
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -17,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'DPC++ Language Guide'
+project = 'DPC++ Reference'
 copyright = '2020, Intel'
 author = 'Intel'
 
@@ -28,6 +30,7 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.todo',
     'sphinxcontrib.spelling',
 ]
 
@@ -38,6 +41,24 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
+
+
+prolog_template = string.Template("""
+.. |dpcpp_full_name| replace:: oneAPI Data Parallel C++
+.. |dpl_full_name| replace:: oneAPI DPC++ Library
+.. |ccl_full_name| replace:: oneAPI Collective Communications Library
+.. |dal_full_name| replace:: oneAPI Data Analytics Library
+.. |dnn_full_name| replace:: oneAPI Deep Neural Network Library
+.. |l0_full_name| replace:: oneAPI Level Zero
+.. |tbb_full_name| replace:: oneAPI Threading Building Blocks
+.. |vpl_full_name| replace:: oneAPI Video Processing Library
+.. |mkl_full_name| replace:: oneAPI Math Kernel Library
+""")
+
+rst_prolog = prolog_template.substitute({})
+
+# -- Options for todo extension -------------------------------------------------
+todo_include_todos = True
 
 
 # -- Options for HTML output -------------------------------------------------

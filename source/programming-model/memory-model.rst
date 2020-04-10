@@ -7,20 +7,16 @@ Memory Model
 The memory model for oneAPI is based upon the SYCL\* memory model. It
 defines how the host and devices interact with memory. It coordinates
 the allocation and management of memory between the host and devices.
-The memory model is an abstraction that aims to generalize across and be
-adaptable to the different possible host and device configurations. In
-this model, memory resides upon and is owned by either the host or the
-device and is specified by declaring a memory object. There are two
-different types of memory objects,
-`buffers <glossary.html>`__
-and
-`images <glossary.html>`__.
-Interaction of these memory objects between the host and device is
-accomplished via an
-`accessor <glossary.html>`__,
-which communicates the desired location of access, such as host or
-device, and the particular mode of access, such as read or write.
-
+The memory model is an abstraction that aims to generalize across and
+be adaptable to the different possible host and device
+configurations. In this model, memory resides upon and is owned by
+either the host or the device and is specified by declaring a memory
+object. There are two different types of memory objects,
+:term:`Buffers` and :term:`Images`.  Interaction of these memory
+objects between the host and device is accomplished via an
+:term:`Accessor`, which communicates the desired location of access,
+such as host or device, and the particular mode of access, such as
+read or write.
 
 Consider a case where memory is allocated on the host through a
 traditional malloc call. Once the memory is allocated on the host, a
@@ -32,22 +28,17 @@ allowed on the device is communicated via an ``accessor`` object, which
 specifies the type of access to the buffer. The general steps are
 summarized as:
 
-
 #. Instantiate a ``buffer`` or ``image`` object.
-
 
    The host or device memory for the ``buffer`` or ``image`` is
    allocated as part of the instantiation or is wrapped around
    previously allocated memory on the host.
 
-
 #. Instantiate an ``accessor`` object.
-
 
    The ``accessor`` specifies the required location of access, such as
    host or device, and the particular mode of access, such as read or
    write. It represents dependencies between uses of memory objects.
-
 
 The following code sample is exercising different memory objects and
 accessors.

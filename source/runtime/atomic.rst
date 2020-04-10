@@ -4,12 +4,12 @@ Atomic
 ======
 
 
-The DPC++ ``atomic`` class encapsulates operations and member functions
-to guarantee synchronized access to data values. Construction of an
-atomic object requires a reference to a
-`multi_ptr <multi-pointer.html>`__. A
-``multi_ptr`` is an abstraction on top of a low-level pointer that
-enables efficient access across the host and devices.
+The DPC++ ``atomic`` class encapsulates operations and member
+functions to guarantee synchronized access to data
+values. Construction of an atomic object requires a reference to a
+:ref:`multi-pointer`. A ``multi_ptr`` is an abstraction on top of a
+low-level pointer that enables efficient access across the host and
+devices.
 
 
 The atomic member functions are modeled after the C++ standard atomic

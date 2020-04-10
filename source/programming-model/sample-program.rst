@@ -13,130 +13,38 @@ sample. The intent with this discussion is to highlight the required
 functionality inherent when employing the programming model.
 
 
-.. container:: Note
-
-
-   .. rubric:: Note
-      :class: NoteTipHead
+.. note::
 
    Keep in mind that this sample code is intended to illustrate the four
    models that comprise the oneAPI programming model; it is not intended
    to be a typical program or the simplest in nature.
 
 
-::
+.. literalinclude:: /examples/vector-add.cpp
+   :linenos:
 
-
-   #include <vector>
-   #include <CL/sycl.hpp>
-
-
-   #define SIZE 1024
-
-
-   namespace sycl = cl::sycl;
-
-
-   int main() {
-     std::array<int, SIZE> a, b, c;
-
-
-     for (int i = 0; i<SIZE; ++i) {
-       a[i] = i;
-       b[i] = -i;
-       c[i] = i;
-     }
-
-
-     {
-     sycl::range<1> a_size{SIZE};
-
-
-     auto platforms = sycl::platform::get_platforms();
-    
-
-    for (auto &platform : platforms) {
-
-
-       std::cout << "Platform: "
-         << platform.get_info<sycl::info::platform::name>()
-         << std::endl;
-
-
-
-
-       auto devices = platform.get_devices();
-       for (auto &device : devices ) {
-         std::cout << "  Device: "
-           << device.get_info<sycl::info::device::name>()
-           << std::endl;
-       }
-
-
-     }
-
-
-     sycl::default_selector device_selector;
-     sycl::queue d_queue(device_selector);
-
-
-     sycl::buffer<int, 1>  a_device(a.data(), a_size);
-     sycl::buffer<int, 1>  b_device(b.data(), a_size);
-     sycl::buffer<int, 1>  c_device(c.data(), a_size);
-
-
-     d_queue.submit([&](sycl::handler &cgh) {
-       auto c_res = c_device.get_access<sycl::access::mode::write>(cgh);
-       auto a_in = a_device.get_access<sycl::access::mode::read>(cgh);
-       auto b_in = b_device.get_access<sycl::access::mode::read>(cgh);
-
-
-       cgh.parallel_for<class ex1>(a_size,[=](sycl::id<1> idx) {
-         c_res[idx] = a_in[idx] + b_in[idx];
-       });
-
-
-     });
-
-
-     }
-
-
-   }
-
-
-A DPC++ program has the `single
-source <glossary.html>`__
-property, which means the `host
-code <glossary.html>`__
-and the `device
-code <glossary.html>`__
-can be placed in the same file so that the compiler treats them as the
-same compilation unit. This can potentially result in performance
-optimizations across the boundary between host and device code. The
-single source property differs from a programming model like OpenCL
-software technology where the host code and device code are typically in
-different files, and the host and device compiler are different
-entities, which means no optimization can occur between the host and
-device code boundary. Therefore, when scrutinizing a DPC++ program, the
-first step is to understand the delineation between host code and device
-code. To be more specific, DPC++ programs are delineated into different
-scopes similar to programming language scope, which is typically
-expressed via ``{`` and ``}`` in many languages.
-
+A DPC++ program has the :term:`Single Source` property, which means
+the :term:`Host Code` and the :term:`Device Code` can be placed in
+the same file so that the compiler treats them as the same compilation
+unit. This can potentially result in performance optimizations across
+the boundary between host and device code. The single source property
+differs from a programming model like OpenCL software technology where
+the host code and device code are typically in different files, and
+the host and device compiler are different entities, which means no
+optimization can occur between the host and device code
+boundary. Therefore, when scrutinizing a DPC++ program, the first step
+is to understand the delineation between host code and device code. To
+be more specific, DPC++ programs are delineated into different scopes
+similar to programming language scope, which is typically expressed
+via ``{`` and ``}`` in many languages.
 
 The three types of scope in a DPC++ program include:
 
 
--  `Application
-   scope <glossary.html>`__
-   – Code that executes on the host
--  `Command group
-   scope <glossary.html>`__
-   – Code that acts as the interface between the host and device
--  `Kernel
-   scope <glossary.html>`__
-   – Code that executes on the device
+- :term:`Application Scope`: Code that executes on the host
+- :term:`Command Group Scope`: Code that acts as the interface between
+  the host and device
+- :term:`Kernel Scope`: Code that executes on the device
 
 
 In this example, command group scope comprises lines 45 through 54 and
@@ -205,12 +113,11 @@ four models are detailed as follows:
    |image4|
 
 
--  Line 50 to 52 – Kernel Programming Model – The C++ language
-   ``parallel_for`` statement denotes that the code enclosed in its
-   scope will execute in parallel across the `compute
-   elements <glossary.html>`__
-   of the device. This example code employs a C++ lambda to represent
-   the kernel.
+- Line 50 to 52 – Kernel Programming Model – The C++ language
+  ``parallel_for`` statement denotes that the code enclosed in its
+  scope will execute in parallel across the :term:`Processing Elements
+  <Processing Element>` of the device. This example code employs a C++
+  lambda to represent the kernel.
 
 
    |image5|

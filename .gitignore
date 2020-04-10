@@ -2,3 +2,4 @@
 *.diff
 /Build
 /_build
+/source/examples/*.bin

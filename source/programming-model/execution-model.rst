@@ -20,20 +20,16 @@ policy controllable by the program. In-order execution is an Intel
 extension.
 
 
-The device execution model specifies how computation is accomplished on
-the accelerator. Compute ranging from small one-dimensional data to
+The device execution model specifies how computation is accomplished
+on the accelerator. Compute ranging from small one-dimensional data to
 large multidimensional data sets are allocated across a hierarchy of
-`ND-ranges <glossary.html>`__,
-`work-groups <glossary.html>`__,
-`sub-groups <glossary.html>`__
-(Intel extension), and
-`work-items <glossary.html>`__,
-which are all specified when the work is submitted to the command queue.
-It is important to note that the actual kernel code represents the work
-that is executed for one work-item. The code outside of the kernel
-controls just how much parallelism is executed; the amount and
-distribution of the work is controlled by specification of the sizes of
-the ND-range and work-group.
+:term:`ND-range`, :term:`Work-group`, :term:`Sub-group`, and
+:term:`Work-item`, which are all specified when the work is submitted
+to the command queue.  It is important to note that the actual kernel
+code represents the work that is executed for one work-item. The code
+outside of the kernel controls just how much parallelism is executed;
+the amount and distribution of the work is controlled by specification
+of the sizes of the ND-range and work-group.
 
 
 The following figure depicts the relationship between an ND-range,

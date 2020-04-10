@@ -5,8 +5,7 @@ Device
 
 
 The ``device`` class represents the capabilities of the accelerators in
-a system, as detailed in the `Execution
-Model <execution-model.html>`__ section. The
+a system, as detailed in :ref:`execution-model`. The
 class contains member functions for constructing devices and obtaining
 information about the device. One form of constructor requires zero
 arguments. The constructor can also take a device selector argument that

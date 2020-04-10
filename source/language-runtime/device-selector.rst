@@ -94,13 +94,13 @@ A brief description of the key lines in the sample code is as follows:
    |image2|
 
 
-.. |image0| image:: image/GUID-59C34DBD-2FF9-4558-B6D0-EC8545FC2147-low.png
+.. |image0| image:: /image/GUID-59C34DBD-2FF9-4558-B6D0-EC8545FC2147-low.png
    :width: 622px
    :height: 40px
-.. |image1| image:: image/GUID-BD535AEF-87BC-4A7C-94AA-00BD6C00F26D-low.png
+.. |image1| image:: /image/GUID-BD535AEF-87BC-4A7C-94AA-00BD6C00F26D-low.png
    :width: 622px
    :height: 40px
-.. |image2| image:: image/GUID-72713C3C-FC00-471C-A822-3CEB1ABB330D-low.png
+.. |image2| image:: /image/GUID-72713C3C-FC00-471C-A822-3CEB1ABB330D-low.png
    :width: 622px
    :height: 262px
 

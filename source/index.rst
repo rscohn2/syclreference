@@ -10,6 +10,6 @@
    
    introduction-to-oneapi-programming
    programming-model/index
-   data-parallel-cpp-dpcpp-programming-language-and-runtime
+   language-runtime/index
    glossary
    notices-and-disclaimers

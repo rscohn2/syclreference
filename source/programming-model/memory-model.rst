@@ -141,3 +141,4 @@ Specification.
    accessors
    synchronization
    unified-shared-memory
+   memory-types

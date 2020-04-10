@@ -8,7 +8,7 @@
    :maxdepth: 4
 
 
-   intro/index
+   intro
    programming-model/index
    language-runtime/index
    glossary

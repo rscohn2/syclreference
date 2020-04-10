@@ -122,7 +122,7 @@ and ``work-item``.
    parallel and in lock step.
 
 
-.. |image0| image:: image/GUID-761368A6-499F-4FED-9CC5-19069FBEE179-low.png
+.. |image0| image:: /image/GUID-761368A6-499F-4FED-9CC5-19069FBEE179-low.png
    :width: 468px
    :height: 453px
 

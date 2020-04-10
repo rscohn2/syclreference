@@ -48,6 +48,6 @@ Requirements <https://software.intel.com/en-us/articles/intel-oneapi-base-toolki
 for more information.
 
 
-.. |image0| image:: image/GUID-91DDF658-E91E-4017-A8FB-0D957B408C2C-low.png
+.. |image0| image:: /image/GUID-91DDF658-E91E-4017-A8FB-0D957B408C2C-low.png
    :width: 800px
 

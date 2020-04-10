@@ -37,11 +37,7 @@ is available to simplify development and debugging of device code, even
 on platforms that do not have an accelerator available.
 
 
-.. container:: Note
-
-
-   .. rubric:: Note
-      :class: NoteTipHead
+.. note::
 
    Not all programs can benefit from the single programming model
    offered by oneAPI. It is important to understand if your program can

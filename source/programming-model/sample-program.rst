@@ -233,22 +233,22 @@ four models: the Platform model, the Execution model, the Memory model,
 and the Kernel model.
 
 
-.. |image0| image:: image/GUID-D971E8B3-6DE1-407B-B5DE-66656531746A-low.png
+.. |image0| image:: /image/GUID-D971E8B3-6DE1-407B-B5DE-66656531746A-low.png
    :width: 622px
    :height: 181px
-.. |image1| image:: image/GUID-D2597DA3-4AB5-48B6-9DC8-9ADEF5DA116F-low.png
+.. |image1| image:: /image/GUID-D2597DA3-4AB5-48B6-9DC8-9ADEF5DA116F-low.png
    :width: 622px
    :height: 90px
-.. |image2| image:: image/GUID-3FC06310-C983-4891-B125-B2E6F05D6E47-low.png
+.. |image2| image:: /image/GUID-3FC06310-C983-4891-B125-B2E6F05D6E47-low.png
    :width: 622px
    :height: 307px
-.. |image3| image:: image/GUID-C7465487-3179-41E7-B108-6A7839DF68EE-low.png
+.. |image3| image:: /image/GUID-C7465487-3179-41E7-B108-6A7839DF68EE-low.png
    :width: 622px
    :height: 129px
-.. |image4| image:: image/GUID-F7842513-F1B5-4138-BF03-07643FCCCE30-low.png
+.. |image4| image:: /image/GUID-F7842513-F1B5-4138-BF03-07643FCCCE30-low.png
    :width: 622px
    :height: 147px
-.. |image5| image:: image/GUID-10CE50B9-6F91-4968-BDD4-14D157078452-low.png
+.. |image5| image:: /image/GUID-10CE50B9-6F91-4968-BDD4-14D157078452-low.png
    :width: 622px
    :height: 54px
 

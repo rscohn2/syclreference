@@ -30,6 +30,7 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'breathe',
     'sphinx.ext.todo',
     'sphinxcontrib.spelling',
 ]
@@ -57,17 +58,28 @@ prolog_template = string.Template("""
 
 rst_prolog = prolog_template.substitute({})
 
+# -- Options for breathe extension -------------------------------------------------
+breathe_projects = {'dpcpp-ref': '../doxygen/xml'}
+
+breathe_default_project = 'dpcpp-ref'
+
+
 # -- Options for todo extension -------------------------------------------------
 todo_include_todos = True
 
 
 # -- Options for HTML output -------------------------------------------------
 
+html_favicon = '_static/favicons.png'
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
 html_theme = 'alabaster'
-html_favicon = '_static/favicons.png'
+html_theme_options = {
+    'fixed_sidebar': True,
+    'page_width': 'max-width'
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

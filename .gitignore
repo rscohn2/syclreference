@@ -3,3 +3,4 @@
 /Build
 /_build
 /source/examples/*.bin
+/doxygen

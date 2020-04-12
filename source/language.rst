@@ -95,12 +95,20 @@ custom optimized implementations. Implementations require aliases for
 several STL interfaces. These are summarized as follows:
 
 
--  ``vector_class`` – ``std::vector<>``
--  ``string_class`` – ``std::string``
--  ``function_class`` – ``std::function<>``
--  ``mutex_class`` – ``std::mutex``
--  ``shared_ptr_class`` – ``std::shared_ptr<>``
--  ``unique_ptr_class`` – ``std::unique_ptr<>``
--  ``weak_ptr_class`` – ``std::weak_ptr<>``
--  ``hash_class`` – ``std::hash``
--  ``exception_ptr_class`` – ``std::exception_ptr``
+.. doxygentypedef:: cl::sycl::vector_class
+
+.. doxygentypedef:: cl::sycl::string_class
+
+.. doxygentypedef:: cl::sycl::function_class
+
+.. doxygentypedef:: cl::sycl::mutex_class
+
+.. doxygentypedef:: cl::sycl::shared_ptr_class
+
+.. doxygentypedef:: cl::sycl::unique_ptr_class
+
+.. doxygentypedef:: cl::sycl::weak_ptr_class
+
+.. doxygentypedef:: cl::sycl::hash_class
+
+.. doxygentypedef:: cl::sycl::exception_ptr_class

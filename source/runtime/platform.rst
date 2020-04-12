@@ -1,10 +1,13 @@
 .. _platform:
 
-Platform
-========
+class platform
+==============
+
+Encapsulates a platform containing devices.
 
 .. rubric:: Synopsis
 	    
+.. literalinclude:: /synopses/platform.hpp
 
 .. rubric:: Details
 	    

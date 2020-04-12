@@ -23,6 +23,11 @@ namespace detail {
 class platform_impl;
 }
 
+  ///
+  /// Encapsulates a platform
+  ///
+  /// A platform can include one or more SYCL devices or exactly one host device.
+  ///
 class platform {
 public:
   /// Constructs a SYCL platform as a host platform.

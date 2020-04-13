@@ -77,11 +77,12 @@ def makedirs(path):
 def sphinx(target):
     os.environ['LATEXMKOPTS'] = '--silent'
     os.environ['LATEXOPTS'] = '-interaction=nonstopmode -halt-on-error'
+    opts = sphinx_opts + (' -W' if args.W else '')
     shell('%s -M %s %s %s %s' % (sphinx_build,
                                  target,
                                  source_dir,
                                  build_dir,
-                                 sphinx_opts))
+                                 opts))
 
 def up_to_date(target, deps):
     if not os.path.exists(target):
@@ -128,6 +129,7 @@ def main():
     parser = argparse.ArgumentParser(description='Build doc.')
     parser.add_argument('action',choices=commands.keys())
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('-W', action='store_true')
     args = parser.parse_args()
 
     commands[args.action](args.action)

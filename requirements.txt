@@ -1,2 +1,3 @@
-sphinx-reload
 Sphinx
+breathe
+sphinxcontrib-spelling

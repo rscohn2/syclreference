@@ -10,7 +10,7 @@
 
    intro
    programming-model/index
-   language
-   runtime/index
+   language/index
+   programming-interface/index
    glossary
    notices-and-disclaimers

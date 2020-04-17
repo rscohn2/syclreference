@@ -15,7 +15,7 @@ high performance computing (HPC).
 Modern workload diversity has resulted in a need for architectural
 diversity; no single architecture is best for every workload. A mix of
 scalar, vector, matrix, and spatial (SVMS) architectures deployed in
-CPU, GPU, AI, and FPGA :term:`accelerators <Accelerator>` is required
+CPU, GPU, AI, and FPGA :term:`accelerators <accelerator>` is required
 to extract the needed performance.
 
 

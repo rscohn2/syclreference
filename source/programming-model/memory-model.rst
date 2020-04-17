@@ -12,9 +12,9 @@ be adaptable to the different possible host and device
 configurations. In this model, memory resides upon and is owned by
 either the host or the device and is specified by declaring a memory
 object. There are two different types of memory objects,
-:term:`Buffers` and :term:`Images`.  Interaction of these memory
+:term:`buffers` and :term:`images`.  Interaction of these memory
 objects between the host and device is accomplished via an
-:term:`Accessor`, which communicates the desired location of access,
+:term:`accessor`, which communicates the desired location of access,
 such as host or device, and the particular mode of access, such as
 read or write.
 

@@ -14,7 +14,7 @@ component containing compute resources that can quickly execute a
 subset of operations typically more efficiently than the CPUs in the
 system.  Each device contains one or more compute units that can
 execute several operations in parallel. Each compute unit contains one
-or more :term:`Processing Elements <Processing Element>` that serve as
+or more :term:`processing elements <processing element>` that serve as
 the individual engine for computation.
 
 

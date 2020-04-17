@@ -86,7 +86,6 @@ def sphinx(target):
 
 def up_to_date(target, deps):
     if not os.path.exists(target):
-        print('exists')
         return False
     for dep in deps:
         if os.path.getmtime(target) < os.path.getmtime(dep):
@@ -95,6 +94,8 @@ def up_to_date(target, deps):
     return True
 
 def doxygen_files():
+    if not os.path.exists('build'):
+        makedirs('build')
     return [doxyfile] + glob.glob(join('source','headers','**'), recursive=True)
 
 def doxygen(target=None):

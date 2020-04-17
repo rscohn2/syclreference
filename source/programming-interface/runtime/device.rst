@@ -32,3 +32,5 @@ pertinent information about the device including:
 
 
 .. include:: device.inc.rst
+
+.. include:: device-info.inc.rst

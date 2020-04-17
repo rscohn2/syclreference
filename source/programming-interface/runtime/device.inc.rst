@@ -27,15 +27,15 @@
 		    
    .. function:: bool is_host() const
 
-		 :returns:
+		 :returns: true if a :term:`host device`
 		    
    .. function:: bool is_cpu() const
 
-		 :returns:
+		 :returns: true if device uses a CPU
 		    
    .. function:: bool is_gpu() const
 
-		 :returns:
+		 :returns: true if device uses a GPU
 		    
    .. function:: bool is_accelerator() const
 

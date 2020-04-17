@@ -60,6 +60,14 @@ exclude_patterns = ['**/*.inc.rst', '*.inc.rst']
 todo_include_todos = True
 
 
+# -- Options for breathe extension -------------------------------------------------
+breathe_projects = {
+    'dpcpp-ref': '../build/doxygen/xml'
+    }
+
+breathe_default_project = 'dpcpp-ref'
+
+
 # -- Options for HTML output -------------------------------------------------
 
 html_favicon = '_static/favicons.png'

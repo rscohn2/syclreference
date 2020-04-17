@@ -12,8 +12,8 @@ sphinx_opts    = '-q -N'
 sphinx_build   = 'sphinx-build'
 source_dir     = 'source'
 build_dir      = 'build'
-doxygen_dir    = 'doxygen'
-doxygen_xml    = join(doxygen_dir,'xml','index.xml')
+doxygen_xml    = join(build_dir, 'doxygen', 'xml', 'index.xml')
+doxyfile       = join('source', 'Doxyfile')
 
 indent = 0
 
@@ -95,14 +95,13 @@ def up_to_date(target, deps):
     return True
 
 def doxygen_files():
-    return ['Doxyfile'] + glob.glob(join('include','**'), recursive=True)
+    return [doxyfile] + glob.glob(join('source','headers','**'), recursive=True)
 
 def doxygen(target=None):
-    doxyfile = 'Doxyfile'
     if (not os.path.exists(doxyfile) or
         up_to_date(doxygen_xml, doxygen_files())):
         return
-    shell('doxygen %s' % doxyfile)
+    shell('DOXYGEN_QUIET=%s doxygen %s' % ('NO' if args.verbose else 'YES', doxyfile))
 
 @action
 def prep(target=None):
@@ -110,15 +109,11 @@ def prep(target=None):
 
 @action
 def build(target):
-    prep()
+    if target != 'clean':
+        prep()
     sphinx(target)
 
-@action
-def clean(target=None):
-    rm('doxygen')
-    sphinx('clean')
-
-commands = {'clean': clean,
+commands = {'clean': build,
             'html': build,
             'latexpdf': build,
             'spelling': build,
@@ -130,6 +125,7 @@ def main():
     parser.add_argument('action',choices=commands.keys())
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('-W', action='store_true')
+    parser.add_argument('--verbose', action='store_true')
     args = parser.parse_args()
 
     commands[args.action](args.action)

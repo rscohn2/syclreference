@@ -23,8 +23,8 @@ extension.
 The device execution model specifies how computation is accomplished
 on the accelerator. Compute ranging from small one-dimensional data to
 large multidimensional data sets are allocated across a hierarchy of
-:term:`ND-range`, :term:`Work-group`, :term:`Sub-group`, and
-:term:`Work-item`, which are all specified when the work is submitted
+:term:`nd-range`, :term:`work-group`, :term:`sub-group`, and
+:term:`work-item`, which are all specified when the work is submitted
 to the command queue.  It is important to note that the actual kernel
 code represents the work that is executed for one work-item. The code
 outside of the kernel controls just how much parallelism is executed;

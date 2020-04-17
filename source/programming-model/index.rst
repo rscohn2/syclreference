@@ -14,8 +14,8 @@ Aspects of these models appear in every program that employs the oneAPI
 programming model. These models are summarized as:
 
 
-- :ref:`platform-model`: Specifies the :term:`Host` and :term:`Device`.
-- :ref:`execution-model`: Specifies the :term:`Command Queue` and
+- :ref:`platform-model`: Specifies the :term:`host` and :term:`device`.
+- :ref:`execution-model`: Specifies the :term:`command queue` and
   issuing commands for execution on the device(s).
 - :ref:`memory-model`: Defines how the host and devices interact with
   memory.

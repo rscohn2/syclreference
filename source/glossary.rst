@@ -8,7 +8,7 @@ Glossary
    accelerator
      Specialized component containing compute resources that can quickly
      execute a subset of operations. Examples include CPU, FPGA, GPU. See
-     also: :term:`Device`
+     also: :term:`device`
 
    accessor
      Communicates the desired location (host, device) and mode (read,
@@ -36,7 +36,7 @@ Glossary
      An accelerator or specialized component containing compute resources
      that can quickly execute a subset of operations. A CPU can be
      employed as a device, but when it is, it is being employed as an
-     accelerator. Examples include CPU, FPGA, GPU. See also: :term:`Accelerator`
+     accelerator. Examples include CPU, FPGA, GPU. See also: :term:`accelerator`
 
    device code
      Code that executes on the device rather than the host. Device code is

@@ -23,8 +23,8 @@ functionality inherent when employing the programming model.
 .. literalinclude:: /examples/vector-add.cpp
    :linenos:
 
-A DPC++ program has the :term:`Single Source` property, which means
-the :term:`Host Code` and the :term:`Device Code` can be placed in
+A DPC++ program has the :term:`single source` property, which means
+the :term:`host code` and the :term:`device code` can be placed in
 the same file so that the compiler treats them as the same compilation
 unit. This can potentially result in performance optimizations across
 the boundary between host and device code. The single source property
@@ -41,10 +41,10 @@ via ``{`` and ``}`` in many languages.
 The three types of scope in a DPC++ program include:
 
 
-- :term:`Application Scope`: Code that executes on the host
-- :term:`Command Group Scope`: Code that acts as the interface between
+- :term:`application scope`: Code that executes on the host
+- :term:`command group scope`: Code that acts as the interface between
   the host and device
-- :term:`Kernel Scope`: Code that executes on the device
+- :term:`kernel scope`: Code that executes on the device
 
 
 In this example, command group scope comprises lines 45 through 54 and
@@ -115,8 +115,8 @@ four models are detailed as follows:
 
 - Line 50 to 52 – Kernel Programming Model – The C++ language
   ``parallel_for`` statement denotes that the code enclosed in its
-  scope will execute in parallel across the :term:`Processing Elements
-  <Processing Element>` of the device. This example code employs a C++
+  scope will execute in parallel across the :term:`processing elements
+  <processing element>` of the device. This example code employs a C++
   lambda to represent the kernel.
 
 

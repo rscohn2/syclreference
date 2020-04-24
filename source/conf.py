@@ -45,6 +45,8 @@ exclude_patterns = []
 
 
 prolog_template = string.Template("""
+.. |true| replace:: ``true``
+.. |false| replace:: ``false``
 .. include: /prolog.inc.rst
 """)
 

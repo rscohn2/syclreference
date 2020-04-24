@@ -1,40 +1,157 @@
-.. _queue:
+..
+  // Copyright (c) 2011-2020 The Khronos Group, Inc.
+  //
+  // Licensed under the Apache License, Version 2.0 (the License);
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //     http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an AS IS BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
 
-Queue
-=====
+==============
+ ``queue``
+==============
 
+.. parsed-literal::
 
-A DPC++ ``queue`` is employed to schedule and execute the command queues
-on the devices.
+   class queue;
 
+.. rubric:: Member functions
 
-Multiple forms of constructors are available with different combinations
-of arguments, including device selectors, devices, contexts, and command
-queue. In addition, an ``asyc_handler`` can be passed to help
-communicate errors from the devices back to the host.
+=====================  =======================
+`(constructor)`_   
+(destructor)       
+`get`_             
+`get_context`_     
+`get_device`_      
+`get_info`_        
+`is_host`_      
+`submit`_       
+`wait`_         
+`wait_and_throw`_    
+`throw_asynchronous`_
+=====================  =======================
 
+``(constructor)``
+=================
 
-The command queue itself executes in a synchronous fashion and therefore
-errors are also synchronous in nature. The actual kernels execute
-asynchronous and therefore errors are handled asynchronously by the
-``async_handler``. Queues can synchronize by calling ``wait`` and
-``wait_and_throw_throw`` member functions.
+.. parsed-literal::
 
+  explicit queue(const property_list &propList = {});
+  explicit queue(const async_handler &asyncHandler,
+                 const property_list &propList = {});
+  explicit queue(const device_selector &deviceSelector,
+                 const property_list &propList = {});
+  explicit queue(const device_selector &deviceSelector,
+                 const async_handler &asyncHandler,
+		 const property_list &propList = {});
+  explicit queue(const device &syclDevice, const property_list &propList = {});
+  explicit queue(const device &syclDevice, const async_handler &asyncHandler,
+                 const property_list &propList = {});
+  explicit queue(const context &syclContext,
+                 const device_selector &deviceSelector,
+		 const property_list &propList = {});
+  explicit queue(const context &syclContext,
+                 const device_selector &deviceSelector,
+                 const async_handler &asyncHandler,
+		 const property_list &propList = {});
+  explicit queue(const context &syclContext,
+                 const device &syclDevice,
+		 const property_list &propList = {});
+  explicit queue(const context &syclContext, const device &syclDevice,
+                 const async_handler &asyncHandler,
+		 const property_list &propList = {});
+  explicit queue(cl_command_queue clQueue, const context& syclContext,
+                 const async_handler &asyncHandler = {});
 
-Command groups are submitted to the queue object using the submit member
-function.
+``get``
+=======
 
+.. parsed-literal::
+   
+  cl_command_queue get() const;
 
-A ``property_list`` can also be passed during construction, which can be
-used to communicate an ``enable_profiling`` property to the devices.
+.. rubric:: Return value
 
+``get_context``
+===============
 
-A description of a few other member functions include:
+.. parsed-literal::
+   
+  context get_context() const;
 
+.. rubric:: Return value
 
--  ``get`` – obtain a ``cl_command_queue``
--  ``get_context`` – obtain the context associated with the queue
--  ``get_device`` – obtain the device associated with the queue
--  ``is_host`` – return if the queue is executing on the host
+``get_device``
+==============
 
-.. include:: queue.inc.rst
+.. parsed-literal::
+   
+  device get_device() const;
+
+.. rubric:: Return value
+
+``is_host``
+===========
+
+.. parsed-literal::
+   
+  bool is_host() const;
+
+.. rubric:: Return value
+
+``get_info``
+============
+
+.. parsed-literal::
+   
+  template <info::queue param>
+  typename info::param_traits<info::queue, param>::return_type get_info() const;
+
+.. rubric:: Return value
+
+``submit``
+==========
+
+.. parsed-literal::
+   
+  template <typename T>
+  event submit(T cgf);
+
+  template <typename T>
+  event submit(T cgf, const queue &secondaryQueue);
+
+.. rubric:: Parameters
+
+==================  ======================
+``cgf``
+``secondaryQueue``
+==================  ======================
+
+.. rubric:: Return value
+
+``wait``
+========
+
+.. parsed-literal::
+   
+  void wait();
+
+``wait_and_throw``
+==================
+
+.. parsed-literal::
+   
+  void wait_and_throw();
+
+``throw_asynchronous``
+======================
+
+.. parsed-literal::
+   
+  void throw_asynchronous();

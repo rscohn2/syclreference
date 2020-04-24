@@ -62,7 +62,7 @@ Glossary
      program, specifically the application scope and command group scope.
 
    host device
-     A SYCL device that executes on the host CPU
+     A SYCL device that is always present and usually executes on the host CPU.
      
    host code
      Code that is compiled by the host compiler and executes on the host

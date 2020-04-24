@@ -1,3 +1,4 @@
+
 .. |dpcpp_full_name| replace:: oneAPI Data Parallel C++
 .. |dpl_full_name| replace:: oneAPI DPC++ Library
 .. |ccl_full_name| replace:: oneAPI Collective Communications Library
@@ -7,4 +8,6 @@
 .. |tbb_full_name| replace:: oneAPI Threading Building Blocks
 .. |vpl_full_name| replace:: oneAPI Video Processing Library
 .. |mkl_full_name| replace:: oneAPI Math Kernel Library
+.. |true| replace:: ``true``
+.. |false| replace:: ``false``
 .. namespace:: cl::sycl

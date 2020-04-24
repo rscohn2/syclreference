@@ -69,6 +69,8 @@ def copy(src, dst):
     shutil.copy(src, dst)
     
 def makedirs(path):
+    if os.path.exists(path):
+        return
     log('mkdir -p', path)
     if args.dry_run:
         return
@@ -94,8 +96,7 @@ def up_to_date(target, deps):
     return True
 
 def doxygen_files():
-    if not os.path.exists('build'):
-        makedirs('build')
+    makedirs('build')
     return [doxyfile] + glob.glob(join('source','headers','**'), recursive=True)
 
 def doxygen(target=None):
@@ -105,8 +106,25 @@ def doxygen(target=None):
     shell('DOXYGEN_QUIET=%s doxygen %s' % ('NO' if args.verbose else 'YES', doxyfile))
 
 @action
+def examples(target=None):
+    run_examples = ['get-platforms']
+    compiler = 'dpcpp'
+    compiler_options = '-Wall -Werror'
+    build = join('build', 'examples')
+    makedirs(build)
+
+    for run_example in run_examples:
+        bin = join(build, run_example)
+        sources = ['%s.cpp' % join('source', 'examples', run_example)]
+        output = join(build, '%s.out' % run_example)
+        if not up_to_date(output, sources):
+            shell('%s %s -o %s %s' % (compiler, compiler_options, bin, ' '.join(sources)))
+            shell('%s > %s' % (bin, output))
+
+@action
 def prep(target=None):
-    doxygen()
+    examples()
+#    doxygen()
 
 @action
 def build(target):
@@ -118,6 +136,7 @@ commands = {'clean': build,
             'html': build,
             'latexpdf': build,
             'spelling': build,
+            'examples': examples,
             'prep': prep}
 
 def main():

@@ -123,8 +123,9 @@ def examples(target=None):
 
 @action
 def prep(target=None):
-    examples()
+#    examples()
 #    doxygen()
+    pass
 
 @action
 def build(target):

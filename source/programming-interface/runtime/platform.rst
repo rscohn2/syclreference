@@ -21,7 +21,7 @@
 
    class platform;
 
-Handle for a SYCL platform available on the system.
+Abstraction for SYCL platform.
 
 .. member-functions::
 

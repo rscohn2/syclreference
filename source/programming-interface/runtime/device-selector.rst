@@ -17,11 +17,11 @@
  ``device_selector``
 =====================
 
-.. parsed-literal::
+.. synopsis::
    
   class device_selector();
 
-.. rubric Member functions
+.. member-functions::
    
 =================  =======================
 `(constructor)`_
@@ -29,7 +29,7 @@
 `select_device`_   
 =================  =======================
 
-.. rubric:: Non-member functions
+.. non-member-functions::
 
 =================  =======================
 operator()
@@ -39,7 +39,7 @@ operator()
 ``(constructor)``
 =================
 
-.. parsed-literal::
+.. synopsis::
    
   device_selector(const device_selector &rhs);
   device_selector &operator=(const device_selector &rhs);
@@ -47,20 +47,24 @@ operator()
 ``(destructor)``
 ================
 
-.. parsed-literal::
+.. synopsis::
    
   virtual ~device_selector();
 
 ``select_device``
 ===================
 
-.. parsed-literal::
+.. synopsis::
    
   device select_device() const;
 
+.. returns::
+   
 ``operator()``
 ==============
 
-.. parsed-literal::
+.. synopsis::
    
   virtual int operator()(const device &device) const = 0;
+
+.. returns::

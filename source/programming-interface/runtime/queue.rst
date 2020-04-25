@@ -17,11 +17,11 @@
  ``queue``
 ==============
 
-.. parsed-literal::
+.. synopsis::
 
    class queue;
 
-.. rubric:: Member functions
+.. member-functions::
 
 =====================  =======================
 `(constructor)`_   
@@ -40,7 +40,7 @@
 ``(constructor)``
 =================
 
-.. parsed-literal::
+.. synopsis::
 
   explicit queue(const property_list &propList = {});
   explicit queue(const async_handler &asyncHandler,
@@ -72,53 +72,53 @@
 ``get``
 =======
 
-.. parsed-literal::
+.. synopsis::
    
   cl_command_queue get() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_context``
 ===============
 
-.. parsed-literal::
+.. synopsis::
    
   context get_context() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_device``
 ==============
 
-.. parsed-literal::
+.. synopsis::
    
   device get_device() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``is_host``
 ===========
 
-.. parsed-literal::
+.. synopsis::
    
   bool is_host() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_info``
 ============
 
-.. parsed-literal::
+.. synopsis::
    
   template <info::queue param>
   typename info::param_traits<info::queue, param>::return_type get_info() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``submit``
 ==========
 
-.. parsed-literal::
+.. synopsis::
    
   template <typename T>
   event submit(T cgf);
@@ -126,32 +126,32 @@
   template <typename T>
   event submit(T cgf, const queue &secondaryQueue);
 
-.. rubric:: Parameters
+.. args::
 
 ==================  ======================
 ``cgf``
 ``secondaryQueue``
 ==================  ======================
 
-.. rubric:: Return value
+.. returns::
 
 ``wait``
 ========
 
-.. parsed-literal::
+.. synopsis::
    
   void wait();
 
 ``wait_and_throw``
 ==================
 
-.. parsed-literal::
+.. synopsis::
    
   void wait_and_throw();
 
 ``throw_asynchronous``
 ======================
 
-.. parsed-literal::
+.. synopsis::
    
   void throw_asynchronous();

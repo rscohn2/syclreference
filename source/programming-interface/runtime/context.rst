@@ -17,11 +17,11 @@
 ``context``
 ===========
 
-.. parsed-literal::
+.. synopsis::
    
   class context;
   
-.. rubric:: Member functions
+.. member-functions::
 
 =================  =======================
 `(constructor)`_   constructs a context
@@ -36,7 +36,7 @@
 ``(constructor)``
 =================
 
-.. parsed-literal::
+.. synopsis::
    
   explicit context(const property_list &propList = {});
   context(async_handler asyncHandler,
@@ -53,7 +53,7 @@
           async_handler asyncHandler, const property_list &propList = {});
   context(cl_context clContext, async_handler asyncHandler = {});
 
-.. rubric:: Parameters
+.. args::
 
 ==================  ======================
 ``propList``
@@ -66,47 +66,47 @@
 ``get``
 =======
 
-.. parsed-literal::
+.. synopsis::
    
   cl_context get() const;
 
-.. rubric:: Return value
+.. returns::
 	    
 ``is_host``
 ===========
 
-.. parsed-literal::
+.. synopsis::
 
   bool is_host() const;
 
-.. rubric:: Return value
+.. returns::
 	    
 ``get_platform``
 ================
 
-.. parsed-literal::
+.. synopsis::
 
   platform get_platform() const;
 
-.. rubric:: Return value
+.. returns::
 	    
 ``get_devices``
 ===============
 
-.. parsed-literal::
+.. synopsis::
 
   vector_class<device> get_devices() const;
 
-.. rubric:: Return value
+.. returns::
 	    
 ``get_info``
 ============
 
-.. parsed-literal::
+.. synopsis::
 
   template <info::context param>
   typename info::param_traits<info::context, param>::return_type get_info() const;
 
 
-.. rubric:: Return value
+.. returns::
 	    

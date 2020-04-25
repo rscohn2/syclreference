@@ -17,11 +17,11 @@
  ``event``
 ==============
 
-.. parsed-literal::
+.. synopsis::
 
    class event;
 
-.. rubric:: Member functions
+.. member-functions::
 
 =====================  =======================
 `(constructor)`_
@@ -38,7 +38,7 @@
 ``(constructor)``
 =================
 
-.. parsed-literal::
+.. synopsis::
 
   event();
   event(cl_event clEvent, const context& syclContext);
@@ -46,34 +46,34 @@
 ``cl_event_get``
 ================
 
-.. parsed-literal::
+.. synopsis::
    
   cl_event get();
 
-.. rubric:: Return value
+.. returns::
 
 ``is_host``
 ===========
 
-.. parsed-literal::
+.. synopsis::
    
   bool is_host() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_wait_list``
 =================
 
-.. parsed-literal::
+.. synopsis::
    
   vector_class<event> get_wait_list();
 
-.. rubric:: Return value
+.. returns::
 
 ``wait``
 ========
 
-.. parsed-literal::
+.. synopsis::
    
   void wait();
 
@@ -82,7 +82,7 @@
 ``wait_and_throw``
 ==================
 
-.. parsed-literal::
+.. synopsis::
    
   void wait_and_throw();
 
@@ -91,20 +91,20 @@
 ``get_info``
 ============
 
-.. parsed-literal::
+.. synopsis::
    
   template <info::event param>
   typename info::param_traits<info::event, param>::return_type get_info() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_profiling_info``
 ======================
 
-.. parsed-literal::
+.. synopsis::
    
   template <info::event_profiling param>
   typename info::param_traits<info::event_profiling, param>::return_type get_profiling_info() const;
 
-.. rubric:: Return value
+.. returns::
 

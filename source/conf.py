@@ -87,3 +87,48 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# -- Add some directives for structure------------------------------------
+
+from docutils.parsers.rst import Directive
+from docutils.parsers.rst.directives.body import ParsedLiteral
+from docutils import nodes
+
+class ArgsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Arguments')]
+    
+class ReturnsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Return value')]
+    
+class MemberFunctionsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Member functions')]
+    
+class NonMemberFunctionsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Non-member functions')]
+    
+class ExampleDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Example')]
+    
+class SynopsisDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Synopsis')]
+    
+def setup(app):
+    app.add_directive('args', ArgsDirective)
+    app.add_directive('returns', ReturnsDirective)
+    app.add_directive('member-functions', MemberFunctionsDirective)
+    app.add_directive('non-member-functions', NonMemberFunctionsDirective)
+    app.add_directive('example', ExampleDirective)
+    app.add_directive('synopsis', ParsedLiteral)
+    return {'version': '0.1'}

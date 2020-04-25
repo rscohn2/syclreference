@@ -17,11 +17,11 @@
  ``device``
 ==============
 
-.. parsed-literal::
+.. synopsis::
 
    class device;
 
-.. rubric:: Member functions
+.. member-functions::
 
 =====================  =======================
 `(constructor)`_
@@ -37,7 +37,7 @@
 `create_sub_devices`_
 =====================  =======================
 
-.. rubric:: Non-member functions
+.. non-member-functions::
 
 =================  =======================
 `get_devices`_
@@ -46,13 +46,13 @@
 ``(constructor)``
 =================
 
-.. parsed-literal::
+.. synopsis::
 
   device();
   explicit device(cl_device_id deviceId);
   explicit device(const device_selector &deviceSelector);
 
-.. rubric:: Parameters
+.. args::
 
 ==================  ======================
 ``deviceID``
@@ -62,91 +62,91 @@
 ``get``
 =======
 
-.. parsed-literal::
+.. synopsis::
    
   cl_device_id get() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``is_host``
 ===========
 
-.. parsed-literal::
+.. synopsis::
    
   bool is_host() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``is_cpu``
 ==========
 
-.. parsed-literal::
+.. synopsis::
    
   bool is_cpu() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``is_gpu``
 ==========
 
-.. parsed-literal::
+.. synopsis::
    
   bool is_gpu() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``is_accelerator``
 ==================
 
-.. parsed-literal::
+.. synopsis::
    
   bool is_accelerator() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_platform``
 ================
 
-.. parsed-literal::
+.. synopsis::
    
   platform get_platform() const;
 
-.. rubric:: Return value
+.. returns::
 
 ``get_info``
 ============
 
-.. parsed-literal::
+.. synopsis::
    
   template <info::device param>
   typename info::param_traits<info::device, param>::return_type
   get_info() const;
 
-.. rubric:: Return value
+.. returns::
 
-.. rubric:: Example
+.. example::
 
-See platform-example_.
+See :ref:`platform-example`.
 
 ``has_extension``
 =================
 
-.. parsed-literal::
+.. synopsis::
    
   bool has_extension(const string_class &extension) const;
 
-.. rubric:: Parameters
+.. args::
 
 ==================  ======================
 ``extension``
 ==================  ======================
 
-.. rubric:: Return value
+.. returns::
 
 ``create_sub_devices``
 ======================
 
-.. parsed-literal::
+.. synopsis::
    
   template <info::partition_property prop>
   vector_class<device> create_sub_devices(size_t nbSubDev) const; [#1]_
@@ -161,7 +161,7 @@ See platform-example_.
 .. [#2] Available only when prop == info::partition_property::partition_by_counts
 .. [#3]	Available only when prop == info::partition_property::partition_by_affinity_domain
 
-.. rubric:: Parameters
+.. args::
 
 ==================  ======================
 nbSubDev
@@ -169,15 +169,15 @@ counts
 affinityDomain
 ==================  ======================
 
-.. rubric:: Return value
+.. returns::
 
 ``get_devices``
 ===============
 
-.. parsed-literal::
+.. synopsis::
    
   static vector_class<device> get_devices(
       info::device_type deviceType = info::device_type::all);
 
-.. rubric:: Return value
+.. returns::
 

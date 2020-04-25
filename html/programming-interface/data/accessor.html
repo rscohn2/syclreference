@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>accessor &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Atomic" href="atomic.html" />
+    <link rel="prev" title="Data Access" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Data Access</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">accessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="atomic.html">Atomic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="buffer.html">Buffer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multi-pointer.html">Address Spaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sampler.html">Samplers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../parallelism/index.html">Expressing Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Data Access</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Data Access</a></li>
+      <li>Next: <a href="atomic.html" title="next chapter">Atomic</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="accessor">
+<h1><code class="docutils literal notranslate"><span class="pre">accessor</span></code><a class="headerlink" href="#accessor" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span><span class="o">&lt;</span>
+    <span class="n">typename</span> <span class="n">dataT</span><span class="p">,</span>
+    <span class="nb">int</span> <span class="n">dimensions</span><span class="p">,</span>
+    <span class="n">access</span><span class="p">::</span><span class="n">mode</span> <span class="n">accessmode</span><span class="p">,</span>
+    <span class="n">access</span><span class="p">::</span><span class="n">target</span> <span class="n">accessTarget</span> <span class="o">=</span> <span class="n">access</span><span class="p">::</span><span class="n">target</span><span class="p">::</span><span class="n">global_buffer</span><span class="p">,</span>
+    <span class="n">access</span><span class="p">::</span><span class="n">placeholder</span> <span class="n">isPlaceholder</span> <span class="o">=</span> <span class="n">access</span><span class="p">::</span><span class="n">placeholder</span><span class="p">::</span><span class="n">false_t</span>
+<span class="o">&gt;</span> <span class="n">accessor</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>A DPC++ <code class="docutils literal notranslate"><span class="pre">accessor</span></code> encapsulates reading and writing memory objects
+which can be buffers, images, or device local memory. Creating an
+accessor requires a method to reference the desired access target.
+Construction also requires the type of the memory object, the
+dimensionality of the memory object, the access mode, and a placeholder
+argument.</p>
+<p class="rubric">Template parameters</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dataT</span></code></p></td>
+<td><p>type of buffer element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code></p></td>
+<td><p>dimensionality of buffer</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">accessmode</span></code></p></td>
+<td><p>type of access</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">accessTarget</span></code></p></td>
+<td><p>type of memory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isPlaceholder</span></code></p></td>
+<td><p>placeholder</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Member types</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 44%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">value_type</span></code></p></td>
+<td><p>dataT</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reference</span></code></p></td>
+<td><p>dataT&amp;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">const_reference</span></code></p></td>
+<td><p>const dataT&amp;</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Member functions</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>(constructor)</p></td>
+<td><p>constructs an accessor</p></td>
+</tr>
+<tr class="row-even"><td><p>(destructor)</p></td>
+<td><p>destroys the accessor</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_placeholder</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#get-size">get_size</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#get-count">get_count</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>get_range</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>get_offset</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="get-size">
+<h2><code class="docutils literal notranslate"><span class="pre">get_size</span></code><a class="headerlink" href="#get-size" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">size_t</span> <span class="n">get_size</span><span class="p">()</span> <span class="n">const</span>
+</pre></div>
+</div>
+<p>Description</p>
+</div>
+<div class="section" id="get-count">
+<h2><code class="docutils literal notranslate"><span class="pre">get_count</span></code><a class="headerlink" href="#get-count" title="Permalink to this headline">¶</a></h2>
+<pre class="literal-block">size_t get_size() const <a class="footnote-reference brackets" href="#none" id="id1">1</a>
+size_t get_size(int b) const <a class="footnote-reference brackets" href="#single" id="id2">2</a>
+size_t get_size(int c, int d) const <a class="footnote-reference brackets" href="#double" id="id3">3</a></pre>
+<p>Description</p>
+<dl class="footnote brackets">
+<dt class="label" id="none"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>No arguments</p>
+</dd>
+<dt class="label" id="single"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>single argument</p>
+</dd>
+<dt class="label" id="double"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>2 arguments</p>
+</dd>
+</dl>
+<p>A common method of construction can employ the <code class="docutils literal notranslate"><span class="pre">get_access</span></code> method of
+the memory object to specify the object and infer the other parameters
+from that memory object.</p>
+<p>See <a class="reference internal" href="../../programming-model/accessors.html#accessors"><span class="std std-ref">Accessors</span></a> for access modes and targets.</p>
+<p>Placeholder accessors are those created independent of a command group
+and then later associated with a particular memory object. Designation
+of a placeholder accessor is communicated via the placeholder argument
+set to <code class="docutils literal notranslate"><span class="pre">access::placeholder::true_t</span></code> if so and
+<code class="docutils literal notranslate"><span class="pre">access::placeholder::false_t</span></code> otherwise.</p>
+<p>Once an accessor is created, query member functions to review accessor
+information. These member functions include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">is_placeholder</span></code> – return true if accessor is a placeholder, not
+yet associated with a memory object, false otherwise</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_size</span></code> – obtain the size (in bytes) of the memory object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_count</span></code> – obtain the number of elements of the memory object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_range</span></code> – obtain the range of the memory object, where range is
+a range class</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_offset</span></code> – obtain the offset of the memory object</p></li>
+</ul>
+<p>An accessor can reference a subset of a memory object; this is the
+offset of the accessor into the memory object.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/data/accessor.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

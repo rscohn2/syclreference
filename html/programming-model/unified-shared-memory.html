@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Unified Shared Memory &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Memory Types" href="memory-types.html" />
+    <link rel="prev" title="Synchronization" href="synchronization.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sample-program.html">Sample Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-model.html">Platform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution-model.html">Execution Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="memory-model.html">Memory Model</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="memory-objects.html">Memory Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessors.html">Accessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synchronization.html">Synchronization</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Unified Shared Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="memory-types.html">Memory Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernel-programming-model.html">Kernel Programming Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-interface/index.html">Programming Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Programming Model</a><ul>
+  <li><a href="memory-model.html">Memory Model</a><ul>
+      <li>Previous: <a href="synchronization.html" title="previous chapter">Synchronization</a></li>
+      <li>Next: <a href="memory-types.html" title="next chapter">Memory Types</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="unified-shared-memory">
+<span id="id1"></span><h1>Unified Shared Memory<a class="headerlink" href="#unified-shared-memory" title="Permalink to this headline">¶</a></h1>
+<p>An extension to the standard SYCL memory model is unified shared memory,
+which enables the sharing of memory between the host and device without
+explicit accessors in the source code. Instead, manage access and
+enforces dependencies with explicit functions to wait on events or
+signaling a <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> relationship between events.</p>
+<p>Another characteristic of unified shared memory is that it provides a
+C++ pointer-based alternative to the buffer programming model. Unified
+shared memory provides both explicit and implicit models for managing
+memory. In the explicit model, programmers are responsible for
+specifying when data should be copied between memory allocations on the
+host and allocations on a device. In the implicit model, the underlying
+runtime and device drivers are responsible for automatically migrating
+memory between the host and a device. Since unified shared memory does
+not rely on accessors, dependencies between operations must be specified
+using events. Programmers may either explicitly wait on event objects or
+use the <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> method inside a command group to specify a list
+of events that must complete before a task may begin.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-model/unified-shared-memory.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/favicons.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Programming Model" href="programming-model/index.html" />
+    <link rel="prev" title="DPC++ Reference" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-parallel-c-dpc">Data Parallel C++ (DPC++)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-interface/index.html">Programming Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">DPC++ Reference</a></li>
+      <li>Next: <a href="programming-model/index.html" title="next chapter">Programming Model</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<span id="introduction-to-oneapi-programming"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Obtaining high compute performance on today’s modern computer
+architectures requires code that is optimized, power efficient, and
+scalable. The demand for high performance continues to increase due to
+needs in AI, video analytics, data analytics, as well as in traditional
+high performance computing (HPC).</p>
+<p>Modern workload diversity has resulted in a need for architectural
+diversity; no single architecture is best for every workload. A mix of
+scalar, vector, matrix, and spatial (SVMS) architectures deployed in
+CPU, GPU, AI, and FPGA <a class="reference internal" href="glossary.html#term-accelerator"><span class="xref std std-term">accelerators</span></a> is required
+to extract the needed performance.</p>
+<p>Today, coding for CPUs and accelerators requires different languages,
+libraries, and tools. That means each hardware platform requires
+completely separate software investments and provides limited
+application code reusability across different target architectures.</p>
+<p>The oneAPI programming model simplifies the programming of CPUs and
+accelerators using modern C++ features to express parallelism with a
+programming language called Data Parallel C++ (DPC++). The DPC++
+language enables code reuse for the host (such as a CPU) and
+accelerators (such as a GPU) using a single source language, with
+execution and memory dependencies clearly communicated. Mapping within
+the DPC++ code can be used to transition the application to run on the
+hardware, or set of hardware, that best accelerates the workload. A host
+is available to simplify development and debugging of device code, even
+on platforms that do not have an accelerator available.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all programs can benefit from the single programming model
+offered by oneAPI. It is important to understand if your program can
+benefit and how to design, implement, and use the oneAPI programming
+model for your program.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="overview">
+<span id="oneapi-programming-model-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The oneAPI programming model provides a comprehensive and unified
+portfolio of developer tools that can be used across hardware targets,
+including a range of performance libraries spanning several workload
+domains. The libraries include functions custom-coded for each target
+architecture, so the same function call delivers optimized performance
+across supported architectures. DPC++ is based on industry standards and
+open specifications to encourage ecosystem collaboration and innovation.</p>
+<p><img alt="image0" src="_images/GUID-5758F720-3C7C-4919-9BB5-F650F88DBD01-low.jpg" /></p>
+<p>As shown in the figure above, applications that take advantage of the
+oneAPI programming model can execute on multiple target hardware
+platforms ranging from CPU to FPGA.</p>
+</div>
+<div class="section" id="data-parallel-c-dpc">
+<h2>Data Parallel C++ (DPC++)<a class="headerlink" href="#data-parallel-c-dpc" title="Permalink to this headline">¶</a></h2>
+<p>Data Parallel C++ (DPC++) is a high-level language designed for data
+parallel programming productivity. It is based on C++ for broad
+compatibility and uses common, familiar C and C++ constructs. The
+language seeks to deliver performance on par with other compiled
+languages, such as standard C++ compiled code, and uses C++ class
+libraries to allow the compiler to interpret the code and run on various
+supported architectures.</p>
+<p>DPC++ is based on SYCL* from the Khronos* Group to support data
+parallelism and heterogeneous programming. In addition, Intel is
+pursuing extensions to SYCL with the aim of providing value to customer
+code and working with the standards organization for adoption. For
+instance, the DPC++ language includes an implementation of unified
+shared memory to ease memory usage between the host and the
+accelerators. These features are being driven into a future version of
+the SYCL language. For more details about SYCL, refer to version 1.2.1
+of the <a class="reference external" href="https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf">SYCL
+Specification</a>.</p>
+<p>While DPC++ applications can run on any supported target hardware,
+tuning is required to gain the best performance advantage on a given
+target architecture. For example, code tuned for a CPU likely will not
+run as fast on a GPU accelerator without modification. This guide aims
+to help developers understand how to program using the oneAPI
+programming model and how to target and optimize for the appropriate
+architecture to achieve optimal application performance.</p>
+</div>
+<div class="section" id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The following documents are useful starting points for developers
+getting started with oneAPI projects. This document assumes you already
+have a basic understanding of the oneAPI programming model concepts.</p>
+<p><a class="reference external" href="https://software.intel.com/en-us/get-started-with-intel-oneapi-linux">Get Started with Intel oneAPI for
+Linux*</a></p>
+<p><a class="reference external" href="https://software.intel.com/en-us/get-started-with-intel-oneapi-windows">Get Started with Intel oneAPI for
+Windows*</a></p>
+<p><a class="reference external" href="https://software.intel.com/en-us/articles/intel-oneapi-toolkit-release-notes">Intel oneAPI Base Toolkit Release
+Notes</a></p>
+<p><a class="reference external" href="https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf">SYCL*
+Specification</a>
+(for version 1.2.1)</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/intro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Programming Model &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sample Program" href="sample-program.html" />
+    <link rel="prev" title="Introduction" href="../intro.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample-program.html">Sample Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-model.html">Platform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution-model.html">Execution Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory-model.html">Memory Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel-programming-model.html">Kernel Programming Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-interface/index.html">Programming Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../intro.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="sample-program.html" title="next chapter">Sample Program</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="programming-model">
+<span id="oneapi-programming-model"></span><h1>Programming Model<a class="headerlink" href="#programming-model" title="Permalink to this headline">¶</a></h1>
+<p>The oneAPI programming model is based upon the <a class="reference external" href="https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf">SYCL*
+Specification</a>.
+The specification presents a general heterogeneous compute capability by
+detailing four models. These models categorize the actions a developer
+needs to perform to employ one or more devices as an accelerator.
+Aspects of these models appear in every program that employs the oneAPI
+programming model. These models are summarized as:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="platform-model.html#platform-model"><span class="std std-ref">Platform Model</span></a>: Specifies the <a class="reference internal" href="../glossary.html#term-host"><span class="xref std std-term">host</span></a> and <a class="reference internal" href="../glossary.html#term-device"><span class="xref std std-term">device</span></a>.</p></li>
+<li><p><a class="reference internal" href="execution-model.html#execution-model"><span class="std std-ref">Execution Model</span></a>: Specifies the <a class="reference internal" href="../glossary.html#term-command-queue"><span class="xref std std-term">command queue</span></a> and
+issuing commands for execution on the device(s).</p></li>
+<li><p><a class="reference internal" href="memory-model.html#memory-model"><span class="std std-ref">Memory Model</span></a>: Defines how the host and devices interact with
+memory.</p></li>
+<li><p><a class="reference internal" href="kernel-programming-model.html#kernel-programming-model"><span class="std std-ref">Kernel Programming Model</span></a>: Defines the code that executes on
+the device(s). This code is known as the kernel.</p></li>
+</ul>
+<p>The programming language for oneAPI is Data Parallel C++ (DPC++) and
+employs modern features of the C++ language to enact its parallelism. In
+fact, when writing programs that employ the oneAPI programming model,
+the programmer routinely uses language features such as C++ lambdas,
+templates, parallel_for, and closures.</p>
+<div class="note docutils container">
+<p class="notetiphead rubric">Tip</p>
+<p>If you are unfamiliar with these C++11 and later language features,
+consult other C++ language references and gain a basic understanding
+before continuing.</p>
+</div>
+<p>When evaluating and learning oneAPI, keep in mind that the programming
+model is general enough to accommodate multiple classes of accelerators;
+therefore, there may be a greater number of API calls required to access
+the accelerators than more constrained APIs, such as those only
+accessing one type of accelerator.</p>
+<p>One of the primary motivations for DPC++ is to provide a higher-level
+programming language than OpenCL™ C code, which it is based upon.
+Readers familiar with OpenCL programs will see many similarities to and
+differences from OpenCL code. This chapter points out similarities and
+differences where appropriate. This chapter also points to portions of
+the SYCL Specification for further information.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sample-program.html">Sample Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform-model.html">Platform Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execution-model.html">Execution Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory-model.html">Memory Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory-objects.html">Memory Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessors.html">Accessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synchronization.html">Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unified-shared-memory.html">Unified Shared Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory-types.html">Memory Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kernel-programming-model.html">Kernel Programming Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cpp-language-requirements.html">C++ Language Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fall-back.html">Fall Back</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-model/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

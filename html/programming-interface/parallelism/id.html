@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ID &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Item" href="item.html" />
+    <link rel="prev" title="Nd_range" href="nd-range.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Expressing Parallelism</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="range.html">Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-range.html">Nd_range</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-item.html">Nd_item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="device-event.html">Device Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="command-group-handler.html">Command Group Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="program.html">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Expressing Parallelism</a><ul>
+      <li>Previous: <a href="nd-range.html" title="previous chapter">Nd_range</a></li>
+      <li>Next: <a href="item.html" title="next chapter">Item</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="id">
+<span id="id1"></span><h1>ID<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> class encapsulates a vector of dimensions that identify an
+index into a global or local range. Constructors for the class take one
+to three integer arguments representing a one, two, and three dimension
+ID. Each integer argument specifies the size of the dimension. ID
+objects can also be constructed as a placeholder where the dimension is
+unspecified and set to zero by default. Construction can also be based
+upon the dimension of an existing range or item.</p>
+<p>The class supports operations such as + (plus), - (minus), and many
+more. Consult the SYCL Specification for complete details.</p>
+<dl class="cpp class">
+<dt id="_CPPv4I_iE2id">
+<span id="_CPPv3I_iE2id"></span><span id="_CPPv2I_iE2id"></span>template&lt;int <code class="sig-name descname">dimensions</code> = 1&gt;<br /><em class="property">class </em><code class="sig-name descname">id</code><a class="headerlink" href="#_CPPv4I_iE2id" title="Permalink to this definition">¶</a><br /></dt>
+<dd><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">tparam dimensions</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</div></blockquote>
+<dl class="cpp function">
+<dt id="_CPPv4N2id2idEv">
+<span id="_CPPv3N2id2idEv"></span><span id="_CPPv2N2id2idEv"></span><span id="id::id"></span><code class="sig-name descname">id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2id2idEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2id2idE6size_t">
+<span id="_CPPv3N2id2idE6size_t"></span><span id="_CPPv2N2id2idE6size_t"></span><span id="id::id__s"></span><code class="sig-name descname">id</code><span class="sig-paren">(</span>size_t <em>dim0</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2id2idE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2id2idE6size_t6size_t">
+<span id="_CPPv3N2id2idE6size_t6size_t"></span><span id="_CPPv2N2id2idE6size_t6size_t"></span><span id="id::id__s.s"></span><code class="sig-name descname">id</code><span class="sig-paren">(</span>size_t <em>dim0</em>, size_t <em>dim1</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2id2idE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2id2idE6size_t6size_t6size_t">
+<span id="_CPPv3N2id2idE6size_t6size_t6size_t"></span><span id="_CPPv2N2id2idE6size_t6size_t6size_t"></span><span id="id::id__s.s.s"></span><code class="sig-name descname">id</code><span class="sig-paren">(</span>size_t <em>dim0</em>, size_t <em>dim1</em>, size_t <em>dim2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2id2idE6size_t6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2id2idERK5rangeI10dimensionsE">
+<span id="_CPPv3N2id2idERK5rangeI10dimensionsE"></span><span id="_CPPv2N2id2idERK5rangeI10dimensionsE"></span><span id="id::id__range:dimensions:CR"></span><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N2id2idERK5rangeI10dimensionsE" title="id::id::range">range</a>&lt;<a class="reference internal" href="#_CPPv4I_iE2id" title="id::dimensions">dimensions</a>&gt; &amp;<em>range</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2id2idERK5rangeI10dimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2id2idERK4itemI10dimensionsE">
+<span id="_CPPv3N2id2idERK4itemI10dimensionsE"></span><span id="_CPPv2N2id2idERK4itemI10dimensionsE"></span><span id="id::id__item:dimensions:CR"></span><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N2id2idERK4itemI10dimensionsE" title="id::id::item">item</a>&lt;<a class="reference internal" href="#_CPPv4I_iE2id" title="id::dimensions">dimensions</a>&gt; &amp;<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2id2idERK4itemI10dimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim0</strong> – </p></li>
+<li><p><strong>dim1</strong> – </p></li>
+<li><p><strong>dim2</strong> – </p></li>
+<li><p><strong>range</strong> – </p></li>
+<li><p><strong>item</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK2id3getEi">
+<span id="_CPPv3NK2id3getEi"></span><span id="_CPPv2NK2id3getEi"></span><span id="id::get__iC"></span>size_t <code class="sig-name descname">get</code><span class="sig-paren">(</span>int <em>dimension</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK2id3getEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2idixEi">
+<span id="_CPPv3N2idixEi"></span><span id="_CPPv2N2idixEi"></span><span id="id::subscript-operator__i"></span>size_t &amp;<code class="sig-name descname">operator[]</code><span class="sig-paren">(</span>int <em>dimension</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idixEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK2idixEi">
+<span id="_CPPv3NK2idixEi"></span><span id="_CPPv2NK2idixEi"></span><span id="id::subscript-operator__iC"></span>size_t <code class="sig-name descname">operator[]</code><span class="sig-paren">(</span>int <em>dimension</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK2idixEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2idplERK2idRK2id">
+<span id="_CPPv3N2idplERK2idRK2id"></span><span id="_CPPv2N2idplERK2idRK2id"></span><span id="id::add-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idplERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmiERK2idRK2id">
+<span id="_CPPv3N2idmiERK2idRK2id"></span><span id="_CPPv2N2idmiERK2idRK2id"></span><span id="id::sub-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator-</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmiERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmlERK2idRK2id">
+<span id="_CPPv3N2idmlERK2idRK2id"></span><span id="_CPPv2N2idmlERK2idRK2id"></span><span id="id::mul-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator*</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmlERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2iddvERK2idRK2id">
+<span id="_CPPv3N2iddvERK2idRK2id"></span><span id="_CPPv2N2iddvERK2idRK2id"></span><span id="id::div-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator/</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2iddvERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrmERK2idRK2id">
+<span id="_CPPv3N2idrmERK2idRK2id"></span><span id="_CPPv2N2idrmERK2idRK2id"></span><span id="id::mod-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator%</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrmERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idlsERK2idRK2id">
+<span id="_CPPv3N2idlsERK2idRK2id"></span><span id="_CPPv2N2idlsERK2idRK2id"></span><span id="id::lshift-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idlsERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrsERK2idRK2id">
+<span id="_CPPv3N2idrsERK2idRK2id"></span><span id="_CPPv2N2idrsERK2idRK2id"></span><span id="id::rshift-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrsERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idanERK2idRK2id">
+<span id="_CPPv3N2idanERK2idRK2id"></span><span id="_CPPv2N2idanERK2idRK2id"></span><span id="id::and-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idanERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idorERK2idRK2id">
+<span id="_CPPv3N2idorERK2idRK2id"></span><span id="_CPPv2N2idorERK2idRK2id"></span><span id="id::or-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator|</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idorERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2ideoERK2idRK2id">
+<span id="_CPPv3N2ideoERK2idRK2id"></span><span id="_CPPv2N2ideoERK2idRK2id"></span><span id="id::xor-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator^</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2ideoERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idaaERK2idRK2id">
+<span id="_CPPv3N2idaaERK2idRK2id"></span><span id="_CPPv2N2idaaERK2idRK2id"></span><span id="id::sand-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idaaERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idooERK2idRK2id">
+<span id="_CPPv3N2idooERK2idRK2id"></span><span id="_CPPv2N2idooERK2idRK2id"></span><span id="id::sor-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator||</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idooERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idltERK2idRK2id">
+<span id="_CPPv3N2idltERK2idRK2id"></span><span id="_CPPv2N2idltERK2idRK2id"></span><span id="id::lt-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idltERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idgtERK2idRK2id">
+<span id="_CPPv3N2idgtERK2idRK2id"></span><span id="_CPPv2N2idgtERK2idRK2id"></span><span id="id::gt-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idgtERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idleERK2idRK2id">
+<span id="_CPPv3N2idleERK2idRK2id"></span><span id="_CPPv2N2idleERK2idRK2id"></span><span id="id::lte-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idleERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idgeERK2idRK2id">
+<span id="_CPPv3N2idgeERK2idRK2id"></span><span id="_CPPv2N2idgeERK2idRK2id"></span><span id="id::gte-operator__idCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idgeERK2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2idplERK2idRK6size_t">
+<span id="_CPPv3N2idplERK2idRK6size_t"></span><span id="_CPPv2N2idplERK2idRK6size_t"></span><span id="id::add-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idplERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmiERK2idRK6size_t">
+<span id="_CPPv3N2idmiERK2idRK6size_t"></span><span id="_CPPv2N2idmiERK2idRK6size_t"></span><span id="id::sub-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator-</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmiERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmlERK2idRK6size_t">
+<span id="_CPPv3N2idmlERK2idRK6size_t"></span><span id="_CPPv2N2idmlERK2idRK6size_t"></span><span id="id::mul-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator*</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmlERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2iddvERK2idRK6size_t">
+<span id="_CPPv3N2iddvERK2idRK6size_t"></span><span id="_CPPv2N2iddvERK2idRK6size_t"></span><span id="id::div-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator/</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2iddvERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrmERK2idRK6size_t">
+<span id="_CPPv3N2idrmERK2idRK6size_t"></span><span id="_CPPv2N2idrmERK2idRK6size_t"></span><span id="id::mod-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator%</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrmERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idlsERK2idRK6size_t">
+<span id="_CPPv3N2idlsERK2idRK6size_t"></span><span id="_CPPv2N2idlsERK2idRK6size_t"></span><span id="id::lshift-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idlsERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrsERK2idRK6size_t">
+<span id="_CPPv3N2idrsERK2idRK6size_t"></span><span id="_CPPv2N2idrsERK2idRK6size_t"></span><span id="id::rshift-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrsERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idanERK2idRK6size_t">
+<span id="_CPPv3N2idanERK2idRK6size_t"></span><span id="_CPPv2N2idanERK2idRK6size_t"></span><span id="id::and-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idanERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idorERK2idRK6size_t">
+<span id="_CPPv3N2idorERK2idRK6size_t"></span><span id="_CPPv2N2idorERK2idRK6size_t"></span><span id="id::or-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator|</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idorERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2ideoERK2idRK6size_t">
+<span id="_CPPv3N2ideoERK2idRK6size_t"></span><span id="_CPPv2N2ideoERK2idRK6size_t"></span><span id="id::xor-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator^</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2ideoERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idaaERK2idRK6size_t">
+<span id="_CPPv3N2idaaERK2idRK6size_t"></span><span id="_CPPv2N2idaaERK2idRK6size_t"></span><span id="id::sand-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idaaERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idooERK2idRK6size_t">
+<span id="_CPPv3N2idooERK2idRK6size_t"></span><span id="_CPPv2N2idooERK2idRK6size_t"></span><span id="id::sor-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator||</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idooERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idltERK2idRK6size_t">
+<span id="_CPPv3N2idltERK2idRK6size_t"></span><span id="_CPPv2N2idltERK2idRK6size_t"></span><span id="id::lt-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idltERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idgtERK2idRK6size_t">
+<span id="_CPPv3N2idgtERK2idRK6size_t"></span><span id="_CPPv2N2idgtERK2idRK6size_t"></span><span id="id::gt-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idgtERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idleERK2idRK6size_t">
+<span id="_CPPv3N2idleERK2idRK6size_t"></span><span id="_CPPv2N2idleERK2idRK6size_t"></span><span id="id::lte-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idleERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idgeERK2idRK6size_t">
+<span id="_CPPv3N2idgeERK2idRK6size_t"></span><span id="_CPPv2N2idgeERK2idRK6size_t"></span><span id="id::gte-operator__idCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idgeERK2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2idplERK6size_tRK2id">
+<span id="_CPPv3N2idplERK6size_tRK2id"></span><span id="_CPPv2N2idplERK6size_tRK2id"></span><span id="id::add-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idplERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmiERK6size_tRK2id">
+<span id="_CPPv3N2idmiERK6size_tRK2id"></span><span id="_CPPv2N2idmiERK6size_tRK2id"></span><span id="id::sub-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator-</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmiERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmlERK6size_tRK2id">
+<span id="_CPPv3N2idmlERK6size_tRK2id"></span><span id="_CPPv2N2idmlERK6size_tRK2id"></span><span id="id::mul-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator*</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmlERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2iddvERK6size_tRK2id">
+<span id="_CPPv3N2iddvERK6size_tRK2id"></span><span id="_CPPv2N2iddvERK6size_tRK2id"></span><span id="id::div-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator/</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2iddvERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrmERK6size_tRK2id">
+<span id="_CPPv3N2idrmERK6size_tRK2id"></span><span id="_CPPv2N2idrmERK6size_tRK2id"></span><span id="id::mod-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator%</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrmERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idlsERK6size_tRK2id">
+<span id="_CPPv3N2idlsERK6size_tRK2id"></span><span id="_CPPv2N2idlsERK6size_tRK2id"></span><span id="id::lshift-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;&lt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idlsERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrsERK6size_tRK2id">
+<span id="_CPPv3N2idrsERK6size_tRK2id"></span><span id="_CPPv2N2idrsERK6size_tRK2id"></span><span id="id::rshift-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrsERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idanERK6size_tRK2id">
+<span id="_CPPv3N2idanERK6size_tRK2id"></span><span id="_CPPv2N2idanERK6size_tRK2id"></span><span id="id::and-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idanERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idorERK6size_tRK2id">
+<span id="_CPPv3N2idorERK6size_tRK2id"></span><span id="_CPPv2N2idorERK6size_tRK2id"></span><span id="id::or-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator|</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idorERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2ideoERK6size_tRK2id">
+<span id="_CPPv3N2ideoERK6size_tRK2id"></span><span id="_CPPv2N2ideoERK6size_tRK2id"></span><span id="id::xor-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator^</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2ideoERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idaaERK6size_tRK2id">
+<span id="_CPPv3N2idaaERK6size_tRK2id"></span><span id="_CPPv2N2idaaERK6size_tRK2id"></span><span id="id::sand-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;&amp;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idaaERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idooERK6size_tRK2id">
+<span id="_CPPv3N2idooERK6size_tRK2id"></span><span id="_CPPv2N2idooERK6size_tRK2id"></span><span id="id::sor-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator||</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idooERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idltERK6size_tRK2id">
+<span id="_CPPv3N2idltERK6size_tRK2id"></span><span id="_CPPv2N2idltERK6size_tRK2id"></span><span id="id::lt-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idltERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idgtERK6size_tRK2id">
+<span id="_CPPv3N2idgtERK6size_tRK2id"></span><span id="_CPPv2N2idgtERK6size_tRK2id"></span><span id="id::gt-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idgtERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idleERK6size_tRK2id">
+<span id="_CPPv3N2idleERK6size_tRK2id"></span><span id="_CPPv2N2idleERK6size_tRK2id"></span><span id="id::lte-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idleERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idgeERK6size_tRK2id">
+<span id="_CPPv3N2idgeERK6size_tRK2id"></span><span id="_CPPv2N2idgeERK6size_tRK2id"></span><span id="id::gte-operator__sCR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idgeERK6size_tRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2idpLER2idRK2id">
+<span id="_CPPv3N2idpLER2idRK2id"></span><span id="_CPPv2N2idpLER2idRK2id"></span><span id="id::add-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator+=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idpLER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmLER2idRK2id">
+<span id="_CPPv3N2idmLER2idRK2id"></span><span id="_CPPv2N2idmLER2idRK2id"></span><span id="id::mul-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator*=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmLER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2iddVER2idRK2id">
+<span id="_CPPv3N2iddVER2idRK2id"></span><span id="_CPPv2N2iddVER2idRK2id"></span><span id="id::div-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator/=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2iddVER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrMER2idRK2id">
+<span id="_CPPv3N2idrMER2idRK2id"></span><span id="_CPPv2N2idrMER2idRK2id"></span><span id="id::mod-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator%=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrMER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idlSER2idRK2id">
+<span id="_CPPv3N2idlSER2idRK2id"></span><span id="_CPPv2N2idlSER2idRK2id"></span><span id="id::lshift-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;&lt;=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idlSER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrSER2idRK2id">
+<span id="_CPPv3N2idrSER2idRK2id"></span><span id="_CPPv2N2idrSER2idRK2id"></span><span id="id::rshift-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;&gt;=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrSER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idaNER2idRK2id">
+<span id="_CPPv3N2idaNER2idRK2id"></span><span id="_CPPv2N2idaNER2idRK2id"></span><span id="id::and-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idaNER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idoRER2idRK2id">
+<span id="_CPPv3N2idoRER2idRK2id"></span><span id="_CPPv2N2idoRER2idRK2id"></span><span id="id::or-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator|=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idoRER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2ideOER2idRK2id">
+<span id="_CPPv3N2ideOER2idRK2id"></span><span id="_CPPv2N2ideOER2idRK2id"></span><span id="id::xor-assign-operator__idR.idCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator^=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2ideOER2idRK2id" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2idpLER2idRK6size_t">
+<span id="_CPPv3N2idpLER2idRK6size_t"></span><span id="_CPPv2N2idpLER2idRK6size_t"></span><span id="id::add-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator+=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idpLER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idmLER2idRK6size_t">
+<span id="_CPPv3N2idmLER2idRK6size_t"></span><span id="_CPPv2N2idmLER2idRK6size_t"></span><span id="id::mul-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator*=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idmLER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2iddVER2idRK6size_t">
+<span id="_CPPv3N2iddVER2idRK6size_t"></span><span id="_CPPv2N2iddVER2idRK6size_t"></span><span id="id::div-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator/=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2iddVER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrMER2idRK6size_t">
+<span id="_CPPv3N2idrMER2idRK6size_t"></span><span id="_CPPv2N2idrMER2idRK6size_t"></span><span id="id::mod-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator%=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrMER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idlSER2idRK6size_t">
+<span id="_CPPv3N2idlSER2idRK6size_t"></span><span id="_CPPv2N2idlSER2idRK6size_t"></span><span id="id::lshift-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&lt;&lt;=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idlSER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idrSER2idRK6size_t">
+<span id="_CPPv3N2idrSER2idRK6size_t"></span><span id="_CPPv2N2idrSER2idRK6size_t"></span><span id="id::rshift-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&gt;&gt;=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idrSER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idaNER2idRK6size_t">
+<span id="_CPPv3N2idaNER2idRK6size_t"></span><span id="_CPPv2N2idaNER2idRK6size_t"></span><span id="id::and-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator&amp;=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idaNER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2idoRER2idRK6size_t">
+<span id="_CPPv3N2idoRER2idRK6size_t"></span><span id="_CPPv2N2idoRER2idRK6size_t"></span><span id="id::or-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator|=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2idoRER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N2ideOER2idRK6size_t">
+<span id="_CPPv3N2ideOER2idRK6size_t"></span><span id="_CPPv2N2ideOER2idRK6size_t"></span><span id="id::xor-assign-operator__idR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> <code class="sig-name descname">operator^=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_iE2id" title="id">id</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2ideOER2idRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/parallelism/id.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

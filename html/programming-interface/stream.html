@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Stream &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vec and Swizzled Vec" href="vec-and-swizzled-vec.html" />
+    <link rel="prev" title="Exception" href="error-handling/exception.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data/index.html">Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallelism/index.html">Expressing Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Programming Interface</a><ul>
+      <li>Previous: <a href="error-handling/exception.html" title="previous chapter">Exception</a></li>
+      <li>Next: <a href="vec-and-swizzled-vec.html" title="next chapter">Vec and Swizzled Vec</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="stream">
+<span id="id1"></span><h1>Stream<a class="headerlink" href="#stream" title="Permalink to this headline">¶</a></h1>
+<p>The DPC++ <code class="docutils literal notranslate"><span class="pre">stream</span></code> class is employed for outputting values of SYCL
+built-in, vector, and other types to the console.</p>
+<dl class="cpp enum-class">
+<dt id="_CPPv418stream_manipulator">
+<span id="_CPPv318stream_manipulator"></span><span id="_CPPv218stream_manipulator"></span><em class="property">enum class </em><code class="sig-name descname">stream_manipulator</code><a class="headerlink" href="#_CPPv418stream_manipulator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp enumerator">
+<dt id="_CPPv4N18stream_manipulator5flushE">
+<span id="_CPPv3N18stream_manipulator5flushE"></span><span id="_CPPv2N18stream_manipulator5flushE"></span><em class="property">enumerator </em><code class="sig-name descname">flush</code><a class="headerlink" href="#_CPPv4N18stream_manipulator5flushE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator3decE">
+<span id="_CPPv3N18stream_manipulator3decE"></span><span id="_CPPv2N18stream_manipulator3decE"></span><em class="property">enumerator </em><code class="sig-name descname">dec</code><a class="headerlink" href="#_CPPv4N18stream_manipulator3decE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator3hexE">
+<span id="_CPPv3N18stream_manipulator3hexE"></span><span id="_CPPv2N18stream_manipulator3hexE"></span><em class="property">enumerator </em><code class="sig-name descname">hex</code><a class="headerlink" href="#_CPPv4N18stream_manipulator3hexE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator3octE">
+<span id="_CPPv3N18stream_manipulator3octE"></span><span id="_CPPv2N18stream_manipulator3octE"></span><em class="property">enumerator </em><code class="sig-name descname">oct</code><a class="headerlink" href="#_CPPv4N18stream_manipulator3octE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator10noshowbaseE">
+<span id="_CPPv3N18stream_manipulator10noshowbaseE"></span><span id="_CPPv2N18stream_manipulator10noshowbaseE"></span><em class="property">enumerator </em><code class="sig-name descname">noshowbase</code><a class="headerlink" href="#_CPPv4N18stream_manipulator10noshowbaseE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator8showbaseE">
+<span id="_CPPv3N18stream_manipulator8showbaseE"></span><span id="_CPPv2N18stream_manipulator8showbaseE"></span><em class="property">enumerator </em><code class="sig-name descname">showbase</code><a class="headerlink" href="#_CPPv4N18stream_manipulator8showbaseE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator9noshowposE">
+<span id="_CPPv3N18stream_manipulator9noshowposE"></span><span id="_CPPv2N18stream_manipulator9noshowposE"></span><em class="property">enumerator </em><code class="sig-name descname">noshowpos</code><a class="headerlink" href="#_CPPv4N18stream_manipulator9noshowposE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator7showposE">
+<span id="_CPPv3N18stream_manipulator7showposE"></span><span id="_CPPv2N18stream_manipulator7showposE"></span><em class="property">enumerator </em><code class="sig-name descname">showpos</code><a class="headerlink" href="#_CPPv4N18stream_manipulator7showposE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator4endlE">
+<span id="_CPPv3N18stream_manipulator4endlE"></span><span id="_CPPv2N18stream_manipulator4endlE"></span><em class="property">enumerator </em><code class="sig-name descname">endl</code><a class="headerlink" href="#_CPPv4N18stream_manipulator4endlE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator5fixedE">
+<span id="_CPPv3N18stream_manipulator5fixedE"></span><span id="_CPPv2N18stream_manipulator5fixedE"></span><em class="property">enumerator </em><code class="sig-name descname">fixed</code><a class="headerlink" href="#_CPPv4N18stream_manipulator5fixedE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator10scientificE">
+<span id="_CPPv3N18stream_manipulator10scientificE"></span><span id="_CPPv2N18stream_manipulator10scientificE"></span><em class="property">enumerator </em><code class="sig-name descname">scientific</code><a class="headerlink" href="#_CPPv4N18stream_manipulator10scientificE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator8hexfloatE">
+<span id="_CPPv3N18stream_manipulator8hexfloatE"></span><span id="_CPPv2N18stream_manipulator8hexfloatE"></span><em class="property">enumerator </em><code class="sig-name descname">hexfloat</code><a class="headerlink" href="#_CPPv4N18stream_manipulator8hexfloatE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N18stream_manipulator12defaultfloatE">
+<span id="_CPPv3N18stream_manipulator12defaultfloatE"></span><span id="_CPPv2N18stream_manipulator12defaultfloatE"></span><em class="property">enumerator </em><code class="sig-name descname">defaultfloat</code><a class="headerlink" href="#_CPPv4N18stream_manipulator12defaultfloatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv45flush">
+<span id="_CPPv35flush"></span><span id="_CPPv25flush"></span><span id="flush__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">flush</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator5flushE" title="stream_manipulator::flush">flush</a><a class="headerlink" href="#_CPPv45flush" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv43dec">
+<span id="_CPPv33dec"></span><span id="_CPPv23dec"></span><span id="dec__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">dec</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator3decE" title="stream_manipulator::dec">dec</a><a class="headerlink" href="#_CPPv43dec" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv43hex">
+<span id="_CPPv33hex"></span><span id="_CPPv23hex"></span><span id="hex__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">hex</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator3hexE" title="stream_manipulator::hex">hex</a><a class="headerlink" href="#_CPPv43hex" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv43oct">
+<span id="_CPPv33oct"></span><span id="_CPPv23oct"></span><span id="oct__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">oct</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator3octE" title="stream_manipulator::oct">oct</a><a class="headerlink" href="#_CPPv43oct" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv410noshowbase">
+<span id="_CPPv310noshowbase"></span><span id="_CPPv210noshowbase"></span><span id="noshowbase__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">noshowbase</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator10noshowbaseE" title="stream_manipulator::noshowbase">noshowbase</a><a class="headerlink" href="#_CPPv410noshowbase" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv48showbase">
+<span id="_CPPv38showbase"></span><span id="_CPPv28showbase"></span><span id="showbase__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">showbase</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator8showbaseE" title="stream_manipulator::showbase">showbase</a><a class="headerlink" href="#_CPPv48showbase" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv49noshowpos">
+<span id="_CPPv39noshowpos"></span><span id="_CPPv29noshowpos"></span><span id="noshowpos__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">noshowpos</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator9noshowposE" title="stream_manipulator::noshowpos">noshowpos</a><a class="headerlink" href="#_CPPv49noshowpos" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv47showpos">
+<span id="_CPPv37showpos"></span><span id="_CPPv27showpos"></span><span id="showpos__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">showpos</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator7showposE" title="stream_manipulator::showpos">showpos</a><a class="headerlink" href="#_CPPv47showpos" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv44endl">
+<span id="_CPPv34endl"></span><span id="_CPPv24endl"></span><span id="endl__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">endl</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator4endlE" title="stream_manipulator::endl">endl</a><a class="headerlink" href="#_CPPv44endl" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv45fixed">
+<span id="_CPPv35fixed"></span><span id="_CPPv25fixed"></span><span id="fixed__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">fixed</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator5fixedE" title="stream_manipulator::fixed">fixed</a><a class="headerlink" href="#_CPPv45fixed" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv410scientific">
+<span id="_CPPv310scientific"></span><span id="_CPPv210scientific"></span><span id="scientific__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">scientific</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator10scientificE" title="stream_manipulator::scientific">scientific</a><a class="headerlink" href="#_CPPv410scientific" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv48hexfloat">
+<span id="_CPPv38hexfloat"></span><span id="_CPPv28hexfloat"></span><span id="hexfloat__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">hexfloat</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator8hexfloatE" title="stream_manipulator::hexfloat">hexfloat</a><a class="headerlink" href="#_CPPv48hexfloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv412defaultfloat">
+<span id="_CPPv312defaultfloat"></span><span id="_CPPv212defaultfloat"></span><span id="defaultfloat__stream_manipulatorC"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a> <code class="sig-name descname">defaultfloat</code> = <a class="reference internal" href="#_CPPv418stream_manipulator" title="stream_manipulator">stream_manipulator</a>::<a class="reference internal" href="#_CPPv4N18stream_manipulator12defaultfloatE" title="stream_manipulator::defaultfloat">defaultfloat</a><a class="headerlink" href="#_CPPv412defaultfloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv412setprecisioni">
+<span id="_CPPv312setprecisioni"></span><span id="_CPPv212setprecisioni"></span><span id="setprecision__i"></span>__precision_manipulator__ <code class="sig-name descname">setprecision</code><span class="sig-paren">(</span>int <em>precision</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412setprecisioni" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv44setwi">
+<span id="_CPPv34setwi"></span><span id="_CPPv24setwi"></span><span id="setw__i"></span>__width_manipulator__ <code class="sig-name descname">setw</code><span class="sig-paren">(</span>int <em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv44setwi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv46stream">
+<span id="_CPPv36stream"></span><span id="_CPPv26stream"></span><em class="property">class </em><code class="sig-name descname">stream</code><a class="headerlink" href="#_CPPv46stream" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4N6stream6streamE6size_t6size_tR7handler">
+<span id="_CPPv3N6stream6streamE6size_t6size_tR7handler"></span><span id="_CPPv2N6stream6streamE6size_t6size_tR7handler"></span><span id="stream::stream__s.s.handlerR"></span><code class="sig-name descname">stream</code><span class="sig-paren">(</span>size_t <em>totalBufferSize</em>, size_t <em>workItemBufferSize</em>, <a class="reference internal" href="parallelism/command-group-handler.html#_CPPv47handler" title="handler">handler</a> &amp;<em>cgh</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6stream6streamE6size_t6size_tR7handler" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6stream8get_sizeEv">
+<span id="_CPPv3NK6stream8get_sizeEv"></span><span id="_CPPv2NK6stream8get_sizeEv"></span><span id="stream::get_sizeC"></span>size_t <code class="sig-name descname">get_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6stream8get_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6stream25get_work_item_buffer_sizeEv">
+<span id="_CPPv3NK6stream25get_work_item_buffer_sizeEv"></span><span id="_CPPv2NK6stream25get_work_item_buffer_sizeEv"></span><span id="stream::get_work_item_buffer_sizeC"></span>size_t <code class="sig-name descname">get_work_item_buffer_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6stream25get_work_item_buffer_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6stream22get_max_statement_sizeEv">
+<span id="_CPPv3NK6stream22get_max_statement_sizeEv"></span><span id="_CPPv2NK6stream22get_max_statement_sizeEv"></span><span id="stream::get_max_statement_sizeC"></span>size_t <code class="sig-name descname">get_max_statement_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6stream22get_max_statement_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#_CPPv4NK6stream22get_max_statement_sizeEv" title="stream::get_max_statement_size"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">get_max_statement_size()</span></code></a> has the same
+functionality as <a class="reference internal" href="#_CPPv4NK6stream25get_work_item_buffer_sizeEv" title="stream::get_work_item_buffer_size"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">get_work_item_buffer_size()</span></code></a>,
+and is provided for backward compatibility.
+get_max_statement_size() is a deprecated query.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-interface/stream.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

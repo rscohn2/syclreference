@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Range &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Nd_range" href="nd-range.html" />
+    <link rel="prev" title="Expressing Parallelism" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Expressing Parallelism</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-range.html">Nd_range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="id.html">ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-item.html">Nd_item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="device-event.html">Device Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="command-group-handler.html">Command Group Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="program.html">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Expressing Parallelism</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Expressing Parallelism</a></li>
+      <li>Next: <a href="nd-range.html" title="next chapter">Nd_range</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="range">
+<span id="id1"></span><h1>Range<a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h1>
+<p>The DPC++ <code class="docutils literal notranslate"><span class="pre">range</span></code> class encapsulates the iteration domain of a
+work-group or the entire kernel dispatch. Constructors for a range
+object take one, two, or three arguments of <code class="docutils literal notranslate"><span class="pre">size_t</span></code> dependent on the
+dimensionality of the range, either one, two, or three dimensions
+respectively.</p>
+<p>Member functions include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get</span></code> – obtain the specified dimension</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> – obtain the size of the range</p></li>
+</ul>
+<p>Additional functions allow construction of new ranges from old ranges
+with additional operations on the range. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Range&lt;2&gt; +() const??
+</pre></div>
+</div>
+<dl class="cpp class">
+<dt id="_CPPv4I_iE5range">
+<span id="_CPPv3I_iE5range"></span><span id="_CPPv2I_iE5range"></span>template&lt;int <code class="sig-name descname">dimensions</code> = 1&gt;<br /><em class="property">class </em><code class="sig-name descname">range</code><a class="headerlink" href="#_CPPv4I_iE5range" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4N5range5rangeE6size_t">
+<span id="_CPPv3N5range5rangeE6size_t"></span><span id="_CPPv2N5range5rangeE6size_t"></span><span id="range::range__s"></span><code class="sig-name descname">range</code><span class="sig-paren">(</span>size_t <em>dim0</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5range5rangeE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5range5rangeE6size_t6size_t">
+<span id="_CPPv3N5range5rangeE6size_t6size_t"></span><span id="_CPPv2N5range5rangeE6size_t6size_t"></span><span id="range::range__s.s"></span><code class="sig-name descname">range</code><span class="sig-paren">(</span>size_t <em>dim0</em>, size_t <em>dim1</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5range5rangeE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5range5rangeE6size_t6size_t6size_t">
+<span id="_CPPv3N5range5rangeE6size_t6size_t6size_t"></span><span id="_CPPv2N5range5rangeE6size_t6size_t6size_t"></span><span id="range::range__s.s.s"></span><code class="sig-name descname">range</code><span class="sig-paren">(</span>size_t <em>dim0</em>, size_t <em>dim1</em>, size_t <em>dim2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5range5rangeE6size_t6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim0</strong> – </p></li>
+<li><p><strong>dim1</strong> – </p></li>
+<li><p><strong>dim2</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5range3getEi">
+<span id="_CPPv3NK5range3getEi"></span><span id="_CPPv2NK5range3getEi"></span><span id="range::get__iC"></span>size_t <code class="sig-name descname">get</code><span class="sig-paren">(</span>int <em>dimension</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5range3getEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dimension</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5rangeixEi">
+<span id="_CPPv3N5rangeixEi"></span><span id="_CPPv2N5rangeixEi"></span><span id="range::subscript-operator__i"></span>size_t &amp;<code class="sig-name descname">operator[]</code><span class="sig-paren">(</span>int <em>dimension</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeixEi" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK5rangeixEi">
+<span id="_CPPv3NK5rangeixEi"></span><span id="_CPPv2NK5rangeixEi"></span><span id="range::subscript-operator__iC"></span>size_t <code class="sig-name descname">operator[]</code><span class="sig-paren">(</span>int <em>dimension</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5rangeixEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dimension</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5range4sizeEv">
+<span id="_CPPv3NK5range4sizeEv"></span><span id="_CPPv2NK5range4sizeEv"></span><span id="range::sizeC"></span>size_t <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5range4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5rangeplERK5rangeRK5range">
+<span id="_CPPv3N5rangeplERK5rangeRK5range"></span><span id="_CPPv2N5rangeplERK5rangeRK5range"></span><span id="range::add-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeplERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemiERK5rangeRK5range">
+<span id="_CPPv3N5rangemiERK5rangeRK5range"></span><span id="_CPPv2N5rangemiERK5rangeRK5range"></span><span id="range::sub-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator-</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemiERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemlERK5rangeRK5range">
+<span id="_CPPv3N5rangemlERK5rangeRK5range"></span><span id="_CPPv2N5rangemlERK5rangeRK5range"></span><span id="range::mul-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator*</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemlERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangedvERK5rangeRK5range">
+<span id="_CPPv3N5rangedvERK5rangeRK5range"></span><span id="_CPPv2N5rangedvERK5rangeRK5range"></span><span id="range::div-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator/</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangedvERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangermERK5rangeRK5range">
+<span id="_CPPv3N5rangermERK5rangeRK5range"></span><span id="_CPPv2N5rangermERK5rangeRK5range"></span><span id="range::mod-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator%</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangermERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangelsERK5rangeRK5range">
+<span id="_CPPv3N5rangelsERK5rangeRK5range"></span><span id="_CPPv2N5rangelsERK5rangeRK5range"></span><span id="range::lshift-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangelsERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangersERK5rangeRK5range">
+<span id="_CPPv3N5rangersERK5rangeRK5range"></span><span id="_CPPv2N5rangersERK5rangeRK5range"></span><span id="range::rshift-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangersERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeanERK5rangeRK5range">
+<span id="_CPPv3N5rangeanERK5rangeRK5range"></span><span id="_CPPv2N5rangeanERK5rangeRK5range"></span><span id="range::and-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeanERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeorERK5rangeRK5range">
+<span id="_CPPv3N5rangeorERK5rangeRK5range"></span><span id="_CPPv2N5rangeorERK5rangeRK5range"></span><span id="range::or-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator|</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeorERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeeoERK5rangeRK5range">
+<span id="_CPPv3N5rangeeoERK5rangeRK5range"></span><span id="_CPPv2N5rangeeoERK5rangeRK5range"></span><span id="range::xor-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator^</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeeoERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeaaERK5rangeRK5range">
+<span id="_CPPv3N5rangeaaERK5rangeRK5range"></span><span id="_CPPv2N5rangeaaERK5rangeRK5range"></span><span id="range::sand-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeaaERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeooERK5rangeRK5range">
+<span id="_CPPv3N5rangeooERK5rangeRK5range"></span><span id="_CPPv2N5rangeooERK5rangeRK5range"></span><span id="range::sor-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator||</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeooERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeltERK5rangeRK5range">
+<span id="_CPPv3N5rangeltERK5rangeRK5range"></span><span id="_CPPv2N5rangeltERK5rangeRK5range"></span><span id="range::lt-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeltERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangegtERK5rangeRK5range">
+<span id="_CPPv3N5rangegtERK5rangeRK5range"></span><span id="_CPPv2N5rangegtERK5rangeRK5range"></span><span id="range::gt-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangegtERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeleERK5rangeRK5range">
+<span id="_CPPv3N5rangeleERK5rangeRK5range"></span><span id="_CPPv2N5rangeleERK5rangeRK5range"></span><span id="range::lte-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeleERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangegeERK5rangeRK5range">
+<span id="_CPPv3N5rangegeERK5rangeRK5range"></span><span id="_CPPv2N5rangegeERK5rangeRK5range"></span><span id="range::gte-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangegeERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5rangeplERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeplERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeplERK5rangeRK6size_t"></span><span id="range::add-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeplERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemiERK5rangeRK6size_t">
+<span id="_CPPv3N5rangemiERK5rangeRK6size_t"></span><span id="_CPPv2N5rangemiERK5rangeRK6size_t"></span><span id="range::sub-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator-</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemiERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemlERK5rangeRK6size_t">
+<span id="_CPPv3N5rangemlERK5rangeRK6size_t"></span><span id="_CPPv2N5rangemlERK5rangeRK6size_t"></span><span id="range::mul-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator*</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemlERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangedvERK5rangeRK6size_t">
+<span id="_CPPv3N5rangedvERK5rangeRK6size_t"></span><span id="_CPPv2N5rangedvERK5rangeRK6size_t"></span><span id="range::div-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator/</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangedvERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangermERK5rangeRK6size_t">
+<span id="_CPPv3N5rangermERK5rangeRK6size_t"></span><span id="_CPPv2N5rangermERK5rangeRK6size_t"></span><span id="range::mod-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator%</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangermERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangelsERK5rangeRK6size_t">
+<span id="_CPPv3N5rangelsERK5rangeRK6size_t"></span><span id="_CPPv2N5rangelsERK5rangeRK6size_t"></span><span id="range::lshift-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangelsERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangersERK5rangeRK6size_t">
+<span id="_CPPv3N5rangersERK5rangeRK6size_t"></span><span id="_CPPv2N5rangersERK5rangeRK6size_t"></span><span id="range::rshift-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangersERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeanERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeanERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeanERK5rangeRK6size_t"></span><span id="range::and-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeanERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeorERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeorERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeorERK5rangeRK6size_t"></span><span id="range::or-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator|</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeorERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeeoERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeeoERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeeoERK5rangeRK6size_t"></span><span id="range::xor-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator^</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeeoERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeaaERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeaaERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeaaERK5rangeRK6size_t"></span><span id="range::sand-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;&amp;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeaaERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeooERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeooERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeooERK5rangeRK6size_t"></span><span id="range::sor-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator||</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeooERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeltERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeltERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeltERK5rangeRK6size_t"></span><span id="range::lt-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeltERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangegtERK5rangeRK6size_t">
+<span id="_CPPv3N5rangegtERK5rangeRK6size_t"></span><span id="_CPPv2N5rangegtERK5rangeRK6size_t"></span><span id="range::gt-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangegtERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeleERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeleERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeleERK5rangeRK6size_t"></span><span id="range::lte-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeleERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangegeERK5rangeRK6size_t">
+<span id="_CPPv3N5rangegeERK5rangeRK6size_t"></span><span id="_CPPv2N5rangegeERK5rangeRK6size_t"></span><span id="range::gte-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangegeERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5rangeplERK6size_tRK5range">
+<span id="_CPPv3N5rangeplERK6size_tRK5range"></span><span id="_CPPv2N5rangeplERK6size_tRK5range"></span><span id="range::add-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator+</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeplERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemiERK6size_tRK5range">
+<span id="_CPPv3N5rangemiERK6size_tRK5range"></span><span id="_CPPv2N5rangemiERK6size_tRK5range"></span><span id="range::sub-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator-</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemiERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemlERK6size_tRK5range">
+<span id="_CPPv3N5rangemlERK6size_tRK5range"></span><span id="_CPPv2N5rangemlERK6size_tRK5range"></span><span id="range::mul-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator*</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemlERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangedvERK6size_tRK5range">
+<span id="_CPPv3N5rangedvERK6size_tRK5range"></span><span id="_CPPv2N5rangedvERK6size_tRK5range"></span><span id="range::div-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator/</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangedvERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangermERK6size_tRK5range">
+<span id="_CPPv3N5rangermERK6size_tRK5range"></span><span id="_CPPv2N5rangermERK6size_tRK5range"></span><span id="range::mod-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator%</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangermERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangelsERK6size_tRK5range">
+<span id="_CPPv3N5rangelsERK6size_tRK5range"></span><span id="_CPPv2N5rangelsERK6size_tRK5range"></span><span id="range::lshift-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;&lt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangelsERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangersERK6size_tRK5range">
+<span id="_CPPv3N5rangersERK6size_tRK5range"></span><span id="_CPPv2N5rangersERK6size_tRK5range"></span><span id="range::rshift-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangersERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeanERK6size_tRK5range">
+<span id="_CPPv3N5rangeanERK6size_tRK5range"></span><span id="_CPPv2N5rangeanERK6size_tRK5range"></span><span id="range::and-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeanERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeorERK6size_tRK5range">
+<span id="_CPPv3N5rangeorERK6size_tRK5range"></span><span id="_CPPv2N5rangeorERK6size_tRK5range"></span><span id="range::or-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator|</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeorERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeeoERK6size_tRK5range">
+<span id="_CPPv3N5rangeeoERK6size_tRK5range"></span><span id="_CPPv2N5rangeeoERK6size_tRK5range"></span><span id="range::xor-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator^</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeeoERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeaaERK6size_tRK5range">
+<span id="_CPPv3N5rangeaaERK6size_tRK5range"></span><span id="_CPPv2N5rangeaaERK6size_tRK5range"></span><span id="range::sand-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;&amp;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeaaERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeooERK6size_tRK5range">
+<span id="_CPPv3N5rangeooERK6size_tRK5range"></span><span id="_CPPv2N5rangeooERK6size_tRK5range"></span><span id="range::sor-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator||</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeooERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeltERK6size_tRK5range">
+<span id="_CPPv3N5rangeltERK6size_tRK5range"></span><span id="_CPPv2N5rangeltERK6size_tRK5range"></span><span id="range::lt-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeltERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangegtERK6size_tRK5range">
+<span id="_CPPv3N5rangegtERK6size_tRK5range"></span><span id="_CPPv2N5rangegtERK6size_tRK5range"></span><span id="range::gt-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangegtERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeleERK6size_tRK5range">
+<span id="_CPPv3N5rangeleERK6size_tRK5range"></span><span id="_CPPv2N5rangeleERK6size_tRK5range"></span><span id="range::lte-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeleERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangegeERK6size_tRK5range">
+<span id="_CPPv3N5rangegeERK6size_tRK5range"></span><span id="_CPPv2N5rangegeERK6size_tRK5range"></span><span id="range::gte-operator__sCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> size_t &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangegeERK6size_tRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5rangepLERK5rangeRK5range">
+<span id="_CPPv3N5rangepLERK5rangeRK5range"></span><span id="_CPPv2N5rangepLERK5rangeRK5range"></span><span id="range::add-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator+=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangepLERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemIERK5rangeRK5range">
+<span id="_CPPv3N5rangemIERK5rangeRK5range"></span><span id="_CPPv2N5rangemIERK5rangeRK5range"></span><span id="range::sub-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator-=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemIERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemLERK5rangeRK5range">
+<span id="_CPPv3N5rangemLERK5rangeRK5range"></span><span id="_CPPv2N5rangemLERK5rangeRK5range"></span><span id="range::mul-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator*=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemLERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangedVERK5rangeRK5range">
+<span id="_CPPv3N5rangedVERK5rangeRK5range"></span><span id="_CPPv2N5rangedVERK5rangeRK5range"></span><span id="range::div-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator/=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangedVERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangerMERK5rangeRK5range">
+<span id="_CPPv3N5rangerMERK5rangeRK5range"></span><span id="_CPPv2N5rangerMERK5rangeRK5range"></span><span id="range::mod-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator%=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangerMERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangelSERK5rangeRK5range">
+<span id="_CPPv3N5rangelSERK5rangeRK5range"></span><span id="_CPPv2N5rangelSERK5rangeRK5range"></span><span id="range::lshift-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangelSERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangerSERK5rangeRK5range">
+<span id="_CPPv3N5rangerSERK5rangeRK5range"></span><span id="_CPPv2N5rangerSERK5rangeRK5range"></span><span id="range::rshift-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangerSERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeaNERK5rangeRK5range">
+<span id="_CPPv3N5rangeaNERK5rangeRK5range"></span><span id="_CPPv2N5rangeaNERK5rangeRK5range"></span><span id="range::and-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeaNERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeoRERK5rangeRK5range">
+<span id="_CPPv3N5rangeoRERK5rangeRK5range"></span><span id="_CPPv2N5rangeoRERK5rangeRK5range"></span><span id="range::or-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator|=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeoRERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeeOERK5rangeRK5range">
+<span id="_CPPv3N5rangeeOERK5rangeRK5range"></span><span id="_CPPv2N5rangeeOERK5rangeRK5range"></span><span id="range::xor-assign-operator__rangeCR.rangeCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator^=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeeOERK5rangeRK5range" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5rangepLERK5rangeRK6size_t">
+<span id="_CPPv3N5rangepLERK5rangeRK6size_t"></span><span id="_CPPv2N5rangepLERK5rangeRK6size_t"></span><span id="range::add-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator+=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangepLERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemIERK5rangeRK6size_t">
+<span id="_CPPv3N5rangemIERK5rangeRK6size_t"></span><span id="_CPPv2N5rangemIERK5rangeRK6size_t"></span><span id="range::sub-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator-=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemIERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangemLERK5rangeRK6size_t">
+<span id="_CPPv3N5rangemLERK5rangeRK6size_t"></span><span id="_CPPv2N5rangemLERK5rangeRK6size_t"></span><span id="range::mul-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator*=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangemLERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangedVERK5rangeRK6size_t">
+<span id="_CPPv3N5rangedVERK5rangeRK6size_t"></span><span id="_CPPv2N5rangedVERK5rangeRK6size_t"></span><span id="range::div-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator/=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangedVERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangerMERK5rangeRK6size_t">
+<span id="_CPPv3N5rangerMERK5rangeRK6size_t"></span><span id="_CPPv2N5rangerMERK5rangeRK6size_t"></span><span id="range::mod-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator%=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangerMERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangelSERK5rangeRK6size_t">
+<span id="_CPPv3N5rangelSERK5rangeRK6size_t"></span><span id="_CPPv2N5rangelSERK5rangeRK6size_t"></span><span id="range::lshift-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&lt;&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangelSERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangerSERK5rangeRK6size_t">
+<span id="_CPPv3N5rangerSERK5rangeRK6size_t"></span><span id="_CPPv2N5rangerSERK5rangeRK6size_t"></span><span id="range::rshift-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&gt;&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangerSERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeaNERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeaNERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeaNERK5rangeRK6size_t"></span><span id="range::and-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator&amp;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeaNERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeoRERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeoRERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeoRERK5rangeRK6size_t"></span><span id="range::or-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator|=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeoRERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5rangeeOERK5rangeRK6size_t">
+<span id="_CPPv3N5rangeeOERK5rangeRK6size_t"></span><span id="_CPPv2N5rangeeOERK5rangeRK6size_t"></span><span id="range::xor-assign-operator__rangeCR.sCR"></span><em class="property">friend</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> <code class="sig-name descname">operator^=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I_iE5range" title="range">range</a> &amp;<em>lhs</em>, <em class="property">const</em> size_t &amp;<em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5rangeeOERK5rangeRK6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/parallelism/range.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Memory Types &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Kernel Programming Model" href="kernel-programming-model.html" />
+    <link rel="prev" title="Unified Shared Memory" href="unified-shared-memory.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sample-program.html">Sample Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-model.html">Platform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution-model.html">Execution Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="memory-model.html">Memory Model</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="memory-objects.html">Memory Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessors.html">Accessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synchronization.html">Synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unified-shared-memory.html">Unified Shared Memory</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Memory Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernel-programming-model.html">Kernel Programming Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-interface/index.html">Programming Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Programming Model</a><ul>
+  <li><a href="memory-model.html">Memory Model</a><ul>
+      <li>Previous: <a href="unified-shared-memory.html" title="previous chapter">Unified Shared Memory</a></li>
+      <li>Next: <a href="kernel-programming-model.html" title="next chapter">Kernel Programming Model</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="memory-types">
+<span id="id1"></span><h1>Memory Types<a class="headerlink" href="#memory-types" title="Permalink to this headline">¶</a></h1>
+<div class="tablenoborder docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Memory Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Constant Memory</p></td>
+<td><p>A region of global memory that remains constant during    the execution of a kernel. The host allocates and initializes memory   objects placed into constant memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Global Memory</p></td>
+<td><p>Accessible to all work-items in all work-groups.    Read/write, may be cached, persistent across kernel invocations.</p></td>
+</tr>
+<tr class="row-even"><td><p>Local Memory</p></td>
+<td><p>Shared between work-items in a single work-group and    inaccessible to work-items in other work-groups. Example: Shared   local memory on Intel HD Graphics 530</p></td>
+</tr>
+<tr class="row-odd"><td><p>Private Memory</p></td>
+<td><p>A region of memory private to a work-item. Variables    defined in one work-item’s private memory are not visible to another   work-item. Example: Register File on Intel HD Graphics 530</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-model/memory-types.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

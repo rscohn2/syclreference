@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Image &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Address Spaces" href="multi-pointer.html" />
+    <link rel="prev" title="Buffer" href="buffer.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Data Access</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="accessor.html"><code class="docutils literal notranslate"><span class="pre">accessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="atomic.html">Atomic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="buffer.html">Buffer</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multi-pointer.html">Address Spaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sampler.html">Samplers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../parallelism/index.html">Expressing Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Data Access</a><ul>
+      <li>Previous: <a href="buffer.html" title="previous chapter">Buffer</a></li>
+      <li>Next: <a href="multi-pointer.html" title="next chapter">Address Spaces</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="image">
+<span id="id1"></span><h1>Image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h1>
+<p>A DPC++ <code class="docutils literal notranslate"><span class="pre">image</span></code> encapsulates a 1-, 2-, or 3-dimensional set of data
+shared between host and devices. Creating an image requires the number
+of dimensions of the array as well as the order and type of the
+underlying data.</p>
+<p>The class contains multiple constructors with different combinations of
+orders, types, ranges, allocators, and property lists.</p>
+<ul class="simple">
+<li><p>The memory employed by the image is already existing host memory. In
+this case, a pointer to the memory is passed to the constructor.</p></li>
+<li><p>Temporary memory is allocated for the image by employing the
+constructors that do not include a <code class="docutils literal notranslate"><span class="pre">hostPointer</span></code> parameter.</p></li>
+<li><p>An allocator object is passed, which provides an alternative memory
+allocator to be used for allocating the temporary memory for the
+buffer.</p></li>
+<li><p>When host memory use is desired (<code class="docutils literal notranslate"><span class="pre">use_host_ptr</span></code>), use of the
+mutex_class is desired (<code class="docutils literal notranslate"><span class="pre">use_mutex</span></code>), and if a single context only
+(<code class="docutils literal notranslate"><span class="pre">context_bound</span></code>) is desired, special arguments, termed properties,
+are provided to the constructor.</p></li>
+</ul>
+<p>Once a buffer is allocated, query member functions to learn more. These
+member functions include</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_range</span></code> – obtain the range object associated with the image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_pitch</span></code> - obtain the range associated with a one-dimensional
+image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_count</span></code> – obtain the number of elements in the image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_size</span></code> – obtain the size of the image (in bytes)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_allocator</span></code> – obtain the allocator that was provided in
+creating the image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_access</span></code> – obtain an accessor to the image with the specified
+access mode and target</p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/data/image.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Nd_range &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ID" href="id.html" />
+    <link rel="prev" title="Range" href="range.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Expressing Parallelism</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="range.html">Range</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Nd_range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="id.html">ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-item.html">Nd_item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="device-event.html">Device Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="command-group-handler.html">Command Group Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="program.html">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Expressing Parallelism</a><ul>
+      <li>Previous: <a href="range.html" title="previous chapter">Range</a></li>
+      <li>Next: <a href="id.html" title="next chapter">ID</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="nd-range">
+<span id="id1"></span><h1>Nd_range<a class="headerlink" href="#nd-range" title="Permalink to this headline">¶</a></h1>
+<p>The DPC++ <code class="docutils literal notranslate"><span class="pre">nd_range</span></code> class encapsulates the iteration domain of the
+work-groups and kernel dispatch. It is the entire iteration space of
+data that a kernel may operation upon. The constructor for an
+<code class="docutils literal notranslate"><span class="pre">nd_range</span></code> object take the global range, local range, and an optional
+offset.</p>
+<p>Member functions include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_global_range</span></code> – obtain the global range</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_local_range</span></code> – obtain the local range</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_group_range</span></code> – obtain the number of groups in each dimension
+of the <code class="docutils literal notranslate"><span class="pre">nd_range</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_offset</span></code> – obtain the offset</p></li>
+</ul>
+<dl class="cpp class">
+<dt id="_CPPv4I_iE8nd_range">
+<span id="_CPPv3I_iE8nd_range"></span><span id="_CPPv2I_iE8nd_range"></span>template&lt;int <code class="sig-name descname">dimensions</code> = 1&gt;<br /><em class="property">class </em><code class="sig-name descname">nd_range</code><a class="headerlink" href="#_CPPv4I_iE8nd_range" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4N8nd_range8nd_rangeE5rangeI10dimensionsE5rangeI10dimensionsE2idI10dimensionsE">
+<span id="_CPPv3N8nd_range8nd_rangeE5rangeI10dimensionsE5rangeI10dimensionsE2idI10dimensionsE"></span><span id="_CPPv2N8nd_range8nd_rangeE5rangeI10dimensionsE5rangeI10dimensionsE2idI10dimensionsE"></span><span id="nd_range::nd_range__range:dimensions:.range:dimensions:.id:dimensions:"></span><code class="sig-name descname">nd_range</code><span class="sig-paren">(</span><a class="reference internal" href="range.html#_CPPv4I_iE5range" title="range">range</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <em>globalSize</em>, <a class="reference internal" href="range.html#_CPPv4I_iE5range" title="range">range</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <em>localSize</em>, <a class="reference internal" href="id.html#_CPPv4I_iE2id" title="id">id</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <em>offset</em> = <a class="reference internal" href="id.html#_CPPv4I_iE2id" title="id">id</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt;()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8nd_range8nd_rangeE5rangeI10dimensionsE5rangeI10dimensionsE2idI10dimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8nd_range16get_global_rangeEv">
+<span id="_CPPv3NK8nd_range16get_global_rangeEv"></span><span id="_CPPv2NK8nd_range16get_global_rangeEv"></span><span id="nd_range::get_global_rangeC"></span><a class="reference internal" href="range.html#_CPPv4I_iE5range" title="range">range</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <code class="sig-name descname">get_global_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8nd_range16get_global_rangeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8nd_range15get_local_rangeEv">
+<span id="_CPPv3NK8nd_range15get_local_rangeEv"></span><span id="_CPPv2NK8nd_range15get_local_rangeEv"></span><span id="nd_range::get_local_rangeC"></span><a class="reference internal" href="range.html#_CPPv4I_iE5range" title="range">range</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <code class="sig-name descname">get_local_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8nd_range15get_local_rangeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8nd_range15get_group_rangeEv">
+<span id="_CPPv3NK8nd_range15get_group_rangeEv"></span><span id="_CPPv2NK8nd_range15get_group_rangeEv"></span><span id="nd_range::get_group_rangeC"></span><a class="reference internal" href="range.html#_CPPv4I_iE5range" title="range">range</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <code class="sig-name descname">get_group_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8nd_range15get_group_rangeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8nd_range10get_offsetEv">
+<span id="_CPPv3NK8nd_range10get_offsetEv"></span><span id="_CPPv2NK8nd_range10get_offsetEv"></span><span id="nd_range::get_offsetC"></span><a class="reference internal" href="id.html#_CPPv4I_iE2id" title="id">id</a>&lt;<a class="reference internal" href="#_CPPv4I_iE8nd_range" title="nd_range::dimensions">dimensions</a>&gt; <code class="sig-name descname">get_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8nd_range10get_offsetEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/parallelism/nd-range.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

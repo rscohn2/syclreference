@@ -1,0 +1,7 @@
+This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
+Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
+Scanning input file dpcreference.idx....done (606 entries accepted, 0 rejected).
+Sorting entries........done (6338 comparisons).
+Generating output file dpcreference.ind....done (493 lines written, 0 warnings).
+Output written in dpcreference.ind.
+Transcript written in dpcreference.ilg.

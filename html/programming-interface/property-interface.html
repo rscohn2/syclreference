@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Property Interface &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Version" href="version.html" />
+    <link rel="prev" title="Built-in Types &amp; Functions" href="built-in-types-&amp;amp-functions.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data/index.html">Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallelism/index.html">Expressing Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Programming Interface</a><ul>
+      <li>Previous: <a href="built-in-types-&amp;amp-functions.html" title="previous chapter">Built-in Types &amp; Functions</a></li>
+      <li>Next: <a href="version.html" title="next chapter">Version</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="property-interface">
+<span id="id1"></span><h1>Property Interface<a class="headerlink" href="#property-interface" title="Permalink to this headline">¶</a></h1>
+<p>The DPC++ property interface is employed with the <code class="docutils literal notranslate"><span class="pre">buffer</span></code>, <code class="docutils literal notranslate"><span class="pre">image</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">queue</span></code> classes to provide extra information to those classes
+without affecting the type. These classes provide an additional
+<code class="docutils literal notranslate"><span class="pre">has_property</span></code> and <code class="docutils literal notranslate"><span class="pre">get_property</span></code> member function to test for and
+obtain a particular property.</p>
+<dl class="cpp struct">
+<dt id="_CPPv4I0E11is_property">
+<span id="_CPPv3I0E11is_property"></span><span id="_CPPv2I0E11is_property"></span>template&lt;typename <code class="sig-name descname">propertyT</code>&gt;<br /><em class="property">struct </em><code class="sig-name descname">is_property</code><a class="headerlink" href="#_CPPv4I0E11is_property" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4I00E14is_property_of">
+<span id="_CPPv3I00E14is_property_of"></span><span id="_CPPv2I00E14is_property_of"></span>template&lt;typename <code class="sig-name descname">propertyT</code>, typename <code class="sig-name descname">syclObjectT</code>&gt;<br /><em class="property">struct </em><code class="sig-name descname">is_property_of</code><a class="headerlink" href="#_CPPv4I00E14is_property_of" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv41T">
+<span id="_CPPv31T"></span><span id="_CPPv21T"></span><span id="T"></span><em class="property">class </em><code class="sig-name descname">T</code><a class="headerlink" href="#_CPPv41T" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4I0ENK1T12has_propertyEbv">
+<span id="_CPPv3I0ENK1T12has_propertyEv"></span><span id="_CPPv2I0ENK1T12has_propertyEv"></span>template&lt;typename <code class="sig-name descname">propertyT</code>&gt;<br />bool <code class="sig-name descname">has_property</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4I0ENK1T12has_propertyEbv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0ENK1T12get_propertyE9propertyTv">
+<span id="_CPPv3I0ENK1T12get_propertyEv"></span><span id="_CPPv2I0ENK1T12get_propertyEv"></span>template&lt;typename <code class="sig-name descname">propertyT</code>&gt;<br /><a class="reference internal" href="#_CPPv4I0ENK1T12get_propertyE9propertyTv" title="T::get_property::propertyT">propertyT</a> <code class="sig-name descname">get_property</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4I0ENK1T12get_propertyE9propertyTv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv413property_list">
+<span id="_CPPv313property_list"></span><span id="_CPPv213property_list"></span><span id="property_list"></span><em class="property">class </em><code class="sig-name descname">property_list</code><a class="headerlink" href="#_CPPv413property_list" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4IDpEN13property_list13property_listEDp10propertyTN">
+<span id="_CPPv3IDpEN13property_list13property_listEDp10propertyTN"></span><span id="_CPPv2IDpEN13property_list13property_listEDp10propertyTN"></span>template&lt;typename ...<code class="sig-name descname">propertyTN</code>&gt;<br /><code class="sig-name descname">property_list</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4IDpEN13property_list13property_listEDp10propertyTN" title="property_list::property_list::propertyTN">propertyTN</a>... <em>props</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4IDpEN13property_list13property_listEDp10propertyTN" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-interface/property-interface.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

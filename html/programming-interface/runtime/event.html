@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>event &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Access" href="../data/index.html" />
+    <link rel="prev" title="queue" href="queue.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Runtime Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="device-selector.html"><code class="docutils literal notranslate"><span class="pre">device_selector</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="platform.html"><code class="docutils literal notranslate"><span class="pre">platform</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="context.html"><code class="docutils literal notranslate"><span class="pre">context</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="queue.html"><code class="docutils literal notranslate"><span class="pre">queue</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">event</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parallelism/index.html">Expressing Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Runtime Classes</a><ul>
+      <li>Previous: <a href="queue.html" title="previous chapter"><code class="docutils literal notranslate"><span class="pre">queue</span></code></a></li>
+      <li>Next: <a href="../data/index.html" title="next chapter">Data Access</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="event">
+<h1><code class="docutils literal notranslate"><span class="pre">event</span></code><a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">event</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric">Member functions</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#constructor">(constructor)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>(destructor)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cl-event-get">cl_event_get</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#is-host">is_host</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#get-wait-list">get_wait_list</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wait">wait</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wait-and-throw">wait_and_throw</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#get-info">get_info</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#get-profiling-info">get_profiling_info</a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="constructor">
+<h2><code class="docutils literal notranslate"><span class="pre">(constructor)</span></code><a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">event</span><span class="p">();</span>
+<span class="n">event</span><span class="p">(</span><span class="n">cl_event</span> <span class="n">clEvent</span><span class="p">,</span> <span class="n">const</span> <span class="n">context</span><span class="o">&amp;</span> <span class="n">syclContext</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cl-event-get">
+<h2><code class="docutils literal notranslate"><span class="pre">cl_event_get</span></code><a class="headerlink" href="#cl-event-get" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cl_event</span> <span class="n">get</span><span class="p">();</span>
+</pre></div>
+</div>
+<p class="rubric">Return value</p>
+</div>
+<div class="section" id="is-host">
+<h2><code class="docutils literal notranslate"><span class="pre">is_host</span></code><a class="headerlink" href="#is-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">is_host</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric">Return value</p>
+</div>
+<div class="section" id="get-wait-list">
+<h2><code class="docutils literal notranslate"><span class="pre">get_wait_list</span></code><a class="headerlink" href="#get-wait-list" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vector_class</span><span class="o">&lt;</span><span class="n">event</span><span class="o">&gt;</span> <span class="n">get_wait_list</span><span class="p">();</span>
+</pre></div>
+</div>
+<p class="rubric">Return value</p>
+</div>
+<div class="section" id="wait">
+<h2><code class="docutils literal notranslate"><span class="pre">wait</span></code><a class="headerlink" href="#wait" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">wait</span><span class="p">();</span>
+
+<span class="n">static</span> <span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">const</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">event</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">eventList</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wait-and-throw">
+<h2><code class="docutils literal notranslate"><span class="pre">wait_and_throw</span></code><a class="headerlink" href="#wait-and-throw" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">wait_and_throw</span><span class="p">();</span>
+
+<span class="n">static</span> <span class="n">void</span> <span class="n">wait_and_throw</span><span class="p">(</span><span class="n">const</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">event</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">eventList</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-info">
+<h2><code class="docutils literal notranslate"><span class="pre">get_info</span></code><a class="headerlink" href="#get-info" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">event</span> <span class="n">param</span><span class="o">&gt;</span>
+<span class="n">typename</span> <span class="n">info</span><span class="p">::</span><span class="n">param_traits</span><span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">event</span><span class="p">,</span> <span class="n">param</span><span class="o">&gt;</span><span class="p">::</span><span class="n">return_type</span> <span class="n">get_info</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric">Return value</p>
+</div>
+<div class="section" id="get-profiling-info">
+<h2><code class="docutils literal notranslate"><span class="pre">get_profiling_info</span></code><a class="headerlink" href="#get-profiling-info" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">event_profiling</span> <span class="n">param</span><span class="o">&gt;</span>
+<span class="n">typename</span> <span class="n">info</span><span class="p">::</span><span class="n">param_traits</span><span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">event_profiling</span><span class="p">,</span> <span class="n">param</span><span class="o">&gt;</span><span class="p">::</span><span class="n">return_type</span> <span class="n">get_profiling_info</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric">Return value</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/runtime/event.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

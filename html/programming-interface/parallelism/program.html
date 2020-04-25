@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Program &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Error Handling" href="../error-handling/index.html" />
+    <link rel="prev" title="Kernel" href="kernel.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Expressing Parallelism</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="range.html">Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-range.html">Nd_range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="id.html">ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nd-item.html">Nd_item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="device-event.html">Device Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="command-group-handler.html">Command Group Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Kernel</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Programming Interface</a><ul>
+  <li><a href="index.html">Expressing Parallelism</a><ul>
+      <li>Previous: <a href="kernel.html" title="previous chapter">Kernel</a></li>
+      <li>Next: <a href="../error-handling/index.html" title="next chapter">Error Handling</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="program">
+<span id="id1"></span><h1>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h1>
+<p>A DPC++ <code class="docutils literal notranslate"><span class="pre">program</span></code> class encapsulates a program, either a host program
+or an OpenCL program. The <code class="docutils literal notranslate"><span class="pre">program</span></code> object is employed when
+compilation or linkage of the program is desired.</p>
+<p>Constructors for a <code class="docutils literal notranslate"><span class="pre">program</span></code> object require a context at a minimum.</p>
+<p>Member functions of the <code class="docutils literal notranslate"><span class="pre">program</span></code> class include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get</span></code> – obtain an OpenCL <code class="docutils literal notranslate"><span class="pre">program</span></code> object from the program</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_host</span></code> – determines if the program is targeted for the host</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compile_with_kernel_type</span></code> – enables compilation of a kernel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compile_with_source</span></code> – compiles OpenCL kernel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build_with_kernel_type</span></code> – builds kernel function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build_with_source</span></code> – builds kernel function from source</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code> – link the object files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">has_kernel</span></code> – determines if the program has a valid kernel
+function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_kernel</span></code> – obtains the kernel from the program</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_binaries</span></code> – obtain a vector of compiled binaries for each
+device in the program</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_context</span></code> – obtain the context the program was built with</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_devices</span></code> – obtain a vector of the compiled binary sizes for
+each device</p></li>
+</ul>
+<dl class="cpp enum-class">
+<dt id="_CPPv4N4info7programE">
+<span id="_CPPv3N4info7programE"></span><span id="_CPPv2N4info7programE"></span><em class="property">enum class </em><code class="sig-name descname">program</code><a class="headerlink" href="#_CPPv4N4info7programE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp enumerator">
+<dt id="_CPPv4N4info7program7contextE">
+<span id="_CPPv3N4info7program7contextE"></span><span id="_CPPv2N4info7program7contextE"></span><em class="property">enumerator </em><code class="sig-name descname">context</code><a class="headerlink" href="#_CPPv4N4info7program7contextE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4info7program7devicesE">
+<span id="_CPPv3N4info7program7devicesE"></span><span id="_CPPv2N4info7program7devicesE"></span><em class="property">enumerator </em><code class="sig-name descname">devices</code><a class="headerlink" href="#_CPPv4N4info7program7devicesE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4info7program15reference_countE">
+<span id="_CPPv3N4info7program15reference_countE"></span><span id="_CPPv2N4info7program15reference_countE"></span><em class="property">enumerator </em><code class="sig-name descname">reference_count</code><a class="headerlink" href="#_CPPv4N4info7program15reference_countE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/programming-interface/parallelism/program.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Memory Objects &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessors" href="accessors.html" />
+    <link rel="prev" title="Memory Model" href="memory-model.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sample-program.html">Sample Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-model.html">Platform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution-model.html">Execution Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="memory-model.html">Memory Model</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Memory Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessors.html">Accessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synchronization.html">Synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unified-shared-memory.html">Unified Shared Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="memory-types.html">Memory Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernel-programming-model.html">Kernel Programming Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-interface/index.html">Programming Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Programming Model</a><ul>
+  <li><a href="memory-model.html">Memory Model</a><ul>
+      <li>Previous: <a href="memory-model.html" title="previous chapter">Memory Model</a></li>
+      <li>Next: <a href="accessors.html" title="next chapter">Accessors</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="memory-objects">
+<span id="id1"></span><h1>Memory Objects<a class="headerlink" href="#memory-objects" title="Permalink to this headline">¶</a></h1>
+<p>Memory objects are either buffers or images.</p>
+<ul class="simple">
+<li><p>Buffer object - a one-, two-, or three-dimensional array of elements.
+Buffers can be accessed via lower level C++ pointer types. For
+further information on buffers, see the SYCL Specification.</p></li>
+<li><p>Image object - a formatted opaque memory object stored in a type
+specific and optimized fashion. Access occurs through built-in
+functions. Image objects typically pertain to pictures comprised of
+pixels stored in a format such as RGB (red, green, blue intensity).
+For further information on images, see the SYCL Specification.</p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-model/memory-objects.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

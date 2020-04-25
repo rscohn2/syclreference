@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Error Handling &#8212; DPC++ Reference  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fall Back" href="fall-back.html" />
+    <link rel="prev" title="C++ Language Requirements" href="cpp-language-requirements.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DPC++ Reference</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sample-program.html">Sample Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-model.html">Platform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution-model.html">Execution Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory-model.html">Memory Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="kernel-programming-model.html">Kernel Programming Model</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cpp-language-requirements.html">C++ Language Requirements</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fall-back.html">Fall Back</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-interface/index.html">Programming Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Programming Model</a><ul>
+  <li><a href="kernel-programming-model.html">Kernel Programming Model</a><ul>
+      <li>Previous: <a href="cpp-language-requirements.html" title="previous chapter">C++ Language Requirements</a></li>
+      <li>Next: <a href="fall-back.html" title="next chapter">Fall Back</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="error-handling">
+<span id="id1"></span><h1>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
+<p>C++ exception handling is the basis for handling error conditions in the
+programming model. Some restrictions on exceptions are in place due to
+the asynchronous nature of host and device execution. For example, it is
+not possible to throw an exception in kernel scope and catch it (in the
+traditional sense) in application scope. Instead, there are a set of
+restrictions and expectations in place when performing error handling.
+These include:</p>
+<ul class="simple">
+<li><p>At application scope, the full C++ exception handling mechanisms and
+capability are valid as long as there is no expectation that
+exceptions can cross to kernel scope.</p></li>
+<li><p>At the command group scope, exceptions are asynchronous with respect
+to the application scope. During command group construction, an
+<code class="docutils literal notranslate"><span class="pre">async_handler</span></code> can be declared to handle any exceptions occurring
+during execution in the command group.</p></li>
+</ul>
+<p>For further details on error handling, see the SYCL Specification.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Intel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/programming-model/error-handling.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

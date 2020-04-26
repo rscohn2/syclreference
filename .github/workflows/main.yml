@@ -1,11 +1,11 @@
 name: CI
 
 on:
-  # Trigger the workflow on push for the master branch
+  # Trigger the workflow on push to the master branch
   push:
     branches:
-      - dev/cppref
       - master
+  pull_request:
 
 jobs:
   build:
@@ -23,6 +23,7 @@ jobs:
           python doc.py spelling
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
+      if: github.event_name == 'push' && github.ref == 'master'
       with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build

@@ -19,7 +19,7 @@ import string
 
 # -- Project information -----------------------------------------------------
 
-project = 'DPC++ Reference'
+project = 'SYCL Reference'
 copyright = '2020, Intel'
 author = 'Intel'
 
@@ -30,7 +30,6 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'breathe',
     'sphinx.ext.todo',
     'sphinxcontrib.spelling',
 ]
@@ -41,10 +40,15 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = ['root/*.rst',
+                    '*.inc.rst',
+                    '**/*.inc.rst'
+]
 
 
 prolog_template = string.Template("""
+.. |true| replace:: ``true``
+.. |false| replace:: ``false``
 .. include: /prolog.inc.rst
 """)
 
@@ -52,25 +56,15 @@ rst_prolog = prolog_template.substitute({})
 
 primary_domain = 'cpp'
 
-exclude_patterns = ['**/*.inc.rst', '*.inc.rst']
-
 
 
 # -- Options for todo extension -------------------------------------------------
 todo_include_todos = True
 
 
-# -- Options for breathe extension -------------------------------------------------
-breathe_projects = {
-    'dpcpp-ref': '../build/doxygen/xml'
-    }
-
-breathe_default_project = 'dpcpp-ref'
-
-
 # -- Options for HTML output -------------------------------------------------
 
-html_favicon = '_static/favicons.png'
+html_favicon = '_static/favicon.png'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -85,3 +79,48 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# -- Add some directives for structure------------------------------------
+
+from docutils.parsers.rst import Directive
+from docutils.parsers.rst.directives.body import ParsedLiteral
+from docutils import nodes
+
+class ArgsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Arguments')]
+    
+class ReturnsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Return value')]
+    
+class MemberFunctionsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Member functions')]
+    
+class NonMemberFunctionsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Non-member functions')]
+    
+class ExampleDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Example')]
+    
+class SynopsisDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Synopsis')]
+    
+def setup(app):
+    app.add_directive('args', ArgsDirective)
+    app.add_directive('returns', ReturnsDirective)
+    app.add_directive('member-functions', MemberFunctionsDirective)
+    app.add_directive('non-member-functions', NonMemberFunctionsDirective)
+    app.add_directive('example', ExampleDirective)
+    app.add_directive('synopsis', ParsedLiteral)
+    return {'version': '0.1'}

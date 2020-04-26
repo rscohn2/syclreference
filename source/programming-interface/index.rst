@@ -39,10 +39,3 @@ Specification <https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf>`__.
 
    runtime/index
    data/index
-   parallelism/index
-   error-handling/index
-   stream
-   vec-and-swizzled-vec
-   built-in-types-&amp-functions
-   property-interface
-   version

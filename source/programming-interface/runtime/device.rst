@@ -1,36 +1,183 @@
-.. _device:
+..
+  // Copyright (c) 2011-2020 The Khronos Group, Inc.
+  //
+  // Licensed under the Apache License, Version 2.0 (the License);
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //     http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an AS IS BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
 
-Device
-======
+==============
+ ``device``
+==============
 
+.. synopsis::
 
-The ``device`` class represents the capabilities of the accelerators in
-a system, as detailed in :ref:`execution-model`. The
-class contains member functions for constructing devices and obtaining
-information about the device. One form of constructor requires zero
-arguments. The constructor can also take a device selector argument that
-chooses which type of accelerator to employ, such as CPU, GPU, or FPGA.
-Lastly, construction can be via OpenCL software technology by code using
-``cl_device_id`` for interoperability.
+   class device;
 
+.. member-functions::
 
-The device class contains member functions for querying information
-about the device, which is useful for DPC++ programs where multiple
-devices are created. Some calls return basic information, such as
-``is_host()``, ``is_cpu()``, ``is_gpu()``. For more detailed
-information, the function ``get_info`` sets a series of attributes with
-pertinent information about the device including:
+=====================  =======================
+`(constructor)`_
+(destructor)    
+`get`_          
+`is_host`_      
+`is_cpu`_      
+`is_gpu`_      
+`is_accelerator`_      
+`get_platform`_  
+`get_info`_     
+`has_extension`_
+`create_sub_devices`_
+=====================  =======================
 
+.. non-member-functions::
 
--  The local and global work item IDs
--  The preferred width for built in types, native ISA types, and clock
-   frequency
--  Cache width and sizes
--  Device support attributes, such as unified memory support,
-   endianness, and (if the device is online) compiler capable
--  Name, vendor, and version of the device
+=================  =======================
+`get_devices`_
+=================  =======================
 
+``(constructor)``
+=================
 
-.. include:: device.inc.rst
+.. synopsis::
 
-.. include:: device-info.inc.rst
+  device();
+  explicit device(cl_device_id deviceId);
+  explicit device(const device_selector &deviceSelector);
+
+.. args::
+
+==================  ======================
+``deviceID``
+``deviceSelector``
+==================  ======================
+
+``get``
+=======
+
+.. synopsis::
+   
+  cl_device_id get() const;
+
+.. returns::
+
+``is_host``
+===========
+
+.. synopsis::
+   
+  bool is_host() const;
+
+.. returns::
+
+``is_cpu``
+==========
+
+.. synopsis::
+   
+  bool is_cpu() const;
+
+.. returns::
+
+``is_gpu``
+==========
+
+.. synopsis::
+   
+  bool is_gpu() const;
+
+.. returns::
+
+``is_accelerator``
+==================
+
+.. synopsis::
+   
+  bool is_accelerator() const;
+
+.. returns::
+
+``get_platform``
+================
+
+.. synopsis::
+   
+  platform get_platform() const;
+
+.. returns::
+
+``get_info``
+============
+
+.. synopsis::
+   
+  template <info::device param>
+  typename info::param_traits<info::device, param>::return_type
+  get_info() const;
+
+.. returns::
+
+.. example::
+
+See :ref:`platform-example`.
+
+``has_extension``
+=================
+
+.. synopsis::
+   
+  bool has_extension(const string_class &extension) const;
+
+.. args::
+
+==================  ======================
+``extension``
+==================  ======================
+
+.. returns::
+
+``create_sub_devices``
+======================
+
+.. synopsis::
+   
+  template <info::partition_property prop>
+  vector_class<device> create_sub_devices(size_t nbSubDev) const; [#1]_
+
+  template <info::partition_property prop>
+  vector_class<device> create_sub_devices(const vector_class<size_t> &counts) const; [#2]_
+
+  template <info::partition_property prop>
+  vector_class<device> create_sub_devices(info::affinity_domain affinityDomain) const; [#3]_
+
+.. [#1] Available only when prop == info::partition_property::partition_equally
+.. [#2] Available only when prop == info::partition_property::partition_by_counts
+.. [#3]	Available only when prop == info::partition_property::partition_by_affinity_domain
+
+.. args::
+
+==================  ======================
+nbSubDev
+counts
+affinityDomain
+==================  ======================
+
+.. returns::
+
+``get_devices``
+===============
+
+.. synopsis::
+   
+  static vector_class<device> get_devices(
+      info::device_type deviceType = info::device_type::all);
+
+.. returns::
+

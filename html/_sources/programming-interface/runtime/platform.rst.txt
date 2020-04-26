@@ -30,7 +30,7 @@ Abstraction for SYCL platform.
 (destructor)       destroys a platform
 `get`_             returns OpenCL platform ID
 `get_devices`_     returns devices bound to the platform
-`get_info`_        queries properties
+`get_info`_        queries properties of the platform
 `has_extension`_   checks if platform has an extension
 `is_host`_         checks if platform has a SYCL host device
 =================  =======================
@@ -38,7 +38,7 @@ Abstraction for SYCL platform.
 .. non-member-functions::
 
 =================  =======================
-`get_platforms`_   returns platforms bound to the system
+`get_platforms`_   returns available platforms
 =================  =======================
 
 .. _platform-example:

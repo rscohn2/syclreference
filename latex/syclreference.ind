@@ -1,0 +1,66 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry {accelerator}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {accessor}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {application scope}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry {buffers}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry {command group scope}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {command queue}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {compute unit}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry {device}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {device code}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry {fat binary}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {fat library}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {fat object}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter H
+  \item \spxentry {host}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {host code}, \hyperindexformat{\spxpagem}{19}
+  \item \spxentry {host device}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry {images}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter K
+  \item \spxentry {kernel scope}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry {nd\sphinxhyphen {}range}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry {processing element}, \hyperindexformat{\spxpagem}{19}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry {single source}, \hyperindexformat{\spxpagem}{20}
+  \item \spxentry {SPIR\sphinxhyphen {}V}, \hyperindexformat{\spxpagem}{20}
+  \item \spxentry {sub\sphinxhyphen {}group}, \hyperindexformat{\spxpagem}{20}
+
+  \indexspace
+  \bigletter W
+  \item \spxentry {work\sphinxhyphen {}group}, \hyperindexformat{\spxpagem}{20}
+  \item \spxentry {work\sphinxhyphen {}item}, \hyperindexformat{\spxpagem}{20}
+
+\end{sphinxtheindex}

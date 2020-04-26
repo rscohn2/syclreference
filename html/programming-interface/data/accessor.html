@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>accessor &#8212; DPC++ Reference  documentation</title>
+    <title>accessor &#8212; SYCL Reference  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -12,10 +12,10 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicons.png"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Atomic" href="atomic.html" />
+    <link rel="next" title="Glossary" href="../../glossary.html" />
     <link rel="prev" title="Data Access" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -28,7 +28,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">DPC++ Reference</a></h1>
+<h1 class="logo"><a href="../../index.html">SYCL Reference</a></h1>
 
 
 
@@ -39,8 +39,6 @@
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programming-model/index.html">Programming Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
@@ -49,26 +47,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../runtime/index.html">Runtime Classes</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Data Access</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">accessor</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="atomic.html">Atomic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="buffer.html">Buffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image.html">Image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="multi-pointer.html">Address Spaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sampler.html">Samplers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../parallelism/index.html">Expressing Parallelism</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../error-handling/index.html">Error Handling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../stream.html">Stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../property-interface.html">Property Interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../version.html">Version</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notices-and-disclaimers.html">Notices and Disclaimers</a></li>
 </ul>
 
 <div class="relations">
@@ -78,7 +63,7 @@
   <li><a href="../index.html">Programming Interface</a><ul>
   <li><a href="index.html">Data Access</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Data Access</a></li>
-      <li>Next: <a href="atomic.html" title="next chapter">Atomic</a></li>
+      <li>Next: <a href="../../glossary.html" title="next chapter">Glossary</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -223,28 +208,6 @@ size_t get_size(int c, int d) const <a class="footnote-reference brackets" href=
 <dd><p>2 arguments</p>
 </dd>
 </dl>
-<p>A common method of construction can employ the <code class="docutils literal notranslate"><span class="pre">get_access</span></code> method of
-the memory object to specify the object and infer the other parameters
-from that memory object.</p>
-<p>See <a class="reference internal" href="../../programming-model/accessors.html#accessors"><span class="std std-ref">Accessors</span></a> for access modes and targets.</p>
-<p>Placeholder accessors are those created independent of a command group
-and then later associated with a particular memory object. Designation
-of a placeholder accessor is communicated via the placeholder argument
-set to <code class="docutils literal notranslate"><span class="pre">access::placeholder::true_t</span></code> if so and
-<code class="docutils literal notranslate"><span class="pre">access::placeholder::false_t</span></code> otherwise.</p>
-<p>Once an accessor is created, query member functions to review accessor
-information. These member functions include:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">is_placeholder</span></code> – return true if accessor is a placeholder, not
-yet associated with a memory object, false otherwise</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_size</span></code> – obtain the size (in bytes) of the memory object</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_count</span></code> – obtain the number of elements of the memory object</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_range</span></code> – obtain the range of the memory object, where range is
-a range class</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_offset</span></code> – obtain the offset of the memory object</p></li>
-</ul>
-<p>An accessor can reference a subset of a memory object; this is the
-offset of the accessor into the memory object.</p>
 </div>
 </div>
 
@@ -259,7 +222,7 @@ offset of the accessor into the memory object.</p>
       &copy;2020, Intel.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

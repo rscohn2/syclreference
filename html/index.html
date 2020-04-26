@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>DPC++ Reference &#8212; DPC++ Reference  documentation</title>
+    <title>SYCL Reference &#8212; SYCL Reference  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -12,10 +12,10 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
-    <link rel="shortcut icon" href="_static/favicons.png"/>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="intro.html" />
+    <link rel="next" title="Language" href="language/index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -27,7 +27,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">DPC++ Reference</a></h1>
+<h1 class="logo"><a href="#">SYCL Reference</a></h1>
 
 
 
@@ -38,19 +38,16 @@
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="programming-model/index.html">Programming Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="language/index.html">Language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programming-interface/index.html">Programming Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notices-and-disclaimers.html">Notices and Disclaimers</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="intro.html" title="next chapter">Introduction</a></li>
+      <li>Next: <a href="language/index.html" title="next chapter">Language</a></li>
   </ul></li>
 </ul>
 </div>
@@ -80,36 +77,10 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="dpc-reference">
-<span id="index"></span><h1>DPC++ Reference<a class="headerlink" href="#dpc-reference" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sycl-reference">
+<span id="index"></span><h1>SYCL Reference<a class="headerlink" href="#sycl-reference" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#data-parallel-c-dpc">Data Parallel C++ (DPC++)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#related-documentation">Related Documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="programming-model/index.html">Programming Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="programming-model/sample-program.html">Sample Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming-model/platform-model.html">Platform Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming-model/execution-model.html">Execution Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming-model/memory-model.html">Memory Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/memory-objects.html">Memory Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/accessors.html">Accessors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/synchronization.html">Synchronization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/unified-shared-memory.html">Unified Shared Memory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/memory-types.html">Memory Types</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="programming-model/kernel-programming-model.html">Kernel Programming Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/cpp-language-requirements.html">C++ Language Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/error-handling.html">Error Handling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-model/fall-back.html">Fall Back</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="language/index.html">Language</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="language/index.html#keywords">Keywords</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language/index.html#preprocessor-directives-and-macros">Preprocessor Directives and Macros</a></li>
@@ -131,41 +102,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="programming-interface/data/index.html">Data Access</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="programming-interface/data/accessor.html"><code class="docutils literal notranslate"><span class="pre">accessor</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/data/atomic.html">Atomic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/data/buffer.html">Buffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/data/image.html">Image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/data/multi-pointer.html">Address Spaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/data/sampler.html">Samplers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/parallelism/index.html">Expressing Parallelism</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/range.html">Range</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/nd-range.html">Nd_range</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/id.html">ID</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/item.html">Item</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/nd-item.html">Nd_item</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/group.html">Group</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/device-event.html">Device Event</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/command-group-handler.html">Command Group Handler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/kernel.html">Kernel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/parallelism/program.html">Program</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/error-handling/index.html">Error Handling</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="programming-interface/error-handling/exception.html">Exception</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/stream.html">Stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/vec-and-swizzled-vec.html">Vec and Swizzled Vec</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/built-in-types-&amp;amp-functions.html">Built-in Types &amp; Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/property-interface.html">Property Interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming-interface/version.html">Version</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notices-and-disclaimers.html">Notices and Disclaimers</a></li>
 </ul>
 </div>
 </div>
@@ -181,7 +124,7 @@
       &copy;2020, Intel.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

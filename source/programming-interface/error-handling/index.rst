@@ -1,8 +1,0 @@
-================
- Error Handling
-================
-
-.. toctree::
-
-   exception
-   

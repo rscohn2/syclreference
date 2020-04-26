@@ -1,6 +1,11 @@
 name: CI
 
-on: [push]
+on:
+  # Trigger the workflow on push for the master branch
+  push:
+    branches:
+      - dev/cppref
+      - master
 
 jobs:
   build:

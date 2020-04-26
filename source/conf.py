@@ -19,7 +19,7 @@ import string
 
 # -- Project information -----------------------------------------------------
 
-project = 'DPC++ Reference'
+project = 'SYCL Reference'
 copyright = '2020, Intel'
 author = 'Intel'
 
@@ -30,7 +30,6 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'breathe',
     'sphinx.ext.todo',
     'sphinxcontrib.spelling',
 ]
@@ -41,7 +40,10 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = ['root/*.rst',
+                    '*.inc.rst',
+                    '**/*.inc.rst'
+]
 
 
 prolog_template = string.Template("""
@@ -54,25 +56,15 @@ rst_prolog = prolog_template.substitute({})
 
 primary_domain = 'cpp'
 
-exclude_patterns = ['**/*.inc.rst', '*.inc.rst']
-
 
 
 # -- Options for todo extension -------------------------------------------------
 todo_include_todos = True
 
 
-# -- Options for breathe extension -------------------------------------------------
-breathe_projects = {
-    'dpcpp-ref': '../build/doxygen/xml'
-    }
-
-breathe_default_project = 'dpcpp-ref'
-
-
 # -- Options for HTML output -------------------------------------------------
 
-html_favicon = '_static/favicons.png'
+html_favicon = '_static/favicon.png'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.

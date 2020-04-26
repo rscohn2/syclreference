@@ -132,6 +132,10 @@ def build(target):
     if target != 'clean':
         prep()
     sphinx(target)
+    # top level for github pages
+    if target == 'html':
+        copy(join('source', 'root', 'index.rst'), 'build')
+        copy(join('source', 'root', '404.rst'), 'build')
 
 commands = {'clean': build,
             'html': build,

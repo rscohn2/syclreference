@@ -134,8 +134,9 @@ def build(target):
     sphinx(target)
     # top level for github pages
     if target == 'html':
-        copy(join('source', 'root', 'index.md'), 'build')
-        copy(join('source', 'root', '404.md'), 'build')
+        for f in ['index', '404']:
+            copy(join('source', 'root', '%s.html' % f),
+                 join('build', '%s.html' % f))
 
 commands = {'clean': build,
             'html': build,

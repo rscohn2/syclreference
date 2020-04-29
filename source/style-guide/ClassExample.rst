@@ -91,10 +91,17 @@ have a single table for all the overloads.
 fun1
 ====
 
-here::
+::
+   
    int fun1(int a);
 
-::
+a literal block::
+  
+   template <class T>
+   int fun1();
+
+.. code::
+  
    template <class T>
    int fun1();
 

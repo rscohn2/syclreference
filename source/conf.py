@@ -30,6 +30,7 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_rtd_theme',
     'sphinx.ext.todo',
     'sphinxcontrib.spelling',
 ]
@@ -69,10 +70,10 @@ html_favicon = '_static/favicon.png'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
-    'fixed_sidebar': True,
-    'page_width': 'max-width'
+    # 'fixed_sidebar': True,
+    # 'page_width': 'max-width'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -86,10 +87,20 @@ from docutils.parsers.rst import Directive
 from docutils.parsers.rst.directives.body import ParsedLiteral
 from docutils import nodes
 
-class ArgsDirective(Directive):
+class TParamsDirective(Directive):
 
     def run(self):
-        return [nodes.rubric(text='Arguments')]
+        return [nodes.rubric(text='Template parameters')]
+    
+class ExceptionsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Exceptions')]
+    
+class ParamsDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Parameters')]
     
 class ReturnsDirective(Directive):
 
@@ -100,6 +111,11 @@ class MemberFunctionsDirective(Directive):
 
     def run(self):
         return [nodes.rubric(text='Member functions')]
+
+class MemberTypesDirective(Directive):
+
+    def run(self):
+        return [nodes.rubric(text='Member types')]
     
 class NonMemberFunctionsDirective(Directive):
 
@@ -111,16 +127,14 @@ class ExampleDirective(Directive):
     def run(self):
         return [nodes.rubric(text='Example')]
     
-class SynopsisDirective(Directive):
-
-    def run(self):
-        return [nodes.rubric(text='Synopsis')]
-    
 def setup(app):
-    app.add_directive('args', ArgsDirective)
+    app.add_directive('tparams', TParamsDirective)
+    app.add_directive('params', ParamsDirective)
     app.add_directive('returns', ReturnsDirective)
+    app.add_directive('member-types', MemberTypesDirective)
     app.add_directive('member-functions', MemberFunctionsDirective)
     app.add_directive('non-member-functions', NonMemberFunctionsDirective)
     app.add_directive('example', ExampleDirective)
     app.add_directive('synopsis', ParsedLiteral)
+    app.add_directive('exceptions', ExceptionsDirective)
     return {'version': '0.1'}

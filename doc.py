@@ -107,7 +107,7 @@ def doxygen(target=None):
 
 @action
 def examples(target=None):
-    run_examples = ['get-platforms']
+    run_examples = ['get-platforms', 'gpu-selector']
     compiler = 'dpcpp'
     compiler_options = '-Wall -Werror'
     build = join('build', 'examples')
@@ -135,8 +135,10 @@ def build(target):
     # top level for github pages
     if target == 'html':
         for f in ['index', '404']:
-            copy(join('source', 'root', '%s.html' % f),
-                 join('build', '%s.html' % f))
+            src = join('source', 'root', '%s.html' % f)
+            dst = join('build', '%s.html' % f)
+            if not up_to_date(dst, [src]):
+                copy(src, dst)
 
 commands = {'clean': build,
             'html': build,

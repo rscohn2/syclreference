@@ -4,9 +4,9 @@
 
 .. toctree::
 
-   device-selector
    platform
    context
+   device-selectors
    device
    queue
    event

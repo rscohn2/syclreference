@@ -13,12 +13,11 @@
   // See the License for the specific language governing permissions and
   // limitations under the License.
 
-==============
- ``event``
-==============
+=====
+event
+=====
 
 .. synopsis::
-
    class event;
 
 .. member-functions::
@@ -35,76 +34,68 @@
 `get_profiling_info`_
 =====================  =======================
 
-``(constructor)``
-=================
+(constructor)
+=============
 
 .. synopsis::
-
   event();
+.. synopsis::
   event(cl_event clEvent, const context& syclContext);
 
-``cl_event_get``
-================
+cl_event_get
+============
 
 .. synopsis::
-   
   cl_event get();
 
 .. returns::
 
-``is_host``
-===========
+is_host
+=======
 
 .. synopsis::
-   
   bool is_host() const;
 
 .. returns::
 
-``get_wait_list``
-=================
+get_wait_list
+=============
 
 .. synopsis::
-   
   vector_class<event> get_wait_list();
 
 .. returns::
 
-``wait``
+wait
 ========
 
 .. synopsis::
-   
   void wait();
-
+.. synopsis::
   static void wait(const vector_class<event> &eventList);
 
-``wait_and_throw``
-==================
+wait_and_throw
+==============
 
 .. synopsis::
-   
   void wait_and_throw();
 
   static void wait_and_throw(const vector_class<event> &eventList);
 
-``get_info``
-============
+get_info
+========
 
 .. synopsis::
-   
   template <info::event param>
   typename info::param_traits<info::event, param>::return_type get_info() const;
 
 .. returns::
 
-``get_profiling_info``
-======================
+get_profiling_info
+==================
 
 .. synopsis::
-   
   template <info::event_profiling param>
   typename info::param_traits<info::event_profiling, param>::return_type get_profiling_info() const;
 
 .. returns::
-

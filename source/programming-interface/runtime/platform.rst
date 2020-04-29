@@ -13,39 +13,38 @@
    // See the License for the specific language governing permissions and
    // limitations under the License.
 
-==============
- ``platform``
-==============
+=========
+platform
+=========
 
 .. synopsis::
-
    class platform;
 
 Abstraction for SYCL platform.
 
 .. member-functions::
 
-=================  =======================
-`(constructor)`_   constructs a platform
-(destructor)       destroys a platform
-`get`_             returns OpenCL platform ID
-`get_devices`_     returns devices bound to the platform
-`get_info`_        queries properties of the platform
-`has_extension`_   checks if platform has an extension
-`is_host`_         checks if platform has a SYCL host device
-=================  =======================
+================  =======================
+`(constructor)`_  constructs a platform
+destructor        destroys a platform
+get_              returns OpenCL platform ID
+get_devices_      returns devices bound to the platform
+get_info_         queries properties of the platform
+has_extension_    checks if platform has an extension
+is_host_          checks if platform has a SYCL host device
+================  =======================
 
 .. non-member-functions::
 
-=================  =======================
-`get_platforms`_   returns available platforms
-=================  =======================
+==============  =======================
+get_platforms_  returns available platforms
+==============  =======================
 
 .. _platform-example:
 
 .. example::
 
-Demonstrates several methods for ``platform``
+Enumerate the platforms and the devices they contain.
    
 .. literalinclude:: /examples/get-platforms.cpp
 
@@ -53,13 +52,17 @@ Output:
 
 .. literalinclude:: /../build/examples/get-platforms.out
 
-``(constructor)``
-=================
+
+.. _platform-constructor:
+
+(constructor)
+=============
 
 .. synopsis::
-
   platform();
-  explicit platform(cl_platform_id platformID); [#opencl]_
+.. synopsis::
+  explicit platform(cl_platform_id platformID);             [#opencl]_
+.. synopsis::
   explicit platform(const device_selector &deviceSelector); [#selector]_
 
 Constructs a platform handle.
@@ -68,37 +71,31 @@ Constructs a platform handle.
 .. [#selector] Selects a platform that contains the desired device
 	     
 
-.. args::
+.. params::
 
-==================  ======================
-``platformID``      OpenCL platform ID
-``deviceSelector``  Platform must contain the selected device
-==================  ======================
+| ``platformID`` - OpenCL platform ID
+| ``deviceSelector`` -  Platform must contain the selected device
 
-``get``
-=======
+get
+===
 
 .. synopsis::
-   
   cl_platform_id get() const;
 
 Returns OpenCL platform id used in the constructor.
 
-``get_devices``
-===============
+get_devices
+===========
 
 .. synopsis::
-   
   vector_class<device> get_devices(
      info::device_type = info::device_type::all) const;
 
 Returns vector of devices of the requested type
 
-.. args::
+.. params::
 
-=================  ======================
-``device_type``    limits type of device returned
-=================  ======================
+| ``device_type`` - limits type of device returned
 
 .. returns::
 
@@ -107,14 +104,13 @@ platform.
 
 .. example::
 
-See :ref:`platform-example`.
+See :ref:`example`.
 
 
-``get_info``
-============
+get_info
+========
 
 .. synopsis::
-   
   template< info::platform param >
   typename info::param_traits<info::platform, param>::return_type get_info() const;
 
@@ -129,31 +125,29 @@ Requested information
 See :ref:`platform-example`.
 
 
-``has_extension``
-=================
+.. _platform-has_extension:
+
+has_extension
+=============
 
 .. synopsis::
-
   bool has_extension(const string_class &extension) const;
 
 Checks if the platform has the requested extension.
   
 
-.. args::
+.. params::
 
-=================  ======================
-``extension``
-=================  ======================
+| ``extension`` -
 
 .. returns::
 
 |true| if the platform has ``extension``
 
-``is_host``
-===========
+is_host
+=======
 
 .. synopsis::
-
   bool is_host() const;
 
 Checks if the platform contains a SYCL :term:`host device`
@@ -163,11 +157,10 @@ Checks if the platform contains a SYCL :term:`host device`
 |true| if the platform contains a host device
 
 
-``get_platforms``
-=================
+get_platforms
+=============
 
 .. synopsis::
-
   static vector_class<platform> get_platforms();
 
 Returns vector of platforms

@@ -13,12 +13,11 @@
   // See the License for the specific language governing permissions and
   // limitations under the License.
 
-==============
- ``queue``
-==============
+=====
+queue
+=====
 
 .. synopsis::
-
    class queue;
 
 .. member-functions::
@@ -37,121 +36,119 @@
 `throw_asynchronous`_
 =====================  =======================
 
-``(constructor)``
-=================
+(constructor)
+=============
 
 .. synopsis::
-
   explicit queue(const property_list &propList = {});
+.. synopsis::
   explicit queue(const async_handler &asyncHandler,
                  const property_list &propList = {});
+.. synopsis::
   explicit queue(const device_selector &deviceSelector,
                  const property_list &propList = {});
+.. synopsis::
   explicit queue(const device_selector &deviceSelector,
                  const async_handler &asyncHandler,
 		 const property_list &propList = {});
+.. synopsis::
   explicit queue(const device &syclDevice, const property_list &propList = {});
+.. synopsis::
   explicit queue(const device &syclDevice, const async_handler &asyncHandler,
                  const property_list &propList = {});
+.. synopsis::
   explicit queue(const context &syclContext,
                  const device_selector &deviceSelector,
 		 const property_list &propList = {});
+.. synopsis::
   explicit queue(const context &syclContext,
                  const device_selector &deviceSelector,
                  const async_handler &asyncHandler,
 		 const property_list &propList = {});
+.. synopsis::
   explicit queue(const context &syclContext,
                  const device &syclDevice,
 		 const property_list &propList = {});
+.. synopsis::
   explicit queue(const context &syclContext, const device &syclDevice,
                  const async_handler &asyncHandler,
 		 const property_list &propList = {});
+.. synopsis::
   explicit queue(cl_command_queue clQueue, const context& syclContext,
                  const async_handler &asyncHandler = {});
 
-``get``
-=======
+get
+===
 
 .. synopsis::
-   
   cl_command_queue get() const;
 
 .. returns::
 
-``get_context``
-===============
+get_context
+===========
 
 .. synopsis::
-   
   context get_context() const;
 
 .. returns::
 
-``get_device``
-==============
+get_device
+==========
 
 .. synopsis::
-   
   device get_device() const;
 
 .. returns::
 
-``is_host``
-===========
+is_host
+=======
 
 .. synopsis::
-   
   bool is_host() const;
 
 .. returns::
 
-``get_info``
-============
+get_info
+========
 
 .. synopsis::
-   
   template <info::queue param>
   typename info::param_traits<info::queue, param>::return_type get_info() const;
 
 .. returns::
 
-``submit``
-==========
+submit
+======
 
 .. synopsis::
-   
   template <typename T>
   event submit(T cgf);
-
+.. synopsis::
   template <typename T>
   event submit(T cgf, const queue &secondaryQueue);
 
-.. args::
+.. params::
 
-==================  ======================
-``cgf``
-``secondaryQueue``
-==================  ======================
+| ``cgf`` -
+| ``secondaryQueue`` -
 
 .. returns::
 
-``wait``
-========
+wait
+====
 
 .. synopsis::
-   
   void wait();
 
-``wait_and_throw``
+wait_and_throw
+==============
+
+.. synopsis::
+  void wait_and_throw();
+
+throw_asynchronous
 ==================
 
 .. synopsis::
-   
-  void wait_and_throw();
-
-``throw_asynchronous``
-======================
-
-.. synopsis::
-   
   void throw_asynchronous();

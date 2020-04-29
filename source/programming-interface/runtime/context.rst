@@ -13,97 +13,96 @@
   // See the License for the specific language governing permissions and
   // limitations under the License.
 
-===========
-``context``
-===========
+=======
+context
+=======
 
 .. synopsis::
-   
   class context;
   
 .. member-functions::
 
 =================  =======================
 `(constructor)`_   constructs a context
-`get`_             returns OpenCL conext ID
-`is_host`_         checks if contains a SYCL host device
-`get_platform`_
-`get_devices`_     returns devices bound to the context
-`get_info`_        queries properties
+get_               returns OpenCL conext ID
+is_host_           checks if contains a SYCL host device
+get_platform_
+get_devices_       returns devices bound to the context
+get_info_          queries properties
 =================  =======================
 
 
-``(constructor)``
-=================
+(constructor)
+=============
 
 .. synopsis::
-   
   explicit context(const property_list &propList = {});
+.. synopsis::
   context(async_handler asyncHandler,
           const property_list &propList = {});
+.. synopsis::
   context(const device &dev, const property_list &propList = {});
+.. synopsis::
   context(const device &dev, async_handler asyncHandler,
           const property_list &propList = {});
+.. synopsis::
   context(const platform &plt, const property_list &propList = {});
+.. synopsis::
   context(const platform &plt, async_handler asyncHandler,
           const property_list &propList = {});
+.. synopsis::
   context(const vector_class<device> &deviceList,
           const property_list &propList = {});
+.. synopsis::
   context(const vector_class<device> &deviceList,
           async_handler asyncHandler, const property_list &propList = {});
+.. synopsis::
   context(cl_context clContext, async_handler asyncHandler = {});
 
-.. args::
+.. params::
 
-==================  ======================
-``propList``
-``asyncHandler``
-``dev``
-``plt``
-``deviceList``
-==================  ======================
+| ``propList`` -
+| ``asyncHandler`` -
+| ``dev`` -
+| ``plt`` -
+| ``deviceList`` -
 
-``get``
-=======
+get
+===
 
 .. synopsis::
-   
   cl_context get() const;
 
 .. returns::
 	    
-``is_host``
-===========
+is_host
+=======
 
 .. synopsis::
-
   bool is_host() const;
 
 .. returns::
 	    
-``get_platform``
-================
+get_platform
+============
 
 .. synopsis::
-
   platform get_platform() const;
 
 .. returns::
 	    
-``get_devices``
-===============
+get_devices
+===========
 
 .. synopsis::
-
   vector_class<device> get_devices() const;
 
 .. returns::
 	    
-``get_info``
-============
+get_info
+========
 
 .. synopsis::
-
   template <info::context param>
   typename info::param_traits<info::context, param>::return_type get_info() const;
 

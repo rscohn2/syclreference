@@ -91,8 +91,9 @@ have a single table for all the overloads.
 fun1
 ====
 
-::
+here::
    int fun1(int a);
+
 ::
    template <class T>
    int fun1();

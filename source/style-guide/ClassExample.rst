@@ -5,7 +5,7 @@ ClassExample
 .. The synopsis shows how the class is declared. Indentation follows
    `cppreference-style`_.
 
-.. synopsis::
+::
    template<
        class T1
        class T2
@@ -22,12 +22,13 @@ the member functions, one section each.
     be in fixed width font.
 
 
-.. tparams::
+.. rubric:: Template parameters
 
 | ``T1`` - description of parameter
 | ``T2`` - description of parameter
 
-.. member-functions::
+.. rubric:: Member functions
+
 
 .. The _ suffix on the function name makes it into a link to a
    section that describes the function. The target must be in the same
@@ -42,14 +43,15 @@ fun1_             checks ...
 
 .. Non-member functions are static functions and operator overloads
 
-.. non-member-functions::
+.. rubric:: Non-member functions
+
    
 =============  =============
 `operator+`_   Adds ...
 fun3_          Queries ...
 =============  =============
 
-.. example::
+.. rubric:: Example
 
 Describe the example...
 
@@ -68,7 +70,7 @@ Describe the example...
 .. Group all the overloads together. Use sphinx footnotes if you want
    to have text specific to one function.
 
-.. synopsis::
+::
   ClassExample();
 .. synopsis::
   ClassExample(int a);            [#onearg]_
@@ -89,16 +91,16 @@ have a single table for all the overloads.
 fun1
 ====
 
-.. synopsis::
+::
    int fun1(int a);
-.. synopsis::
+::
    template <class T>
    int fun1();
 
 Description of the functions. Overloads are grouped together and may
 have footnotes for overload-specific description.
 
-.. tparams::
+.. rubric:: Template parameters
 
 | ``T`` - A parameter called T
 

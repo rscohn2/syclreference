@@ -128,6 +128,8 @@ a literal block::
 Description of the functions. Overloads are grouped together and may
 have footnotes for overload-specific description.
 
+  indented
+
 .. rubric:: Template parameters
 
 | ``T`` - A parameter called T

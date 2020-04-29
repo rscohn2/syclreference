@@ -1,10 +1,15 @@
 .. include:: ../include/defs.txt
 
+.. |params2| replace:: Parameters
+
+
 ============
 ClassExample
 ============
 
 .. rubric:: |params|
+
+.. rubric:: |params2|
 
 ::
 

@@ -1,11 +1,14 @@
+.. |params| replace:: Parameters
+
+
 ============
 ClassExample
 ============
 
-.. The synopsis shows how the class is declared. Indentation follows
-   `cppreference-style`_.
+.. rubric:: |params|
 
 ::
+
    template<
        class T1
        class T2
@@ -100,7 +103,7 @@ a literal block::
    template <class T>
    int fun1();
 
-.. code::
+.. parsed-literal::
   
    template <class T>
    int fun1();
@@ -116,7 +119,7 @@ a literal block::
    template <class T>
    int fun1();
 
-::
+
    int fun1(int a);
 ::
    int fun1(int a);

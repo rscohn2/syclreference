@@ -1,5 +1,4 @@
-.. |params| replace:: Parameters
-
+.. include:: ../include/defs.txt
 
 ============
 ClassExample

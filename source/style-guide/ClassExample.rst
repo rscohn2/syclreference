@@ -105,6 +105,26 @@ a literal block::
    template <class T>
    int fun1();
 
+::
+   int fun1(int a);
+
+a literal block::
+   template <class T>
+   int fun1();
+
+.. code::
+   template <class T>
+   int fun1();
+
+::
+   int fun1(int a);
+::
+   int fun1(int a);
+::
+   int fun1(int a);
+
+
+
 Description of the functions. Overloads are grouped together and may
 have footnotes for overload-specific description.
 

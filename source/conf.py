@@ -96,6 +96,11 @@ html_context = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+
+# -- notfound extension ------------------------------------
+
+notfound_no_urls_prefix = True
+
 # -- Add some directives for structure------------------------------------
 
 from docutils.parsers.rst import Directive

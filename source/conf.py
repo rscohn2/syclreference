@@ -30,6 +30,7 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'notfound.extension',
     'sphinx_rtd_theme',
     'sphinx.ext.todo',
     'sphinxcontrib.spelling',

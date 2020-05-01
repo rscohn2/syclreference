@@ -1,7 +1,5 @@
 *~
 *.diff
-/Build
-/_build
+/build
 /source/examples/*.bin
-/doxygen
-/dpcpp-ref-venv
+/site

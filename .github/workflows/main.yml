@@ -18,9 +18,7 @@ jobs:
           python3 -m venv venv
           . venv/bin/activate
           pip install --quiet -r requirements.txt
-          python doc.py html
-          python doc.py latexpdf
-          python doc.py spelling
+          python doc.py ci
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/master'

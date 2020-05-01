@@ -1,3 +1,4 @@
 Sphinx
-breathe
 sphinxcontrib-spelling
+sphinx-notfound-page
+sphinx-rtd-theme

@@ -8,7 +8,7 @@ import os.path
 import shutil
 import subprocess
 
-sphinx_opts    = '-W -n -q -N'
+sphinx_opts    = '-n -q -N'
 sphinx_build   = 'sphinx-build'
 source_dir     = 'source'
 build_dir      = 'build'
@@ -132,9 +132,11 @@ def build(target):
     if target != 'clean':
         prep()
     sphinx(target)
+    copy(join('build', 'html', '404.html'),
+         join('build', '404.html'))
     # top level for github pages
     if target == 'html':
-        for f in ['index', '404']:
+        for f in ['index']:
             src = join('source', 'root', '%s.html' % f)
             dst = join('build', '%s.html' % f)
             if not up_to_date(dst, [src]):

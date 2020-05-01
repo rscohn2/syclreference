@@ -30,10 +30,18 @@ author = 'Intel'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'notfound.extension',
     'sphinx_rtd_theme',
     'sphinx.ext.todo',
     'sphinxcontrib.spelling',
 ]
+
+html_context = {
+    'display_github': True,
+    'github_user': 'rscohn2',
+    'github_repo': 'syclreference',
+    'github_version': 'master/source/'
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

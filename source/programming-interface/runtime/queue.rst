@@ -17,10 +17,11 @@
 queue
 =====
 
-.. synopsis::
+::
+   
    class queue;
 
-.. member-functions::
+.. rubric:: Member functions
 
 =====================  =======================
 `(constructor)`_   
@@ -39,116 +40,150 @@ queue
 (constructor)
 =============
 
-.. synopsis::
+::
+   
   explicit queue(const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const async_handler &asyncHandler,
                  const property_list &propList = {});
-.. synopsis::
+
+::
   explicit queue(const device_selector &deviceSelector,
                  const property_list &propList = {});
-.. synopsis::
+
+::
   explicit queue(const device_selector &deviceSelector,
                  const async_handler &asyncHandler,
 		 const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const device &syclDevice, const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const device &syclDevice, const async_handler &asyncHandler,
                  const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const context &syclContext,
                  const device_selector &deviceSelector,
 		 const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const context &syclContext,
                  const device_selector &deviceSelector,
                  const async_handler &asyncHandler,
 		 const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const context &syclContext,
                  const device &syclDevice,
 		 const property_list &propList = {});
-.. synopsis::
+
+::
+   
   explicit queue(const context &syclContext, const device &syclDevice,
                  const async_handler &asyncHandler,
 		 const property_list &propList = {});
-.. synopsis::
+
+::
+
   explicit queue(cl_command_queue clQueue, const context& syclContext,
                  const async_handler &asyncHandler = {});
 
 get
 ===
 
-.. synopsis::
+
+::
+   
   cl_command_queue get() const;
 
-.. returns::
+.. rubric:: Returns
 
 get_context
 ===========
 
-.. synopsis::
+::
+   
   context get_context() const;
 
-.. returns::
+.. rubric:: Returns
 
 get_device
 ==========
 
-.. synopsis::
+::
+   
   device get_device() const;
 
-.. returns::
+.. rubric:: Returns
+
 
 is_host
 =======
 
-.. synopsis::
+::
+   
   bool is_host() const;
 
-.. returns::
+.. rubric:: Returns
+
 
 get_info
 ========
 
-.. synopsis::
+::
+   
   template <info::queue param>
   typename info::param_traits<info::queue, param>::return_type get_info() const;
 
-.. returns::
+.. rubric:: Returns
 
 submit
 ======
 
-.. synopsis::
+::
+   
   template <typename T>
   event submit(T cgf);
-.. synopsis::
+
+::
+   
   template <typename T>
   event submit(T cgf, const queue &secondaryQueue);
 
-.. params::
+.. rubric:: Parameters
 
 | ``cgf`` -
 | ``secondaryQueue`` -
 
-.. returns::
+.. rubric:: Returns
+
 
 wait
 ====
 
-.. synopsis::
+::
+   
   void wait();
 
 wait_and_throw
 ==============
 
-.. synopsis::
+::
+   
   void wait_and_throw();
 
 throw_asynchronous
 ==================
 
-.. synopsis::
+::
+   
   void throw_asynchronous();

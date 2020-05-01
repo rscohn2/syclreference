@@ -1,8 +1,13 @@
+***********
+ Accessors
+***********
+
 ========
 accessor
 ========
 
-.. synopsis::
+::
+   
    template<
        typename dataT,
        int dimensions,
@@ -19,7 +24,7 @@ Construction also requires the type of the memory object, the
 dimensionality of the memory object, the access mode, and a placeholder
 argument.
 
-.. tparams::
+.. rubric:: Template parameters
 
 | ``dataT`` - type of buffer element
 | ``dimensions``- dimensionality of buffer
@@ -28,7 +33,7 @@ argument.
 | ``isPlaceholder`` - placeholder
 
 
-.. member-types::
+.. rubric:: Member types
 
 ===================  ===============
 ``value_type``       dataT
@@ -36,7 +41,7 @@ argument.
 ``const_reference``  const dataT&
 ===================  ===============
 
-.. member-functions::
+.. rubric:: Member functions
 
 =================  ======================
 (constructor)      constructs an accessor
@@ -49,13 +54,14 @@ get_offset
 =================  ======================
 
 get_size
-============
+========
 
-.. synopsis::
+::
+   
    size_t get_size() const
 
 Description   
 
 get_count
-=============
+=========
 

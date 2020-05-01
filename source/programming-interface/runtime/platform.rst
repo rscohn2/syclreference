@@ -13,16 +13,17 @@
    // See the License for the specific language governing permissions and
    // limitations under the License.
 
-=========
-platform
-=========
+==============
+Platform class
+==============
 
-.. synopsis::
+::
+   
    class platform;
 
 Abstraction for SYCL platform.
 
-.. member-functions::
+.. rubric:: Member functions
 
 ================  =======================
 `(constructor)`_  constructs a platform
@@ -34,7 +35,7 @@ has_extension_    checks if platform has an extension
 is_host_          checks if platform has a SYCL host device
 ================  =======================
 
-.. non-member-functions::
+.. rubric:: Nonmember functions
 
 ==============  =======================
 get_platforms_  returns available platforms
@@ -42,7 +43,7 @@ get_platforms_  returns available platforms
 
 .. _platform-example:
 
-.. example::
+.. rubric:: Example
 
 Enumerate the platforms and the devices they contain.
    
@@ -58,11 +59,16 @@ Output:
 (constructor)
 =============
 
-.. synopsis::
+::
+   
   platform();
-.. synopsis::
+
+.. parsed-literal::
+   
   explicit platform(cl_platform_id platformID);             [#opencl]_
-.. synopsis::
+
+.. parsed-literal::
+   
   explicit platform(const device_selector &deviceSelector); [#selector]_
 
 Constructs a platform handle.
@@ -71,7 +77,7 @@ Constructs a platform handle.
 .. [#selector] Selects a platform that contains the desired device
 	     
 
-.. params::
+.. rubric:: Parameters
 
 | ``platformID`` - OpenCL platform ID
 | ``deviceSelector`` -  Platform must contain the selected device
@@ -79,7 +85,8 @@ Constructs a platform handle.
 get
 ===
 
-.. synopsis::
+::
+   
   cl_platform_id get() const;
 
 Returns OpenCL platform id used in the constructor.
@@ -87,42 +94,44 @@ Returns OpenCL platform id used in the constructor.
 get_devices
 ===========
 
-.. synopsis::
+::
+   
   vector_class<device> get_devices(
      info::device_type = info::device_type::all) const;
 
 Returns vector of devices of the requested type
 
-.. params::
+.. rubric:: Parameters
 
 | ``device_type`` - limits type of device returned
 
-.. returns::
+.. rubric:: Returns
 
 ``vector`` containing devices of the specified type bound to the
 platform.
 
-.. example::
+.. rubric:: Example
 
-See :ref:`example`.
+See `platform-example`_.
 
 
 get_info
 ========
 
-.. synopsis::
+::
+   
   template< info::platform param >
   typename info::param_traits<info::platform, param>::return_type get_info() const;
 
 Returns information about the platform, as specified by ``param``.
 
-.. returns::
+.. rubric:: Returns
 
 Requested information
 
-.. example::
+.. rubric:: Example
 
-See :ref:`platform-example`.
+See `platform-example`_.
 
 
 .. _platform-has_extension:
@@ -130,29 +139,31 @@ See :ref:`platform-example`.
 has_extension
 =============
 
-.. synopsis::
+::
+   
   bool has_extension(const string_class &extension) const;
 
 Checks if the platform has the requested extension.
   
 
-.. params::
+.. rubric:: Parameters
 
 | ``extension`` -
 
-.. returns::
+.. rubric:: Returns
 
 |true| if the platform has ``extension``
 
 is_host
 =======
 
-.. synopsis::
+::
+   
   bool is_host() const;
 
 Checks if the platform contains a SYCL :term:`host device`
 
-.. returns::
+.. rubric:: Returns
 
 |true| if the platform contains a host device
 
@@ -160,15 +171,16 @@ Checks if the platform contains a SYCL :term:`host device`
 get_platforms
 =============
 
-.. synopsis::
+::
+   
   static vector_class<platform> get_platforms();
 
 Returns vector of platforms
 
-.. returns::
+.. rubric:: Returns
 
 vector_class containing SYCL platforms bound to the system
 
-.. example::
+.. rubric:: Example
 
-See :ref:`platform-example`.
+See `platform-example`_.

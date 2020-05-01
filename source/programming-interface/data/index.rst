@@ -1,8 +1,0 @@
-=============
- Data Access
-=============
-
-.. toctree::
-
-   accessor
-

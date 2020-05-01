@@ -1,11 +1,18 @@
+.. include:: ../include/defs.txt
+
+.. |params2| replace:: Parameters
+
+
 ============
 ClassExample
 ============
 
-.. The synopsis shows how the class is declared. Indentation follows
-   `cppreference-style`_.
+.. rubric:: |params|
 
-.. synopsis::
+.. rubric:: |params2|
+
+::
+
    template<
        class T1
        class T2
@@ -22,12 +29,13 @@ the member functions, one section each.
     be in fixed width font.
 
 
-.. tparams::
+.. rubric:: Template parameters
 
 | ``T1`` - description of parameter
 | ``T2`` - description of parameter
 
-.. member-functions::
+.. rubric:: Member functions
+
 
 .. The _ suffix on the function name makes it into a link to a
    section that describes the function. The target must be in the same
@@ -37,19 +45,20 @@ the member functions, one section each.
 
 ================  ===========================
 `(constructor)`_  constructs a ClassExample
-fun1_             checks ...
+fun1              checks ...
 ================  ===========================
 
 .. Non-member functions are static functions and operator overloads
 
-.. non-member-functions::
+.. rubric:: Non-member functions
+
    
 =============  =============
 `operator+`_   Adds ...
 fun3_          Queries ...
 =============  =============
 
-.. example::
+.. rubric:: Example
 
 Describe the example...
 
@@ -68,11 +77,16 @@ Describe the example...
 .. Group all the overloads together. Use sphinx footnotes if you want
    to have text specific to one function.
 
-.. synopsis::
+::
+
   ClassExample();
-.. synopsis::
+
+.. parsed-literal::
+   
   ClassExample(int a);            [#onearg]_
-.. synopsis::
+
+.. parsed-literal::
+   
   ClassExample(int a, int b);     [#twoarg]_
 
 Description of the function. The parameters are in a table below. We
@@ -81,33 +95,25 @@ have a single table for all the overloads.
 .. [#onearg] Describe constructor with one arg
 .. [#twoarg] Describe constructor with two args
 
-.. params::
+.. rubric:: Parameters
 
 | ``a`` - An argument called a
 | ``b`` - An argument called b
 
-fun1
-====
-
-.. synopsis::
-   int fun1(int a);
-.. synopsis::
-   template <class T>
-   int fun1();
 
 Description of the functions. Overloads are grouped together and may
 have footnotes for overload-specific description.
 
-.. tparams::
+.. rubric:: Template parameters
 
 | ``T`` - A parameter called T
 
-.. params::
+.. rubric:: Parameters
    
 | ``a`` - A parameter called a
 
 
-.. example::
+.. rubric:: Example
 
 A member function can have its own example
    

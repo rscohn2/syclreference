@@ -76,6 +76,13 @@ html_theme_options = {
     # 'page_width': 'max-width'
 }
 
+html_context = {
+    'display_github': True,
+    'github_user': 'rscohn2',
+    'github_repo': 'syclreference',
+    'github_version': 'master/source/'
+}
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -128,13 +135,14 @@ class ExampleDirective(Directive):
         return [nodes.rubric(text='Example')]
     
 def setup(app):
-    app.add_directive('tparams', TParamsDirective)
-    app.add_directive('params', ParamsDirective)
-    app.add_directive('returns', ReturnsDirective)
-    app.add_directive('member-types', MemberTypesDirective)
-    app.add_directive('member-functions', MemberFunctionsDirective)
-    app.add_directive('non-member-functions', NonMemberFunctionsDirective)
-    app.add_directive('example', ExampleDirective)
-    app.add_directive('synopsis', ParsedLiteral)
-    app.add_directive('exceptions', ExceptionsDirective)
+    if False:
+        app.add_directive('tparams', TParamsDirective)
+        app.add_directive('params', ParamsDirective)
+        app.add_directive('returns', ReturnsDirective)
+        app.add_directive('member-types', MemberTypesDirective)
+        app.add_directive('member-functions', MemberFunctionsDirective)
+        app.add_directive('non-member-functions', NonMemberFunctionsDirective)
+        app.add_directive('example', ExampleDirective)
+        app.add_directive('synopsis', ParsedLiteral)
+        app.add_directive('exceptions', ExceptionsDirective)
     return {'version': '0.1'}

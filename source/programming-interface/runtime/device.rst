@@ -13,16 +13,21 @@
   // See the License for the specific language governing permissions and
   // limitations under the License.
 
-======
-device
-======
+************
+Device class
+************
 
-.. synopsis::
+================
+Device interface
+================
+
+::
+   
    class device;
 
 An abstract class representing various models of SYCL devices
 
-.. member-functions::
+.. rubric:: Member functions
 
 =====================  =======================
 `(constructor)`_
@@ -38,7 +43,7 @@ has_extension_
 create_sub_devices_
 =====================  =======================
 
-.. non-member-functions::
+.. rubric:: Nonmember functions
 
 =================  =======================
 get_devices_
@@ -47,11 +52,16 @@ get_devices_
 (constructor)
 =============
 
-.. synopsis::
+.. parsed-literal::
+   
   device();                                                [#default]_
-.. synopsis::
+
+.. parsed-literal::
+   
   explicit device(cl_device_id deviceId);                  [#opencl]_
-.. synopsis::
+
+.. parsed-literal::
+   
   explicit device(const device_selector &deviceSelector);  [#select]_
 
 .. [#default] Default Constructor. Constructs a device object in host
@@ -61,7 +71,7 @@ get_devices_
              host mode.
 .. [#select] Use deviceSelector to choose device
 	     
-.. params::
+.. rubric:: Parameters
 
 | ``deviceID`` - OpenCL device id
 | ``deviceSelector`` - Device selector
@@ -69,121 +79,134 @@ get_devices_
 get
 ===
 
-.. synopsis::
+::
+   
   cl_device_id get() const;
 
 Return the cl_device_id of the underlying OpenCL platform
 
-.. returns::
+.. rubric:: Returns
 
 cl_device_id of underlying OpenCL platform
 
 is_host
 =======
 
-.. synopsis::
+::
+   
   bool is_host() const;
 
 Checks if the device is a SYCL host device
 
-.. returns::
+.. rubric:: Returns
 
-|true| if the device is a :term:`host device`, |false| otherwise.
+True if the device is a :term:`host device`, false otherwise.
 
 is_cpu
 ======
 
-.. synopsis::
+::
+   
   bool is_cpu() const;
 
 Checks if the device is a CPU
 
-.. returns::
+.. rubric:: Returns
 
-|true| if the device is a CPU, |false| otherwise
+True if the device is a CPU, false otherwise
 
 is_gpu
 ======
 
-.. synopsis::
+::
+   
   bool is_gpu() const;
 
 Checks if the device is a GPU
 
-.. returns::
+.. rubric:: Returns
 
-|true| if the device is a GPU, |false| otherwise
+True if the device is a GPU, false otherwise
 
 is_accelerator
 ==============
 
-.. synopsis::
+::
+   
   bool is_accelerator() const;
 
 Checks if the device is a GPU
 
-.. returns::
+.. rubric:: Returns
 
-|true| if the device is a GPU, |false| otherwise
+True if the device is a GPU, false otherwise
 
 get_platform
 ============
 
-.. synopsis::
+::
+   
   platform get_platform() const;
 
 Returns the platform that contains the device
 
-.. returns::
+.. rubric:: Returns
 
 Platform object
 
 get_info
 ========
 
-.. synopsis::
+::
+   
   template <info::device param>
   typename info::param_traits<info::device, param>::return_type
   get_info() const;
 
 Queries the device for information specific to ``param``.
 
-.. tparams::
+.. rubric:: Template parameters
 
 ``param`` - refer to info::device table 
 
-.. returns::
+.. rubric:: Returns
 
 Device information
 
-.. example::
+.. rubric:: Example
 
 See :ref:`platform-example`.
 
 has_extension
 =============
 
-.. synopsis::
+::
+   
   bool has_extension(const string_class &extension) const;
 
 Check
 
-.. params::
+.. rubric:: Parameters
 
 ``extension`` - name of extension
 
-.. returns::
+.. rubric:: Returns
 
 create_sub_devices
 ==================
 
-.. synopsis::
+.. parsed-literal::
+   
   template <info::partition_property prop>
   vector_class<device> create_sub_devices(size_t nbSubDev) const; [#1]_
-.. synopsis::
+
+.. parsed-literal::
+   
   template <info::partition_property prop>
   vector_class<device> create_sub_devices(const vector_class<size_t> &counts) const; [#2]_
-.. synopsis::
+
+.. parsed-literal::
+   
   template <info::partition_property prop>
   vector_class<device> create_sub_devices(info::affinity_domain affinityDomain) const; [#3]_
 
@@ -191,20 +214,20 @@ create_sub_devices
 .. [#2] Available only when prop == info::partition_property::partition_by_counts
 .. [#3]	Available only when prop == info::partition_property::partition_by_affinity_domain
 
-.. params::
+.. rubric:: Parameters
 
 nbSubDev -
 counts -
 affinityDomain -
 
-.. returns::
+.. rubric:: Returns
 
 get_devices
 ===========
 
-.. synopsis::
+::
+   
   static vector_class<device> get_devices(
       info::device_type deviceType = info::device_type::all);
 
-.. returns::
-
+.. rubric:: Returns

@@ -13,93 +13,13 @@
   // See the License for the specific language governing permissions and
   // limitations under the License.
 
-=================
-default_selector
-=================
+************************
+ Device selection class
+************************
 
-::
-   
-   class default_selector;
-
-Selects a SYCL device based on a implementation-defined
-heuristic. Selects a :term:`host device` if no other device can be
-found.
-   
-============
-gpu_selector
-============
-
-::
-   
-   class gpu_selector;
-
-Selects a GPU.   
-
-.. rubric:: Exceptions
-
-Throws a ``runtime_error`` if a GPU device cannot be found
-
-.. _gpu-selector-example:
-
-.. rubric:: Example
-
-.. literalinclude:: /examples/gpu-selector.cpp
-
-Output on a system without a GPU
-
-.. literalinclude:: /../build/examples/gpu-selector.out
-		    
-====================
-accelerator_selector
-====================
-
-::
-   
-   class accelerator_selector;
-
-Selects an accelerator.
-
-.. rubric:: Exceptions
-
-Throws a ``runtime_error`` if an accelerator device cannot be found.
-
-.. rubric:: Example
-
-See :ref:`gpu-selector-example` for the use of a pre-defined selector.
-
-============
-cpu_selector
-============
-
-::
-   
-   class cpu_selector;
-
-Select a CPU device.
-
-.. rubric:: Exceptions
-
-Throws a ``runtime_error`` if a CPU device cannot be found.
-
-.. rubric:: Example
-
-See :ref:`gpu-selector-example` for the use of a pre-defined selector.
-
-=============
-host_selector
-=============
-
-::
-   
-   class host_selector;
-
-.. rubric:: Example
-
-See :ref:`gpu-selector-example` for the use of a pre-defined selector.
-
-===============
-device_selector
-===============
+=========================
+Device selector interface
+=========================
 
 ::
    
@@ -156,3 +76,88 @@ operator()
   virtual int operator()(const device &device) const = 0;
 
 .. rubric:: Returns
+
+=======================
+Derived device selector
+=======================
+
+default_selector
+=================
+
+::
+   
+   class default_selector;
+
+Selects a SYCL device based on a implementation-defined
+heuristic. Selects a :term:`host device` if no other device can be
+found.
+   
+gpu_selector
+============
+
+::
+   
+   class gpu_selector;
+
+Selects a GPU.   
+
+.. rubric:: Exceptions
+
+Throws a ``runtime_error`` if a GPU device cannot be found
+
+.. _gpu-selector-example:
+
+.. rubric:: Example
+
+.. literalinclude:: /examples/gpu-selector.cpp
+
+Output on a system without a GPU
+
+.. literalinclude:: /../build/examples/gpu-selector.out
+		    
+accelerator_selector
+====================
+
+::
+   
+   class accelerator_selector;
+
+Selects an accelerator.
+
+.. rubric:: Exceptions
+
+Throws a ``runtime_error`` if an accelerator device cannot be found.
+
+.. rubric:: Example
+
+See :ref:`gpu-selector-example` for the use of a pre-defined selector.
+
+cpu_selector
+============
+
+::
+   
+   class cpu_selector;
+
+Select a CPU device.
+
+.. rubric:: Exceptions
+
+Throws a ``runtime_error`` if a CPU device cannot be found.
+
+.. rubric:: Example
+
+See :ref:`gpu-selector-example` for the use of a pre-defined selector.
+
+
+host_selector
+=============
+
+::
+   
+   class host_selector;
+
+.. rubric:: Example
+
+See :ref:`gpu-selector-example` for the use of a pre-defined selector.
+	    

@@ -13,9 +13,9 @@
    // See the License for the specific language governing permissions and
    // limitations under the License.
 
-=========
-platform
-=========
+==============
+Platform class
+==============
 
 ::
    
@@ -131,7 +131,7 @@ Requested information
 
 .. rubric:: Example
 
-See :ref:`platform-example`.
+See `platform-example`_.
 
 
 .. _platform-has_extension:

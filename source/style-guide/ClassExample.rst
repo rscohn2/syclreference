@@ -45,7 +45,7 @@ the member functions, one section each.
 
 ================  ===========================
 `(constructor)`_  constructs a ClassExample
-fun1_             checks ...
+fun1              checks ...
 ================  ===========================
 
 .. Non-member functions are static functions and operator overloads
@@ -78,10 +78,15 @@ Describe the example...
    to have text specific to one function.
 
 ::
+
   ClassExample();
-.. synopsis::
+
+.. parsed-literal::
+   
   ClassExample(int a);            [#onearg]_
-.. synopsis::
+
+.. parsed-literal::
+   
   ClassExample(int a, int b);     [#twoarg]_
 
 Description of the function. The parameters are in a table below. We
@@ -90,63 +95,25 @@ have a single table for all the overloads.
 .. [#onearg] Describe constructor with one arg
 .. [#twoarg] Describe constructor with two args
 
-.. params::
+.. rubric:: Parameters
 
 | ``a`` - An argument called a
 | ``b`` - An argument called b
-
-fun1
-====
-
-::
-   
-   int fun1(int a);
-
-a literal block::
-  
-   template <class T>
-   int fun1();
-
-.. parsed-literal::
-  
-   template <class T>
-   int fun1();
-
-::
-   int fun1(int a);
-
-a literal block::
-   template <class T>
-   int fun1();
-
-.. code::
-   template <class T>
-   int fun1();
-
-
-   int fun1(int a);
-::
-   int fun1(int a);
-::
-   int fun1(int a);
-
 
 
 Description of the functions. Overloads are grouped together and may
 have footnotes for overload-specific description.
 
-  indented
-
 .. rubric:: Template parameters
 
 | ``T`` - A parameter called T
 
-.. params::
+.. rubric:: Parameters
    
 | ``a`` - A parameter called a
 
 
-.. example::
+.. rubric:: Example
 
 A member function can have its own example
    

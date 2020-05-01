@@ -99,7 +99,8 @@ html_static_path = ['_static']
 
 # -- notfound extension ------------------------------------
 
-notfound_no_urls_prefix = True
+notfound_default_language = 'syclreference'
+notfound_default_version = ''
 
 # -- Add some directives for structure------------------------------------
 

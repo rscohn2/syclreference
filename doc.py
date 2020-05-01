@@ -8,7 +8,7 @@ import os.path
 import shutil
 import subprocess
 
-sphinx_opts    = '-W -n -q -N'
+sphinx_opts    = '-n -q -N'
 sphinx_build   = 'sphinx-build'
 source_dir     = 'source'
 build_dir      = 'build'

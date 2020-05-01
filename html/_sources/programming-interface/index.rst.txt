@@ -1,41 +1,111 @@
-.. _dpcpp-classes-class-templates-and-defines:
-
 =====================
 Programming Interface
 =====================
 
+For further details on SYCL, see the `SYCL
+Specification <https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf>`__.
 
-The Data Parallel C++ (DPC++) programming language and runtime consists
-of a set of C++ classes, templates, and libraries used to express a
-DPC++program. This chapter provides a summary of the key classes,
-templates, and runtime libraries used to program.
 
 Header File
 ===========
 
+A single header file must be included::
+
+  #include "sycl.hpp"
+
+
 Namespaces
 ==========
 
-
-Class Descriptions
-==================
-
-The following sections provide further details on these items. These
-sections do not provide the exhaustive details found in the SYCL
-Specification. Instead, these sections provide:
+Unless otherwise noted, all symbols should be prefixed with the
+``cl::sycl`` namespace. ``buffer`` is ``cl::sycl::buffer``, and
+``info::device::name`` is ``cl::sycl::info::device::name``.
 
 
--  A summary that includes a description and the purpose
--  Comments on the different constructors, if applicable
--  Member function information, if applicable
--  Special cases to consider with the DPC++ implementation compared to
-   the SYCL Specification
+Standard Library Classes
+========================
 
-For further details on SYCL, see the `SYCL
-Specification <https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf>`__.
+
+Runtime classes
+===============
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
 
-   runtime/index
-   data/index
+   runtime/device-selectors
+   runtime/platform
+   runtime/context
+   runtime/device
+   runtime/queue
+   runtime/event
+
+Data access
+===========
+
+.. toctree::
+   :maxdepth: 2
+
+   data/buffer
+   data/image
+   data/accessor
+   data/address-space
+   data/sampler
+
+
+Expressing parallelism
+======================
+
+.. toctree::
+
+   parallelism/range
+   parallelism/command-group
+   parallelism/invoking-kernels
+   parallelism/memory
+   parallelism/kernel
+   parallelism/program
+   
+Error handling
+==============
+
+.. toctree::
+
+   error/exception
+
+Data types
+==========
+
+.. toctree::
+
+   types/scalar
+   types/vector
+
+Synchronization and atomics
+===========================
+
+.. toctree::
+
+   synchronization/types
+
+Stream class
+============
+
+.. toctree::
+
+   stream/stream
+
+Built-in functions
+==================
+
+.. toctree::
+
+   built-in/math
+   built-in/integer
+   built-in/common
+   built-in/geometric
+   built-in/relational
+   built-in/vector
+   built-in/synchronization
+   built-in/printf
+
+
+

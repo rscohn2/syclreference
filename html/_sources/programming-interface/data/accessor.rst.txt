@@ -1,8 +1,12 @@
-============
-``accessor``
-============
+***********
+ Accessors
+***********
 
-.. parsed-literal::
+========
+accessor
+========
+
+::
    
    template<
        typename dataT,
@@ -10,7 +14,7 @@
        access::mode accessmode,
        access::target accessTarget = access::target::global_buffer,
        access::placeholder isPlaceholder = access::placeholder::false_t
-   > accessor;
+   > class accessor;
 
 
 A DPC++ ``accessor`` encapsulates reading and writing memory objects
@@ -22,13 +26,12 @@ argument.
 
 .. rubric:: Template parameters
 
-=================  ===============
-``dataT``          type of buffer element
-``dimensions``     dimensionality of buffer
-``accessmode``     type of access
-``accessTarget``   type of memory
-``isPlaceholder``  placeholder
-=================  ===============
+| ``dataT`` - type of buffer element
+| ``dimensions``- dimensionality of buffer
+| ``accessmode`` - type of access
+| ``accessTarget`` - type of memory
+| ``isPlaceholder`` - placeholder
+
 
 .. rubric:: Member types
 
@@ -50,26 +53,15 @@ get_range
 get_offset
 =================  ======================
 
-``get_size``
-============
+get_size
+========
 
-.. parsed-literal::
-
+::
+   
    size_t get_size() const
 
 Description   
 
-``get_count``
-=============
+get_count
+=========
 
-.. parsed-literal::
-
-   size_t get_size() const [#none]_
-   size_t get_size(int b) const [#single]_
-   size_t get_size(int c, int d) const [#double]_
-
-Description
-
-.. [#none] No arguments
-.. [#single] single argument
-.. [#double] 2 arguments

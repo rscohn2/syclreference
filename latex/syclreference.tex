@@ -67,12 +67,12 @@
 \urlstyle{same}
 
 \usepackage{sphinxmessages}
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
+
+
 
 
 \title{SYCL Reference}
-\date{Apr 26, 2020}
+\date{May 01, 2020}
 \release{}
 \author{Intel}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -162,52 +162,51 @@ add STL interfaces
 
 
 \chapter{Programming Interface}
-\label{\detokenize{programming-interface/index:programming-interface}}\label{\detokenize{programming-interface/index:dpcpp-classes-class-templates-and-defines}}\label{\detokenize{programming-interface/index::doc}}
-The Data Parallel C++ (DPC++) programming language and runtime consists
-of a set of C++ classes, templates, and libraries used to express a
-DPC++program. This chapter provides a summary of the key classes,
-templates, and runtime libraries used to program.
-
-
-\section{Header File}
-\label{\detokenize{programming-interface/index:header-file}}
-
-\section{Namespaces}
-\label{\detokenize{programming-interface/index:namespaces}}
-
-\section{Class Descriptions}
-\label{\detokenize{programming-interface/index:class-descriptions}}
-The following sections provide further details on these items. These
-sections do not provide the exhaustive details found in the SYCL
-Specification. Instead, these sections provide:
-\begin{itemize}
-\item {} 
-A summary that includes a description and the purpose
-
-\item {} 
-Comments on the different constructors, if applicable
-
-\item {} 
-Member function information, if applicable
-
-\item {} 
-Special cases to consider with the DPC++ implementation compared to
-the SYCL Specification
-
-\end{itemize}
-
+\label{\detokenize{programming-interface/index:programming-interface}}\label{\detokenize{programming-interface/index::doc}}
 For further details on SYCL, see the \sphinxhref{https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf}{SYCL
 Specification}.
 
 
-\subsection{Runtime Classes}
-\label{\detokenize{programming-interface/runtime/index:runtime-classes}}\label{\detokenize{programming-interface/runtime/index::doc}}
+\section{Header File}
+\label{\detokenize{programming-interface/index:header-file}}
+A single header file must be included:
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{device\_selector}}}
-\label{\detokenize{programming-interface/runtime/device-selector:device-selector}}\label{\detokenize{programming-interface/runtime/device-selector::doc}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}sycl.hpp\PYGZdq{}}
+\end{sphinxVerbatim}
+
+
+\section{Namespaces}
+\label{\detokenize{programming-interface/index:namespaces}}
+Unless otherwise noted, all symbols should be prefixed with the
+\sphinxcode{\sphinxupquote{cl::sycl}} namespace. \sphinxcode{\sphinxupquote{buffer}} is \sphinxcode{\sphinxupquote{cl::sycl::buffer}}, and
+\sphinxcode{\sphinxupquote{info::device::name}} is \sphinxcode{\sphinxupquote{cl::sycl::info::device::name}}.
+
+
+\section{Standard Library Classes}
+\label{\detokenize{programming-interface/index:standard-library-classes}}
+
+\section{Runtime classes}
+\label{\detokenize{programming-interface/index:runtime-classes}}
+
+\subsection{Device Selectors}
+\label{\detokenize{programming-interface/runtime/device-selectors:device-selectors}}\label{\detokenize{programming-interface/runtime/device-selectors::doc}}
+Devices selectors allow the SYCL runtime to choose the
+device. Built\sphinxhyphen{}in device selectors allow the user to restrict the type
+of device. Users can also specify their own heuristics for choosing
+the device by implementing their own \sphinxcode{\sphinxupquote{device\_selector}}.
+
+
+\subsubsection{Device selection class}
+\label{\detokenize{programming-interface/runtime/device-selector:device-selection-class}}\label{\detokenize{programming-interface/runtime/device-selector::doc}}
+
+\paragraph{Device selector interface}
+\label{\detokenize{programming-interface/runtime/device-selector:device-selector-interface}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{class} \PYG{n+nc}{device\PYGZus{}selector}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+
+\sphinxcode{\sphinxupquote{device\_selector}} is an abstract class that cann
 \subsubsection*{Member functions}
 
 
@@ -217,10 +216,14 @@ Specification}.
 \hline
 
 {\hyperref[\detokenize{programming-interface/runtime/device-selector:constructor}]{\sphinxcrossref{(constructor)}}}
-&\\
+&
+constructs a device\_selector
+\\
 \hline
-{\hyperref[\detokenize{programming-interface/runtime/device-selector:destructor}]{\sphinxcrossref{(destructor)}}}
-&\\
+(destructor)
+&
+destroys the device\_selector
+\\
 \hline
 {\hyperref[\detokenize{programming-interface/runtime/device-selector:select-device}]{\sphinxcrossref{select\_device}}}
 &\\
@@ -228,7 +231,7 @@ Specification}.
 \end{tabulary}
 \par
 \sphinxattableend\end{savenotes}
-\subsubsection*{Non\sphinxhyphen{}member functions}
+\subsubsection*{Nonmember functions}
 
 
 \begin{savenotes}\sphinxattablestart
@@ -244,39 +247,132 @@ operator()
 \sphinxattableend\end{savenotes}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(constructor)}}}
+\subparagraph{(constructor)}
 \label{\detokenize{programming-interface/runtime/device-selector:constructor}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{device\PYGZus{}selector}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{rhs}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{operator}\PYG{o}{=}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{rhs}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
+Constructs a \sphinxcode{\sphinxupquote{device\_selector}} from another \sphinxcode{\sphinxupquote{device\_selector}}
+\subsubsection*{Parameters}
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(destructor)}}}
-\label{\detokenize{programming-interface/runtime/device-selector:destructor}}
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{virtual} \PYG{o}{\PYGZti{}}\PYG{n}{device\PYGZus{}selector}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-\end{sphinxVerbatim}
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{rhs}} \sphinxhyphen{} device
+\end{DUlineblock}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{select\_device}}}
+\subparagraph{select\_device}
 \label{\detokenize{programming-interface/runtime/device-selector:select-device}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{device} \PYG{n}{select\PYGZus{}device}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{operator()}}}
+\subparagraph{operator()}
 \label{\detokenize{programming-interface/runtime/device-selector:operator}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{virtual} \PYG{n+nb}{int} \PYG{n}{operator}\PYG{p}{(}\PYG{p}{)}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{device}\PYG{p}{)} \PYG{n}{const} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{platform}}}
-\label{\detokenize{programming-interface/runtime/platform:platform}}\label{\detokenize{programming-interface/runtime/platform::doc}}
+\paragraph{Derived device selector}
+\label{\detokenize{programming-interface/runtime/device-selector:derived-device-selector}}
+
+\subparagraph{default\_selector}
+\label{\detokenize{programming-interface/runtime/device-selector:default-selector}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{default\PYGZus{}selector}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+Selects a SYCL device based on a implementation\sphinxhyphen{}defined
+heuristic. Selects a {\hyperref[\detokenize{glossary:term-host-device}]{\sphinxtermref{\DUrole{xref,std,std-term}{host device}}}} if no other device can be
+found.
+
+
+\subparagraph{gpu\_selector}
+\label{\detokenize{programming-interface/runtime/device-selector:gpu-selector}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{gpu\PYGZus{}selector}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+Selects a GPU.
+\subsubsection*{Exceptions}
+
+Throws a \sphinxcode{\sphinxupquote{runtime\_error}} if a GPU device cannot be found
+
+\phantomsection\label{\detokenize{programming-interface/runtime/device-selector:gpu-selector-example}}\subsubsection*{Example}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}include \PYGZlt{}CL/sycl.hpp\PYGZgt{}}
+
+\PYG{n}{using} \PYG{n}{namespace} \PYG{n}{cl}\PYG{p}{:}\PYG{p}{:}\PYG{n}{sycl}\PYG{p}{;}
+
+\PYG{n+nb}{int} \PYG{n}{main}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{device} \PYG{n}{d}\PYG{p}{;}
+  
+  \PYG{k}{try} \PYG{p}{\PYGZob{}}
+    \PYG{n}{d} \PYG{o}{=} \PYG{n}{device}\PYG{p}{(}\PYG{n}{gpu\PYGZus{}selector}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}} \PYG{n}{catch} \PYG{p}{(}\PYG{n}{exception} \PYG{n}{const}\PYG{o}{\PYGZam{}} \PYG{n}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Cannot select a GPU}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{e}\PYG{o}{.}\PYG{n}{what}\PYG{p}{(}\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+    \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Using a CPU device}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+    \PYG{n}{d} \PYG{o}{=} \PYG{n}{device}\PYG{p}{(}\PYG{n}{cpu\PYGZus{}selector}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Using }\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{d}\PYG{o}{.}\PYG{n}{get\PYGZus{}info}\PYG{o}{\PYGZlt{}}\PYG{n}{sycl}\PYG{p}{:}\PYG{p}{:}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{device}\PYG{p}{:}\PYG{p}{:}\PYG{n}{name}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+Output on a system without a GPU
+
+
+\subparagraph{accelerator\_selector}
+\label{\detokenize{programming-interface/runtime/device-selector:accelerator-selector}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{accelerator\PYGZus{}selector}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+Selects an accelerator.
+\subsubsection*{Exceptions}
+
+Throws a \sphinxcode{\sphinxupquote{runtime\_error}} if an accelerator device cannot be found.
+\subsubsection*{Example}
+
+See {\hyperref[\detokenize{programming-interface/runtime/device-selector:gpu-selector-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}} for the use of a pre\sphinxhyphen{}defined selector.
+
+
+\subparagraph{cpu\_selector}
+\label{\detokenize{programming-interface/runtime/device-selector:cpu-selector}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{cpu\PYGZus{}selector}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+Select a CPU device.
+\subsubsection*{Exceptions}
+
+Throws a \sphinxcode{\sphinxupquote{runtime\_error}} if a CPU device cannot be found.
+\subsubsection*{Example}
+
+See {\hyperref[\detokenize{programming-interface/runtime/device-selector:gpu-selector-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}} for the use of a pre\sphinxhyphen{}defined selector.
+
+
+\subparagraph{host\_selector}
+\label{\detokenize{programming-interface/runtime/device-selector:host-selector}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{host\PYGZus{}selector}\PYG{p}{;}
+\end{sphinxVerbatim}
+\subsubsection*{Example}
+
+See {\hyperref[\detokenize{programming-interface/runtime/device-selector:gpu-selector-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}} for the use of a pre\sphinxhyphen{}defined selector.
+
+
+\subsection{Platform class}
+\label{\detokenize{programming-interface/runtime/platform:platform-class}}\label{\detokenize{programming-interface/runtime/platform::doc}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{class} \PYG{n+nc}{platform}\PYG{p}{;}
 \end{sphinxVerbatim}
@@ -295,7 +391,7 @@ Abstraction for SYCL platform.
 constructs a platform
 \\
 \hline
-(destructor)
+destructor
 &
 destroys a platform
 \\
@@ -328,7 +424,7 @@ checks if platform has a SYCL host device
 \end{tabulary}
 \par
 \sphinxattableend\end{savenotes}
-\subsubsection*{Non\sphinxhyphen{}member functions}
+\subsubsection*{Nonmember functions}
 
 
 \begin{savenotes}\sphinxattablestart
@@ -346,7 +442,7 @@ returns available platforms
 \sphinxattableend\end{savenotes}
 \phantomsection\label{\detokenize{programming-interface/runtime/platform:platform-example}}\subsubsection*{Example}
 
-Demonstrates several methods for \sphinxcode{\sphinxupquote{platform}}
+Enumerate the platforms and the devices they contain.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{}include \PYGZlt{}CL/sycl.hpp\PYGZgt{}}
@@ -387,42 +483,32 @@ Output:
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(constructor)}}}
-\label{\detokenize{programming-interface/runtime/platform:constructor}}\begin{sphinxalltt}
-platform();
-explicit platform(cl\_platform\_id platformID); \begin{footnote}[1]\sphinxAtStartFootnote
+\subsubsection{(constructor)}
+\label{\detokenize{programming-interface/runtime/platform:constructor}}\label{\detokenize{programming-interface/runtime/platform:platform-constructor}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{platform}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+\begin{sphinxalltt}
+explicit platform(cl\_platform\_id platformID);             \begin{footnote}[1]\sphinxAtStartFootnote
 Constructs a SYCL platform that retains an OpenCL id
 \end{footnote}
+\end{sphinxalltt}
+\begin{sphinxalltt}
 explicit platform(const device\_selector \&deviceSelector); \begin{footnote}[2]\sphinxAtStartFootnote
 Selects a platform that contains the desired device
 \end{footnote}
 \end{sphinxalltt}
 
 Constructs a platform handle.
-\subsubsection*{Arguments}
+\subsubsection*{Parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{platformID}} \sphinxhyphen{} OpenCL platform ID
+\item[] \sphinxcode{\sphinxupquote{deviceSelector}} \sphinxhyphen{}  Platform must contain the selected device
+\end{DUlineblock}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{platformID}}
-&
-OpenCL platform ID
-\\
-\hline
-\sphinxcode{\sphinxupquote{deviceSelector}}
-&
-Platform must contain the selected device
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-
-
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get}}}
+\subsubsection{get}
 \label{\detokenize{programming-interface/runtime/platform:get}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{cl\PYGZus{}platform\PYGZus{}id} \PYG{n}{get}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
@@ -431,7 +517,7 @@ Platform must contain the selected device
 Returns OpenCL platform id used in the constructor.
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_devices}}}
+\subsubsection{get\_devices}
 \label{\detokenize{programming-interface/runtime/platform:get-devices}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{device}\PYG{o}{\PYGZgt{}} \PYG{n}{get\PYGZus{}devices}\PYG{p}{(}
@@ -439,32 +525,21 @@ Returns OpenCL platform id used in the constructor.
 \end{sphinxVerbatim}
 
 Returns vector of devices of the requested type
-\subsubsection*{Arguments}
+\subsubsection*{Parameters}
 
-
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{device\_type}}
-&
-limits type of device returned
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\subsubsection*{Return value}
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{device\_type}} \sphinxhyphen{} limits type of device returned
+\end{DUlineblock}
+\subsubsection*{Returns}
 
 \sphinxcode{\sphinxupquote{vector}} containing devices of the specified type bound to the
 platform.
 \subsubsection*{Example}
 
-See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}}.
+See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{platform\sphinxhyphen{}example}}}.
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_info}}}
+\subsubsection{get\_info}
 \label{\detokenize{programming-interface/runtime/platform:get-info}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template}\PYG{o}{\PYGZlt{}} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{platform} \PYG{n}{param} \PYG{o}{\PYGZgt{}}
@@ -472,69 +547,60 @@ See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-examp
 \end{sphinxVerbatim}
 
 Returns information about the platform, as specified by \sphinxcode{\sphinxupquote{param}}.
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 Requested information
 \subsubsection*{Example}
 
-See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}}.
+See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{platform\sphinxhyphen{}example}}}.
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{has\_extension}}}
-\label{\detokenize{programming-interface/runtime/platform:has-extension}}
+\subsubsection{has\_extension}
+\label{\detokenize{programming-interface/runtime/platform:has-extension}}\label{\detokenize{programming-interface/runtime/platform:platform-has-extension}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{has\PYGZus{}extension}\PYG{p}{(}\PYG{n}{const} \PYG{n}{string\PYGZus{}class} \PYG{o}{\PYGZam{}}\PYG{n}{extension}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 Checks if the platform has the requested extension.
-\subsubsection*{Arguments}
+\subsubsection*{Parameters}
 
-
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{extension}}
-&\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\subsubsection*{Return value}
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{extension}} \sphinxhyphen{}
+\end{DUlineblock}
+\subsubsection*{Returns}
 
 \sphinxcode{\sphinxupquote{true}} if the platform has \sphinxcode{\sphinxupquote{extension}}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_host}}}
+\subsubsection{is\_host}
 \label{\detokenize{programming-interface/runtime/platform:is-host}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}host}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 Checks if the platform contains a SYCL {\hyperref[\detokenize{glossary:term-host-device}]{\sphinxtermref{\DUrole{xref,std,std-term}{host device}}}}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 \sphinxcode{\sphinxupquote{true}} if the platform contains a host device
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_platforms}}}
+\subsubsection{get\_platforms}
 \label{\detokenize{programming-interface/runtime/platform:get-platforms}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{static} \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{platform}\PYG{o}{\PYGZgt{}} \PYG{n}{get\PYGZus{}platforms}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 Returns vector of platforms
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 vector\_class containing SYCL platforms bound to the system
 \subsubsection*{Example}
 
-See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}}.
+See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{platform\sphinxhyphen{}example}}}.
 
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{context}}}
-\label{\detokenize{programming-interface/runtime/context:context}}\label{\detokenize{programming-interface/runtime/context::doc}}
+\subsection{Context class}
+\label{\detokenize{programming-interface/runtime/context:context-class}}\label{\detokenize{programming-interface/runtime/context::doc}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{class} \PYG{n+nc}{context}\PYG{p}{;}
 \end{sphinxVerbatim}
@@ -579,98 +645,110 @@ queries properties
 \sphinxattableend\end{savenotes}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(constructor)}}}
+\subsubsection{(constructor)}
 \label{\detokenize{programming-interface/runtime/context:constructor}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{async\PYGZus{}handler} \PYG{n}{asyncHandler}\PYG{p}{,}
         \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{dev}\PYG{p}{,} \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{dev}\PYG{p}{,} \PYG{n}{async\PYGZus{}handler} \PYG{n}{asyncHandler}\PYG{p}{,}
         \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{platform} \PYG{o}{\PYGZam{}}\PYG{n}{plt}\PYG{p}{,} \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{platform} \PYG{o}{\PYGZam{}}\PYG{n}{plt}\PYG{p}{,} \PYG{n}{async\PYGZus{}handler} \PYG{n}{asyncHandler}\PYG{p}{,}
         \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{device}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{deviceList}\PYG{p}{,}
         \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{const} \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{device}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{deviceList}\PYG{p}{,}
         \PYG{n}{async\PYGZus{}handler} \PYG{n}{asyncHandler}\PYG{p}{,} \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context}\PYG{p}{(}\PYG{n}{cl\PYGZus{}context} \PYG{n}{clContext}\PYG{p}{,} \PYG{n}{async\PYGZus{}handler} \PYG{n}{asyncHandler} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Arguments}
+\subsubsection*{Parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{propList}} \sphinxhyphen{}
+\item[] \sphinxcode{\sphinxupquote{asyncHandler}} \sphinxhyphen{}
+\item[] \sphinxcode{\sphinxupquote{dev}} \sphinxhyphen{}
+\item[] \sphinxcode{\sphinxupquote{plt}} \sphinxhyphen{}
+\item[] \sphinxcode{\sphinxupquote{deviceList}} \sphinxhyphen{}
+\end{DUlineblock}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{propList}}
-&\\
-\hline
-\sphinxcode{\sphinxupquote{asyncHandler}}
-&\\
-\hline
-\sphinxcode{\sphinxupquote{dev}}
-&\\
-\hline
-\sphinxcode{\sphinxupquote{plt}}
-&\\
-\hline
-\sphinxcode{\sphinxupquote{deviceList}}
-&\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-
-
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get}}}
+\subsubsection{get}
 \label{\detokenize{programming-interface/runtime/context:get}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{cl\PYGZus{}context} \PYG{n}{get}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_host}}}
+\subsubsection{is\_host}
 \label{\detokenize{programming-interface/runtime/context:is-host}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}host}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_platform}}}
+\subsubsection{get\_platform}
 \label{\detokenize{programming-interface/runtime/context:get-platform}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{platform} \PYG{n}{get\PYGZus{}platform}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_devices}}}
+\subsubsection{get\_devices}
 \label{\detokenize{programming-interface/runtime/context:get-devices}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{device}\PYG{o}{\PYGZgt{}} \PYG{n}{get\PYGZus{}devices}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_info}}}
+\subsubsection{get\_info}
 \label{\detokenize{programming-interface/runtime/context:get-info}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{context} \PYG{n}{param}\PYG{o}{\PYGZgt{}}
 \PYG{n}{typename} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{param\PYGZus{}traits}\PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{context}\PYG{p}{,} \PYG{n}{param}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{p}{:}\PYG{n}{return\PYGZus{}type} \PYG{n}{get\PYGZus{}info}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{device}}}
-\label{\detokenize{programming-interface/runtime/device:device}}\label{\detokenize{programming-interface/runtime/device::doc}}
+\subsection{Device class}
+\label{\detokenize{programming-interface/runtime/device:device-class}}\label{\detokenize{programming-interface/runtime/device::doc}}
+
+\subsubsection{Device interface}
+\label{\detokenize{programming-interface/runtime/device:device-interface}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{class} \PYG{n+nc}{device}\PYG{p}{;}
 \end{sphinxVerbatim}
+
+An abstract class representing various models of SYCL devices
 \subsubsection*{Member functions}
 
 
@@ -715,7 +793,7 @@ queries properties
 \end{tabulary}
 \par
 \sphinxattableend\end{savenotes}
-\subsubsection*{Non\sphinxhyphen{}member functions}
+\subsubsection*{Nonmember functions}
 
 
 \begin{savenotes}\sphinxattablestart
@@ -731,165 +809,175 @@ queries properties
 \sphinxattableend\end{savenotes}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(constructor)}}}
-\label{\detokenize{programming-interface/runtime/device:constructor}}
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{device}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-\PYG{n}{explicit} \PYG{n}{device}\PYG{p}{(}\PYG{n}{cl\PYGZus{}device\PYGZus{}id} \PYG{n}{deviceId}\PYG{p}{)}\PYG{p}{;}
-\PYG{n}{explicit} \PYG{n}{device}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{deviceSelector}\PYG{p}{)}\PYG{p}{;}
-\end{sphinxVerbatim}
-\subsubsection*{Arguments}
+\paragraph{(constructor)}
+\label{\detokenize{programming-interface/runtime/device:constructor}}\begin{sphinxalltt}
+device();                                                \begin{footnote}[4]\sphinxAtStartFootnote
+Default Constructor. Constructs a device object in host
+mode.
+\end{footnote}
+\end{sphinxalltt}
+\begin{sphinxalltt}
+explicit device(cl\_device\_id deviceId);                  \begin{footnote}[5]\sphinxAtStartFootnote
+Constructs a device object from another device object and
+retains the cl\_device\_id object if the device is not in
+host mode.
+\end{footnote}
+\end{sphinxalltt}
+\begin{sphinxalltt}
+explicit device(const device\_selector \&deviceSelector);  \begin{footnote}[6]\sphinxAtStartFootnote
+Use deviceSelector to choose device
+\end{footnote}
+\end{sphinxalltt}
+\subsubsection*{Parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{deviceID}} \sphinxhyphen{} OpenCL device id
+\item[] \sphinxcode{\sphinxupquote{deviceSelector}} \sphinxhyphen{} Device selector
+\end{DUlineblock}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{deviceID}}
-&\\
-\hline
-\sphinxcode{\sphinxupquote{deviceSelector}}
-&\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-
-
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get}}}
+\paragraph{get}
 \label{\detokenize{programming-interface/runtime/device:get}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{cl\PYGZus{}device\PYGZus{}id} \PYG{n}{get}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Return the cl\_device\_id of the underlying OpenCL platform
+\subsubsection*{Returns}
+
+cl\_device\_id of underlying OpenCL platform
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_host}}}
+\paragraph{is\_host}
 \label{\detokenize{programming-interface/runtime/device:is-host}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}host}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Checks if the device is a SYCL host device
+\subsubsection*{Returns}
+
+True if the device is a {\hyperref[\detokenize{glossary:term-host-device}]{\sphinxtermref{\DUrole{xref,std,std-term}{host device}}}}, false otherwise.
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_cpu}}}
+\paragraph{is\_cpu}
 \label{\detokenize{programming-interface/runtime/device:is-cpu}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}cpu}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Checks if the device is a CPU
+\subsubsection*{Returns}
+
+True if the device is a CPU, false otherwise
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_gpu}}}
+\paragraph{is\_gpu}
 \label{\detokenize{programming-interface/runtime/device:is-gpu}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}gpu}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Checks if the device is a GPU
+\subsubsection*{Returns}
+
+True if the device is a GPU, false otherwise
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_accelerator}}}
+\paragraph{is\_accelerator}
 \label{\detokenize{programming-interface/runtime/device:is-accelerator}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}accelerator}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Checks if the device is a GPU
+\subsubsection*{Returns}
+
+True if the device is a GPU, false otherwise
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_platform}}}
+\paragraph{get\_platform}
 \label{\detokenize{programming-interface/runtime/device:get-platform}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{platform} \PYG{n}{get\PYGZus{}platform}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Returns the platform that contains the device
+\subsubsection*{Returns}
+
+Platform object
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_info}}}
+\paragraph{get\_info}
 \label{\detokenize{programming-interface/runtime/device:get-info}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{device} \PYG{n}{param}\PYG{o}{\PYGZgt{}}
 \PYG{n}{typename} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{param\PYGZus{}traits}\PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{device}\PYG{p}{,} \PYG{n}{param}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{p}{:}\PYG{n}{return\PYGZus{}type}
 \PYG{n}{get\PYGZus{}info}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+
+Queries the device for information specific to \sphinxcode{\sphinxupquote{param}}.
+\subsubsection*{Template parameters}
+
+\sphinxcode{\sphinxupquote{param}} \sphinxhyphen{} refer to \sphinxurl{info::device} table
+\subsubsection*{Returns}
+
+Device information
 \subsubsection*{Example}
 
 See {\hyperref[\detokenize{programming-interface/runtime/platform:platform-example}]{\sphinxcrossref{\DUrole{std,std-ref}{Example}}}}.
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{has\_extension}}}
+\paragraph{has\_extension}
 \label{\detokenize{programming-interface/runtime/device:has-extension}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{has\PYGZus{}extension}\PYG{p}{(}\PYG{n}{const} \PYG{n}{string\PYGZus{}class} \PYG{o}{\PYGZam{}}\PYG{n}{extension}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Arguments}
+
+Check
+\subsubsection*{Parameters}
+
+\sphinxcode{\sphinxupquote{extension}} \sphinxhyphen{} name of extension
+\subsubsection*{Returns}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{extension}}
-&\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\subsubsection*{Return value}
-
-
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{create\_sub\_devices}}}
+\paragraph{create\_sub\_devices}
 \label{\detokenize{programming-interface/runtime/device:create-sub-devices}}\begin{sphinxalltt}
 template \textless{}\sphinxurl{info::partition\_property} prop\textgreater{}
-vector\_class\textless{}device\textgreater{} create\_sub\_devices(size\_t nbSubDev) const; \begin{footnote}[4]\sphinxAtStartFootnote
+vector\_class\textless{}device\textgreater{} create\_sub\_devices(size\_t nbSubDev) const; \begin{footnote}[7]\sphinxAtStartFootnote
 Available only when prop == \sphinxurl{info::partition\_property::partition\_equally}
 \end{footnote}
-
+\end{sphinxalltt}
+\begin{sphinxalltt}
 template \textless{}\sphinxurl{info::partition\_property} prop\textgreater{}
-vector\_class\textless{}device\textgreater{} create\_sub\_devices(const vector\_class\textless{}size\_t\textgreater{} \&counts) const; \begin{footnote}[5]\sphinxAtStartFootnote
+vector\_class\textless{}device\textgreater{} create\_sub\_devices(const vector\_class\textless{}size\_t\textgreater{} \&counts) const; \begin{footnote}[8]\sphinxAtStartFootnote
 Available only when prop == \sphinxurl{info::partition\_property::partition\_by\_counts}
 \end{footnote}
-
+\end{sphinxalltt}
+\begin{sphinxalltt}
 template \textless{}\sphinxurl{info::partition\_property} prop\textgreater{}
-vector\_class\textless{}device\textgreater{} create\_sub\_devices(\sphinxurl{info::affinity\_domain} affinityDomain) const; \begin{footnote}[6]\sphinxAtStartFootnote
+vector\_class\textless{}device\textgreater{} create\_sub\_devices(\sphinxurl{info::affinity\_domain} affinityDomain) const; \begin{footnote}[9]\sphinxAtStartFootnote
 Available only when prop == \sphinxurl{info::partition\_property::partition\_by\_affinity\_domain}
 \end{footnote}
 \end{sphinxalltt}
-\subsubsection*{Arguments}
+\subsubsection*{Parameters}
+
+nbSubDev \sphinxhyphen{}
+counts \sphinxhyphen{}
+affinityDomain \sphinxhyphen{}
+\subsubsection*{Returns}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-nbSubDev
-&\\
-\hline
-counts
-&\\
-\hline
-affinityDomain
-&\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\subsubsection*{Return value}
-
-
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_devices}}}
+\paragraph{get\_devices}
 \label{\detokenize{programming-interface/runtime/device:get-devices}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{static} \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{device}\PYG{o}{\PYGZgt{}} \PYG{n}{get\PYGZus{}devices}\PYG{p}{(}
     \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{device\PYGZus{}type} \PYG{n}{deviceType} \PYG{o}{=} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{device\PYGZus{}type}\PYG{p}{:}\PYG{p}{:}\PYG{n+nb}{all}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{queue}}}
+\subsection{queue}
 \label{\detokenize{programming-interface/runtime/queue:queue}}\label{\detokenize{programming-interface/runtime/queue::doc}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{class} \PYG{n+nc}{queue}\PYG{p}{;}
@@ -940,130 +1028,157 @@ affinityDomain
 \sphinxattableend\end{savenotes}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(constructor)}}}
+\subsubsection{(constructor)}
 \label{\detokenize{programming-interface/runtime/queue:constructor}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{async\PYGZus{}handler} \PYG{o}{\PYGZam{}}\PYG{n}{asyncHandler}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-\PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{deviceSelector}\PYG{p}{,}
-               \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-\PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{deviceSelector}\PYG{p}{,}
-               \PYG{n}{const} \PYG{n}{async\PYGZus{}handler} \PYG{o}{\PYGZam{}}\PYG{n}{asyncHandler}\PYG{p}{,}
-               \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+\begin{description}
+\item[{::}] \leavevmode\begin{description}
+\item[{explicit queue(const device\_selector \&deviceSelector,}] \leavevmode
+const property\_list \&propList = \{\});
+
+\end{description}
+
+\end{description}
+\begin{description}
+\item[{::}] \leavevmode\begin{description}
+\item[{explicit queue(const device\_selector \&deviceSelector,}] \leavevmode
+const async\_handler \&asyncHandler,
+const property\_list \&propList = \{\});
+
+\end{description}
+
+\end{description}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{syclDevice}\PYG{p}{,} \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{syclDevice}\PYG{p}{,} \PYG{n}{const} \PYG{n}{async\PYGZus{}handler} \PYG{o}{\PYGZam{}}\PYG{n}{asyncHandler}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{context} \PYG{o}{\PYGZam{}}\PYG{n}{syclContext}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{deviceSelector}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{context} \PYG{o}{\PYGZam{}}\PYG{n}{syclContext}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{device\PYGZus{}selector} \PYG{o}{\PYGZam{}}\PYG{n}{deviceSelector}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{async\PYGZus{}handler} \PYG{o}{\PYGZam{}}\PYG{n}{asyncHandler}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{context} \PYG{o}{\PYGZam{}}\PYG{n}{syclContext}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{syclDevice}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{const} \PYG{n}{context} \PYG{o}{\PYGZam{}}\PYG{n}{syclContext}\PYG{p}{,} \PYG{n}{const} \PYG{n}{device} \PYG{o}{\PYGZam{}}\PYG{n}{syclDevice}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{async\PYGZus{}handler} \PYG{o}{\PYGZam{}}\PYG{n}{asyncHandler}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{property\PYGZus{}list} \PYG{o}{\PYGZam{}}\PYG{n}{propList} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{explicit} \PYG{n}{queue}\PYG{p}{(}\PYG{n}{cl\PYGZus{}command\PYGZus{}queue} \PYG{n}{clQueue}\PYG{p}{,} \PYG{n}{const} \PYG{n}{context}\PYG{o}{\PYGZam{}} \PYG{n}{syclContext}\PYG{p}{,}
                \PYG{n}{const} \PYG{n}{async\PYGZus{}handler} \PYG{o}{\PYGZam{}}\PYG{n}{asyncHandler} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get}}}
+\subsubsection{get}
 \label{\detokenize{programming-interface/runtime/queue:get}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{cl\PYGZus{}command\PYGZus{}queue} \PYG{n}{get}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_context}}}
+\subsubsection{get\_context}
 \label{\detokenize{programming-interface/runtime/queue:get-context}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{context} \PYG{n}{get\PYGZus{}context}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_device}}}
+\subsubsection{get\_device}
 \label{\detokenize{programming-interface/runtime/queue:get-device}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{device} \PYG{n}{get\PYGZus{}device}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_host}}}
+\subsubsection{is\_host}
 \label{\detokenize{programming-interface/runtime/queue:is-host}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}host}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_info}}}
+\subsubsection{get\_info}
 \label{\detokenize{programming-interface/runtime/queue:get-info}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{queue} \PYG{n}{param}\PYG{o}{\PYGZgt{}}
 \PYG{n}{typename} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{param\PYGZus{}traits}\PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{queue}\PYG{p}{,} \PYG{n}{param}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{p}{:}\PYG{n}{return\PYGZus{}type} \PYG{n}{get\PYGZus{}info}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{submit}}}
+\subsubsection{submit}
 \label{\detokenize{programming-interface/runtime/queue:submit}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{typename} \PYG{n}{T}\PYG{o}{\PYGZgt{}}
 \PYG{n}{event} \PYG{n}{submit}\PYG{p}{(}\PYG{n}{T} \PYG{n}{cgf}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{typename} \PYG{n}{T}\PYG{o}{\PYGZgt{}}
 \PYG{n}{event} \PYG{n}{submit}\PYG{p}{(}\PYG{n}{T} \PYG{n}{cgf}\PYG{p}{,} \PYG{n}{const} \PYG{n}{queue} \PYG{o}{\PYGZam{}}\PYG{n}{secondaryQueue}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Arguments}
+\subsubsection*{Parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{cgf}} \sphinxhyphen{}
+\item[] \sphinxcode{\sphinxupquote{secondaryQueue}} \sphinxhyphen{}
+\end{DUlineblock}
+\subsubsection*{Returns}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{cgf}}
-&\\
-\hline
-\sphinxcode{\sphinxupquote{secondaryQueue}}
-&\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\subsubsection*{Return value}
-
-
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{wait}}}
+\subsubsection{wait}
 \label{\detokenize{programming-interface/runtime/queue:wait}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{void} \PYG{n}{wait}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{wait\_and\_throw}}}
+\subsubsection{wait\_and\_throw}
 \label{\detokenize{programming-interface/runtime/queue:wait-and-throw}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{void} \PYG{n}{wait\PYGZus{}and\PYGZus{}throw}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{throw\_asynchronous}}}
+\subsubsection{throw\_asynchronous}
 \label{\detokenize{programming-interface/runtime/queue:throw-asynchronous}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{void} \PYG{n}{throw\PYGZus{}asynchronous}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{event}}}
+\subsection{event}
 \label{\detokenize{programming-interface/runtime/event:event}}\label{\detokenize{programming-interface/runtime/event::doc}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{class} \PYG{n+nc}{event}\PYG{p}{;}
@@ -1108,79 +1223,107 @@ affinityDomain
 \sphinxattableend\end{savenotes}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{(constructor)}}}
+\subsubsection{(constructor)}
 \label{\detokenize{programming-interface/runtime/event:constructor}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{event}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{event}\PYG{p}{(}\PYG{n}{cl\PYGZus{}event} \PYG{n}{clEvent}\PYG{p}{,} \PYG{n}{const} \PYG{n}{context}\PYG{o}{\PYGZam{}} \PYG{n}{syclContext}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{cl\_event\_get}}}
+\subsubsection{cl\_event\_get}
 \label{\detokenize{programming-interface/runtime/event:cl-event-get}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{cl\PYGZus{}event} \PYG{n}{get}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{is\_host}}}
+\subsubsection{is\_host}
 \label{\detokenize{programming-interface/runtime/event:is-host}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nb}{bool} \PYG{n}{is\PYGZus{}host}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_wait\_list}}}
+\subsubsection{get\_wait\_list}
 \label{\detokenize{programming-interface/runtime/event:get-wait-list}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{event}\PYG{o}{\PYGZgt{}} \PYG{n}{get\PYGZus{}wait\PYGZus{}list}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{wait}}}
+\subsubsection{wait}
 \label{\detokenize{programming-interface/runtime/event:wait}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{void} \PYG{n}{wait}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{static} \PYG{n}{void} \PYG{n}{wait}\PYG{p}{(}\PYG{n}{const} \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{event}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{eventList}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{wait\_and\_throw}}}
+\subsubsection{wait\_and\_throw}
 \label{\detokenize{programming-interface/runtime/event:wait-and-throw}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{void} \PYG{n}{wait\PYGZus{}and\PYGZus{}throw}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{static} \PYG{n}{void} \PYG{n}{wait\PYGZus{}and\PYGZus{}throw}\PYG{p}{(}\PYG{n}{const} \PYG{n}{vector\PYGZus{}class}\PYG{o}{\PYGZlt{}}\PYG{n}{event}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{eventList}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_info}}}
+\subsubsection{get\_info}
 \label{\detokenize{programming-interface/runtime/event:get-info}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{event} \PYG{n}{param}\PYG{o}{\PYGZgt{}}
 \PYG{n}{typename} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{param\PYGZus{}traits}\PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{event}\PYG{p}{,} \PYG{n}{param}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{p}{:}\PYG{n}{return\PYGZus{}type} \PYG{n}{get\PYGZus{}info}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_profiling\_info}}}
+\subsubsection{get\_profiling\_info}
 \label{\detokenize{programming-interface/runtime/event:get-profiling-info}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template} \PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{event\PYGZus{}profiling} \PYG{n}{param}\PYG{o}{\PYGZgt{}}
 \PYG{n}{typename} \PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{param\PYGZus{}traits}\PYG{o}{\PYGZlt{}}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{event\PYGZus{}profiling}\PYG{p}{,} \PYG{n}{param}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{p}{:}\PYG{n}{return\PYGZus{}type} \PYG{n}{get\PYGZus{}profiling\PYGZus{}info}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}\PYG{p}{;}
 \end{sphinxVerbatim}
-\subsubsection*{Return value}
+\subsubsection*{Returns}
 
 
-\subsection{Data Access}
-\label{\detokenize{programming-interface/data/index:data-access}}\label{\detokenize{programming-interface/data/index::doc}}
+\section{Data access}
+\label{\detokenize{programming-interface/index:data-access}}
 
-\subsubsection{\sphinxstyleliteralintitle{\sphinxupquote{accessor}}}
-\label{\detokenize{programming-interface/data/accessor:accessor}}\label{\detokenize{programming-interface/data/accessor::doc}}
+\subsection{Buffers}
+\label{\detokenize{programming-interface/data/buffer:buffers}}\label{\detokenize{programming-interface/data/buffer::doc}}
+
+\subsubsection{Buffer interface}
+\label{\detokenize{programming-interface/data/buffer:buffer-interface}}
+
+\subsubsection{Buffer properties}
+\label{\detokenize{programming-interface/data/buffer:buffer-properties}}
+
+\subsection{Images}
+\label{\detokenize{programming-interface/data/image:images}}\label{\detokenize{programming-interface/data/image::doc}}
+
+\subsubsection{Image interface}
+\label{\detokenize{programming-interface/data/image:image-interface}}
+
+\subsubsection{Image properties}
+\label{\detokenize{programming-interface/data/image:image-properties}}
+
+\subsection{Accessors}
+\label{\detokenize{programming-interface/data/accessor:accessors}}\label{\detokenize{programming-interface/data/accessor::doc}}
+
+\subsubsection{accessor}
+\label{\detokenize{programming-interface/data/accessor:accessor}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{template}\PYG{o}{\PYGZlt{}}
     \PYG{n}{typename} \PYG{n}{dataT}\PYG{p}{,}
@@ -1188,7 +1331,7 @@ affinityDomain
     \PYG{n}{access}\PYG{p}{:}\PYG{p}{:}\PYG{n}{mode} \PYG{n}{accessmode}\PYG{p}{,}
     \PYG{n}{access}\PYG{p}{:}\PYG{p}{:}\PYG{n}{target} \PYG{n}{accessTarget} \PYG{o}{=} \PYG{n}{access}\PYG{p}{:}\PYG{p}{:}\PYG{n}{target}\PYG{p}{:}\PYG{p}{:}\PYG{n}{global\PYGZus{}buffer}\PYG{p}{,}
     \PYG{n}{access}\PYG{p}{:}\PYG{p}{:}\PYG{n}{placeholder} \PYG{n}{isPlaceholder} \PYG{o}{=} \PYG{n}{access}\PYG{p}{:}\PYG{p}{:}\PYG{n}{placeholder}\PYG{p}{:}\PYG{p}{:}\PYG{n}{false\PYGZus{}t}
-\PYG{o}{\PYGZgt{}} \PYG{n}{accessor}\PYG{p}{;}
+\PYG{o}{\PYGZgt{}} \PYG{k}{class} \PYG{n+nc}{accessor}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 A DPC++ \sphinxcode{\sphinxupquote{accessor}} encapsulates reading and writing memory objects
@@ -1199,40 +1342,13 @@ dimensionality of the memory object, the access mode, and a placeholder
 argument.
 \subsubsection*{Template parameters}
 
-
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
-
-\sphinxcode{\sphinxupquote{dataT}}
-&
-type of buffer element
-\\
-\hline
-\sphinxcode{\sphinxupquote{dimensions}}
-&
-dimensionality of buffer
-\\
-\hline
-\sphinxcode{\sphinxupquote{accessmode}}
-&
-type of access
-\\
-\hline
-\sphinxcode{\sphinxupquote{accessTarget}}
-&
-type of memory
-\\
-\hline
-\sphinxcode{\sphinxupquote{isPlaceholder}}
-&
-placeholder
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{dataT}} \sphinxhyphen{} type of buffer element
+\item[] \sphinxcode{\sphinxupquote{dimensions}}\sphinxhyphen{} dimensionality of buffer
+\item[] \sphinxcode{\sphinxupquote{accessmode}} \sphinxhyphen{} type of access
+\item[] \sphinxcode{\sphinxupquote{accessTarget}} \sphinxhyphen{} type of memory
+\item[] \sphinxcode{\sphinxupquote{isPlaceholder}} \sphinxhyphen{} placeholder
+\end{DUlineblock}
 \subsubsection*{Member types}
 
 
@@ -1297,7 +1413,7 @@ get\_offset
 \sphinxattableend\end{savenotes}
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_size}}}
+\paragraph{get\_size}
 \label{\detokenize{programming-interface/data/accessor:get-size}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{size\PYGZus{}t} \PYG{n}{get\PYGZus{}size}\PYG{p}{(}\PYG{p}{)} \PYG{n}{const}
@@ -1306,21 +1422,234 @@ get\_offset
 Description
 
 
-\paragraph{\sphinxstyleliteralintitle{\sphinxupquote{get\_count}}}
-\label{\detokenize{programming-interface/data/accessor:get-count}}\begin{sphinxalltt}
-size\_t get\_size() const \begin{footnote}[1]\sphinxAtStartFootnote
-No arguments
+\paragraph{get\_count}
+\label{\detokenize{programming-interface/data/accessor:get-count}}
+
+\subsection{Address space classes}
+\label{\detokenize{programming-interface/data/address-space:address-space-classes}}\label{\detokenize{programming-interface/data/address-space::doc}}
+
+\subsection{Samplers}
+\label{\detokenize{programming-interface/data/sampler:samplers}}\label{\detokenize{programming-interface/data/sampler::doc}}
+
+\section{Expressing parallelism}
+\label{\detokenize{programming-interface/index:expressing-parallelism}}
+
+\subsection{Ranges and index space identifiers}
+\label{\detokenize{programming-interface/parallelism/range:ranges-and-index-space-identifiers}}\label{\detokenize{programming-interface/parallelism/range::doc}}
+
+\subsection{Command group handler class}
+\label{\detokenize{programming-interface/parallelism/command-group:command-group-handler-class}}\label{\detokenize{programming-interface/parallelism/command-group::doc}}
+
+\subsection{Invoking kernels}
+\label{\detokenize{programming-interface/parallelism/invoking-kernels:invoking-kernels}}\label{\detokenize{programming-interface/parallelism/invoking-kernels::doc}}
+
+\subsection{Memory operations}
+\label{\detokenize{programming-interface/parallelism/memory:memory-operations}}\label{\detokenize{programming-interface/parallelism/memory::doc}}
+
+\subsection{Kernel class}
+\label{\detokenize{programming-interface/parallelism/kernel:kernel-class}}\label{\detokenize{programming-interface/parallelism/kernel::doc}}
+
+\subsection{Program class}
+\label{\detokenize{programming-interface/parallelism/program:program-class}}\label{\detokenize{programming-interface/parallelism/program::doc}}
+
+\section{Error handling}
+\label{\detokenize{programming-interface/index:error-handling}}
+
+\subsection{Exception Class Interface}
+\label{\detokenize{programming-interface/error/exception:exception-class-interface}}\label{\detokenize{programming-interface/error/exception::doc}}
+
+\section{Data types}
+\label{\detokenize{programming-interface/index:data-types}}
+
+\subsection{Scalar types}
+\label{\detokenize{programming-interface/types/scalar:scalar-types}}\label{\detokenize{programming-interface/types/scalar::doc}}
+
+\subsection{Vector types}
+\label{\detokenize{programming-interface/types/vector:vector-types}}\label{\detokenize{programming-interface/types/vector::doc}}
+
+\section{Synchronization and atomics}
+\label{\detokenize{programming-interface/index:synchronization-and-atomics}}
+
+\subsection{Synchronization types}
+\label{\detokenize{programming-interface/synchronization/types:synchronization-types}}\label{\detokenize{programming-interface/synchronization/types::doc}}
+
+\section{Stream class}
+\label{\detokenize{programming-interface/index:stream-class}}
+
+\subsection{Stream class interface}
+\label{\detokenize{programming-interface/stream/stream:stream-class-interface}}\label{\detokenize{programming-interface/stream/stream::doc}}
+
+\section{Built\sphinxhyphen{}in functions}
+\label{\detokenize{programming-interface/index:built-in-functions}}
+
+\subsection{Math functions}
+\label{\detokenize{programming-interface/built-in/math:math-functions}}\label{\detokenize{programming-interface/built-in/math::doc}}
+
+\subsection{Integer functions}
+\label{\detokenize{programming-interface/built-in/integer:integer-functions}}\label{\detokenize{programming-interface/built-in/integer::doc}}
+
+\subsection{Common functions}
+\label{\detokenize{programming-interface/built-in/common:common-functions}}\label{\detokenize{programming-interface/built-in/common::doc}}
+
+\subsection{Geometric functions}
+\label{\detokenize{programming-interface/built-in/geometric:geometric-functions}}\label{\detokenize{programming-interface/built-in/geometric::doc}}
+
+\subsection{Relational functions}
+\label{\detokenize{programming-interface/built-in/relational:relational-functions}}\label{\detokenize{programming-interface/built-in/relational::doc}}
+
+\subsection{Vector data load and store functions}
+\label{\detokenize{programming-interface/built-in/vector:vector-data-load-and-store-functions}}\label{\detokenize{programming-interface/built-in/vector::doc}}
+
+\subsection{Synchronization functions}
+\label{\detokenize{programming-interface/built-in/synchronization:synchronization-functions}}\label{\detokenize{programming-interface/built-in/synchronization::doc}}
+
+\subsection{Printf functions}
+\label{\detokenize{programming-interface/built-in/printf:printf-functions}}\label{\detokenize{programming-interface/built-in/printf::doc}}
+
+\chapter{Style Guide}
+\label{\detokenize{style-guide/index:style-guide}}\label{\detokenize{style-guide/index::doc}}
+We try to follow the style of \sphinxhref{https://cppreference.com}{cppreference}. See \sphinxhref{https://en.cppreference.com/w/Help:Manual\_of\_style}{style manual}.
+
+
+\section{ClassExample}
+\label{\detokenize{style-guide/ClassExample:classexample}}\label{\detokenize{style-guide/ClassExample::doc}}\subsubsection*{Parameters}
+\subsubsection*{Parameters}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{template}\PYG{o}{\PYGZlt{}}
+    \PYG{k}{class} \PYG{n+nc}{T1}
+    \PYG{k}{class} \PYG{n+nc}{T2}
+\PYG{o}{\PYGZgt{}} \PYG{k}{class} \PYG{n+nc}{ClassExample}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+This is the description of the class. It is followed by a set of
+tables for template parameters and class members. This is followed by
+the member functions, one section each.
+\subsubsection*{Template parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{T1}} \sphinxhyphen{} description of parameter
+\item[] \sphinxcode{\sphinxupquote{T2}} \sphinxhyphen{} description of parameter
+\end{DUlineblock}
+\subsubsection*{Member functions}
+
+
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|}
+\hline
+
+{\hyperref[\detokenize{style-guide/ClassExample:constructor}]{\sphinxcrossref{(constructor)}}}
+&
+constructs a ClassExample
+\\
+\hline
+fun1
+&
+checks …
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
+\subsubsection*{Non\sphinxhyphen{}member functions}
+
+
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|}
+\hline
+
+{\hyperref[\detokenize{style-guide/ClassExample:operator}]{\sphinxcrossref{operator+}}}
+&
+Adds …
+\\
+\hline
+{\hyperref[\detokenize{style-guide/ClassExample:fun3}]{\sphinxcrossref{fun3}}}
+&
+Queries …
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
+\subsubsection*{Example}
+
+Describe the example…
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}include \PYGZlt{}CL/sycl.hpp\PYGZgt{}}
+
+\PYG{n}{namespace} \PYG{n}{sycl} \PYG{o}{=} \PYG{n}{cl}\PYG{p}{:}\PYG{p}{:}\PYG{n}{sycl}\PYG{p}{;}
+
+\PYG{n+nb}{int} \PYG{n}{main}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{auto} \PYG{n}{platforms} \PYG{o}{=} \PYG{n}{sycl}\PYG{p}{:}\PYG{p}{:}\PYG{n}{platform}\PYG{p}{:}\PYG{p}{:}\PYG{n}{get\PYGZus{}platforms}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+  \PYG{k}{for} \PYG{p}{(}\PYG{n}{auto} \PYG{o}{\PYGZam{}}\PYG{n}{platform} \PYG{p}{:} \PYG{n}{platforms}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Platform: }\PYG{l+s+s2}{\PYGZdq{}}
+	      \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{platform}\PYG{o}{.}\PYG{n}{get\PYGZus{}info}\PYG{o}{\PYGZlt{}}\PYG{n}{sycl}\PYG{p}{:}\PYG{p}{:}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{platform}\PYG{p}{:}\PYG{p}{:}\PYG{n}{name}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}
+	      \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
+
+    \PYG{n}{auto} \PYG{n}{devices} \PYG{o}{=} \PYG{n}{platform}\PYG{o}{.}\PYG{n}{get\PYGZus{}devices}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{auto} \PYG{o}{\PYGZam{}}\PYG{n}{device} \PYG{p}{:} \PYG{n}{devices} \PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{  Device: }\PYG{l+s+s2}{\PYGZdq{}}
+		\PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{device}\PYG{o}{.}\PYG{n}{get\PYGZus{}info}\PYG{o}{\PYGZlt{}}\PYG{n}{sycl}\PYG{p}{:}\PYG{p}{:}\PYG{n}{info}\PYG{p}{:}\PYG{p}{:}\PYG{n}{device}\PYG{p}{:}\PYG{p}{:}\PYG{n}{name}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}
+		\PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+\subsection{(constructor)}
+\label{\detokenize{style-guide/ClassExample:constructor}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ClassExample}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+\begin{sphinxalltt}
+ClassExample(int a);            \begin{footnote}[1]\sphinxAtStartFootnote
+Describe constructor with one arg
 \end{footnote}
-size\_t get\_size(int b) const \begin{footnote}[2]\sphinxAtStartFootnote
-single argument
-\end{footnote}
-size\_t get\_size(int c, int d) const \begin{footnote}[3]\sphinxAtStartFootnote
-2 arguments
+\end{sphinxalltt}
+\begin{sphinxalltt}
+ClassExample(int a, int b);     \begin{footnote}[2]\sphinxAtStartFootnote
+Describe constructor with two args
 \end{footnote}
 \end{sphinxalltt}
 
-Description
+Description of the function. The parameters are in a table below. We
+have a single table for all the overloads.
+\subsubsection*{Parameters}
 
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{a}} \sphinxhyphen{} An argument called a
+\item[] \sphinxcode{\sphinxupquote{b}} \sphinxhyphen{} An argument called b
+\end{DUlineblock}
+
+Description of the functions. Overloads are grouped together and may
+have footnotes for overload\sphinxhyphen{}specific description.
+\subsubsection*{Template parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{T}} \sphinxhyphen{} A parameter called T
+\end{DUlineblock}
+\subsubsection*{Parameters}
+
+\begin{DUlineblock}{0em}
+\item[] \sphinxcode{\sphinxupquote{a}} \sphinxhyphen{} A parameter called a
+\end{DUlineblock}
+\subsubsection*{Example}
+
+A member function can have its own example
+
+
+\subsection{operator+}
+\label{\detokenize{style-guide/ClassExample:operator}}
+
+\subsection{fun3}
+\label{\detokenize{style-guide/ClassExample:fun3}}
 
 \chapter{Glossary}
 \label{\detokenize{glossary:glossary}}\label{\detokenize{glossary:id1}}\label{\detokenize{glossary::doc}}\begin{description}

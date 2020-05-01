@@ -1,110 +1,192 @@
 
-<!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>device &#8212; SYCL Reference  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Device class &mdash; SYCL Reference  documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="queue" href="queue.html" />
-    <link rel="prev" title="context" href="context.html" />
+    <link rel="prev" title="Context class" href="context.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  <div class="document">
+  <div class="wy-grid-for-nav">
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">SYCL Reference</a></h1>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
 
+          
+            <a href="../../index.html" class="icon icon-home"> SYCL Reference
+          
 
+          
+          </a>
 
+          
+            
+            
+          
 
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
 
+          
+        </div>
 
-
-
-<h3>Navigation</h3>
-<ul class="current">
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">Runtime Classes</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="device-selector.html"><code class="docutils literal notranslate"><span class="pre">device_selector</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="platform.html"><code class="docutils literal notranslate"><span class="pre">platform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="context.html"><code class="docutils literal notranslate"><span class="pre">context</span></code></a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="queue.html"><code class="docutils literal notranslate"><span class="pre">queue</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="event.html"><code class="docutils literal notranslate"><span class="pre">event</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#standard-library-classes">Standard Library Classes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#runtime-classes">Runtime classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="device-selectors.html">Device Selectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html">Platform class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="context.html">Context class</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Device class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device-interface">Device interface</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="queue.html">queue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">event</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-access">Data access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#expressing-parallelism">Expressing parallelism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#error-handling">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#synchronization-and-atomics">Synchronization and atomics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#stream-class">Stream class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#built-in-functions">Built-in functions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../style-guide/index.html">Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../index.html">Documentation overview</a><ul>
-  <li><a href="../index.html">Programming Interface</a><ul>
-  <li><a href="index.html">Runtime Classes</a><ul>
-      <li>Previous: <a href="context.html" title="previous chapter"><code class="docutils literal notranslate"><span class="pre">context</span></code></a></li>
-      <li>Next: <a href="queue.html" title="next chapter"><code class="docutils literal notranslate"><span class="pre">queue</span></code></a></li>
-  </ul></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
+            
+          
         </div>
       </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SYCL Reference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
           
 
-          <div class="body" role="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Programming Interface</a> &raquo;</li>
+        
+      <li>Device class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
             
-  <div class="section" id="device">
-<h1><code class="docutils literal notranslate"><span class="pre">device</span></code><a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h1>
+            
+              <a href="https://github.com/rscohn2/syclreference/blob/master/source/programming-interface/runtime/device.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device-class">
+<h1>Device class<a class="headerlink" href="#device-class" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="device-interface">
+<h2>Device interface<a class="headerlink" href="#device-interface" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">device</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>An abstract class representing various models of SYCL devices</p>
 <p class="rubric">Member functions</p>
 <table class="docutils align-default">
 <colgroup>
@@ -147,7 +229,7 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">Non-member functions</p>
+<p class="rubric">Nonmember functions</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 43%" />
@@ -160,172 +242,192 @@
 </tbody>
 </table>
 <div class="section" id="constructor">
-<h2><code class="docutils literal notranslate"><span class="pre">(constructor)</span></code><a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">device</span><span class="p">();</span>
-<span class="n">explicit</span> <span class="n">device</span><span class="p">(</span><span class="n">cl_device_id</span> <span class="n">deviceId</span><span class="p">);</span>
-<span class="n">explicit</span> <span class="n">device</span><span class="p">(</span><span class="n">const</span> <span class="n">device_selector</span> <span class="o">&amp;</span><span class="n">deviceSelector</span><span class="p">);</span>
-</pre></div>
+<h3>(constructor)<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h3>
+<pre class="literal-block">device();                                                <a class="footnote-reference brackets" href="#default" id="id1">4</a></pre>
+<pre class="literal-block">explicit device(cl_device_id deviceId);                  <a class="footnote-reference brackets" href="#opencl" id="id2">5</a></pre>
+<pre class="literal-block">explicit device(const device_selector &amp;deviceSelector);  <a class="footnote-reference brackets" href="#select" id="id3">6</a></pre>
+<dl class="footnote brackets">
+<dt class="label" id="default"><span class="brackets"><a class="fn-backref" href="#id1">4</a></span></dt>
+<dd><p>Default Constructor. Constructs a device object in host
+mode.</p>
+</dd>
+<dt class="label" id="opencl"><span class="brackets"><a class="fn-backref" href="#id2">5</a></span></dt>
+<dd><p>Constructs a device object from another device object and
+retains the cl_device_id object if the device is not in
+host mode.</p>
+</dd>
+<dt class="label" id="select"><span class="brackets"><a class="fn-backref" href="#id3">6</a></span></dt>
+<dd><p>Use deviceSelector to choose device</p>
+</dd>
+</dl>
+<p class="rubric">Parameters</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">deviceID</span></code> - OpenCL device id</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">deviceSelector</span></code> - Device selector</div>
 </div>
-<p class="rubric">Arguments</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 45%" />
-<col style="width: 55%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deviceID</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">deviceSelector</span></code></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="get">
-<h2><code class="docutils literal notranslate"><span class="pre">get</span></code><a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<h3>get<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cl_device_id</span> <span class="n">get</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Return the cl_device_id of the underlying OpenCL platform</p>
+<p class="rubric">Returns</p>
+<p>cl_device_id of underlying OpenCL platform</p>
 </div>
 <div class="section" id="is-host">
-<h2><code class="docutils literal notranslate"><span class="pre">is_host</span></code><a class="headerlink" href="#is-host" title="Permalink to this headline">¶</a></h2>
+<h3>is_host<a class="headerlink" href="#is-host" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">is_host</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Checks if the device is a SYCL host device</p>
+<p class="rubric">Returns</p>
+<p>True if the device is a <a class="reference internal" href="../../glossary.html#term-host-device"><span class="xref std std-term">host device</span></a>, false otherwise.</p>
 </div>
 <div class="section" id="is-cpu">
-<h2><code class="docutils literal notranslate"><span class="pre">is_cpu</span></code><a class="headerlink" href="#is-cpu" title="Permalink to this headline">¶</a></h2>
+<h3>is_cpu<a class="headerlink" href="#is-cpu" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">is_cpu</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Checks if the device is a CPU</p>
+<p class="rubric">Returns</p>
+<p>True if the device is a CPU, false otherwise</p>
 </div>
 <div class="section" id="is-gpu">
-<h2><code class="docutils literal notranslate"><span class="pre">is_gpu</span></code><a class="headerlink" href="#is-gpu" title="Permalink to this headline">¶</a></h2>
+<h3>is_gpu<a class="headerlink" href="#is-gpu" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">is_gpu</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Checks if the device is a GPU</p>
+<p class="rubric">Returns</p>
+<p>True if the device is a GPU, false otherwise</p>
 </div>
 <div class="section" id="is-accelerator">
-<h2><code class="docutils literal notranslate"><span class="pre">is_accelerator</span></code><a class="headerlink" href="#is-accelerator" title="Permalink to this headline">¶</a></h2>
+<h3>is_accelerator<a class="headerlink" href="#is-accelerator" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">is_accelerator</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Checks if the device is a GPU</p>
+<p class="rubric">Returns</p>
+<p>True if the device is a GPU, false otherwise</p>
 </div>
 <div class="section" id="get-platform">
-<h2><code class="docutils literal notranslate"><span class="pre">get_platform</span></code><a class="headerlink" href="#get-platform" title="Permalink to this headline">¶</a></h2>
+<h3>get_platform<a class="headerlink" href="#get-platform" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">platform</span> <span class="n">get_platform</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Returns the platform that contains the device</p>
+<p class="rubric">Returns</p>
+<p>Platform object</p>
 </div>
 <div class="section" id="get-info">
-<h2><code class="docutils literal notranslate"><span class="pre">get_info</span></code><a class="headerlink" href="#get-info" title="Permalink to this headline">¶</a></h2>
+<h3>get_info<a class="headerlink" href="#get-info" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">device</span> <span class="n">param</span><span class="o">&gt;</span>
 <span class="n">typename</span> <span class="n">info</span><span class="p">::</span><span class="n">param_traits</span><span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">device</span><span class="p">,</span> <span class="n">param</span><span class="o">&gt;</span><span class="p">::</span><span class="n">return_type</span>
 <span class="n">get_info</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p>Queries the device for information specific to <code class="docutils literal notranslate"><span class="pre">param</span></code>.</p>
+<p class="rubric">Template parameters</p>
+<p><code class="docutils literal notranslate"><span class="pre">param</span></code> - refer to <a class="reference external" href="info::device">info::device</a> table</p>
+<p class="rubric">Returns</p>
+<p>Device information</p>
 <p class="rubric">Example</p>
 <p>See <a class="reference internal" href="platform.html#platform-example"><span class="std std-ref">Example</span></a>.</p>
 </div>
 <div class="section" id="has-extension">
-<h2><code class="docutils literal notranslate"><span class="pre">has_extension</span></code><a class="headerlink" href="#has-extension" title="Permalink to this headline">¶</a></h2>
+<h3>has_extension<a class="headerlink" href="#has-extension" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">has_extension</span><span class="p">(</span><span class="n">const</span> <span class="n">string_class</span> <span class="o">&amp;</span><span class="n">extension</span><span class="p">)</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Arguments</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 45%" />
-<col style="width: 55%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">extension</span></code></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Return value</p>
+<p>Check</p>
+<p class="rubric">Parameters</p>
+<p><code class="docutils literal notranslate"><span class="pre">extension</span></code> - name of extension</p>
+<p class="rubric">Returns</p>
 </div>
 <div class="section" id="create-sub-devices">
-<h2><code class="docutils literal notranslate"><span class="pre">create_sub_devices</span></code><a class="headerlink" href="#create-sub-devices" title="Permalink to this headline">¶</a></h2>
+<h3>create_sub_devices<a class="headerlink" href="#create-sub-devices" title="Permalink to this headline">¶</a></h3>
 <pre class="literal-block">template &lt;<a class="reference external" href="info::partition_property">info::partition_property</a> prop&gt;
-vector_class&lt;device&gt; create_sub_devices(size_t nbSubDev) const; <a class="footnote-reference brackets" href="#id4" id="id1">4</a>
-
-template &lt;<a class="reference external" href="info::partition_property">info::partition_property</a> prop&gt;
-vector_class&lt;device&gt; create_sub_devices(const vector_class&lt;size_t&gt; &amp;counts) const; <a class="footnote-reference brackets" href="#id5" id="id2">5</a>
-
-template &lt;<a class="reference external" href="info::partition_property">info::partition_property</a> prop&gt;
-vector_class&lt;device&gt; create_sub_devices(<a class="reference external" href="info::affinity_domain">info::affinity_domain</a> affinityDomain) const; <a class="footnote-reference brackets" href="#id6" id="id3">6</a></pre>
+vector_class&lt;device&gt; create_sub_devices(size_t nbSubDev) const; <a class="footnote-reference brackets" href="#id7" id="id4">7</a></pre>
+<pre class="literal-block">template &lt;<a class="reference external" href="info::partition_property">info::partition_property</a> prop&gt;
+vector_class&lt;device&gt; create_sub_devices(const vector_class&lt;size_t&gt; &amp;counts) const; <a class="footnote-reference brackets" href="#id8" id="id5">8</a></pre>
+<pre class="literal-block">template &lt;<a class="reference external" href="info::partition_property">info::partition_property</a> prop&gt;
+vector_class&lt;device&gt; create_sub_devices(<a class="reference external" href="info::affinity_domain">info::affinity_domain</a> affinityDomain) const; <a class="footnote-reference brackets" href="#id9" id="id6">9</a></pre>
 <dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">4</a></span></dt>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id4">7</a></span></dt>
 <dd><p>Available only when prop == <a class="reference external" href="info::partition_property::partition_equally">info::partition_property::partition_equally</a></p>
 </dd>
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">5</a></span></dt>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id5">8</a></span></dt>
 <dd><p>Available only when prop == <a class="reference external" href="info::partition_property::partition_by_counts">info::partition_property::partition_by_counts</a></p>
 </dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">6</a></span></dt>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id6">9</a></span></dt>
 <dd><p>Available only when prop == <a class="reference external" href="info::partition_property::partition_by_affinity_domain">info::partition_property::partition_by_affinity_domain</a></p>
 </dd>
 </dl>
-<p class="rubric">Arguments</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 45%" />
-<col style="width: 55%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>nbSubDev</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>counts</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>affinityDomain</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Return value</p>
+<p class="rubric">Parameters</p>
+<p>nbSubDev -
+counts -
+affinityDomain -</p>
+<p class="rubric">Returns</p>
 </div>
 <div class="section" id="get-devices">
-<h2><code class="docutils literal notranslate"><span class="pre">get_devices</span></code><a class="headerlink" href="#get-devices" title="Permalink to this headline">¶</a></h2>
+<h3>get_devices<a class="headerlink" href="#get-devices" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">device</span><span class="o">&gt;</span> <span class="n">get_devices</span><span class="p">(</span>
     <span class="n">info</span><span class="p">::</span><span class="n">device_type</span> <span class="n">deviceType</span> <span class="o">=</span> <span class="n">info</span><span class="p">::</span><span class="n">device_type</span><span class="p">::</span><span class="nb">all</span><span class="p">);</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p class="rubric">Returns</p>
+</div>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
-          
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="queue.html" class="btn btn-neutral float-right" title="queue" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="context.html" class="btn btn-neutral float-left" title="Context class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Intel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-    <div class="clearer"></div>
+
+    </section>
+
   </div>
-    <div class="footer">
-      &copy;2020, Intel.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../../_sources/programming-interface/runtime/device.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
+  
 
-    
 
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>

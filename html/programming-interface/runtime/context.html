@@ -1,107 +1,191 @@
 
-<!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>context &#8212; SYCL Reference  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Context class &mdash; SYCL Reference  documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="device" href="device.html" />
-    <link rel="prev" title="platform" href="platform.html" />
+    <link rel="next" title="Device class" href="device.html" />
+    <link rel="prev" title="Platform class" href="platform.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  <div class="document">
+  <div class="wy-grid-for-nav">
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">SYCL Reference</a></h1>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
 
+          
+            <a href="../../index.html" class="icon icon-home"> SYCL Reference
+          
 
+          
+          </a>
 
+          
+            
+            
+          
 
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
 
+          
+        </div>
 
-
-
-<h3>Navigation</h3>
-<ul class="current">
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../language/index.html">Language</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming Interface</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#header-file">Header File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#class-descriptions">Class Descriptions</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">Runtime Classes</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="device-selector.html"><code class="docutils literal notranslate"><span class="pre">device_selector</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="platform.html"><code class="docutils literal notranslate"><span class="pre">platform</span></code></a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">context</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="device.html"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="queue.html"><code class="docutils literal notranslate"><span class="pre">queue</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="event.html"><code class="docutils literal notranslate"><span class="pre">event</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#standard-library-classes">Standard Library Classes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#runtime-classes">Runtime classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="device-selectors.html">Device Selectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html">Platform class</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Context class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constructor">(constructor)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get">get</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-host">is_host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-platform">get_platform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-devices">get_devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-info">get_info</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../data/index.html">Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">Device class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="queue.html">queue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">event</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-access">Data access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#expressing-parallelism">Expressing parallelism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#error-handling">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#synchronization-and-atomics">Synchronization and atomics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#stream-class">Stream class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#built-in-functions">Built-in functions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../style-guide/index.html">Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../index.html">Documentation overview</a><ul>
-  <li><a href="../index.html">Programming Interface</a><ul>
-  <li><a href="index.html">Runtime Classes</a><ul>
-      <li>Previous: <a href="platform.html" title="previous chapter"><code class="docutils literal notranslate"><span class="pre">platform</span></code></a></li>
-      <li>Next: <a href="device.html" title="next chapter"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
-  </ul></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
+            
+          
         </div>
       </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SYCL Reference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
           
 
-          <div class="body" role="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Programming Interface</a> &raquo;</li>
+        
+      <li>Context class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
             
-  <div class="section" id="context">
-<h1><code class="docutils literal notranslate"><span class="pre">context</span></code><a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h1>
+            
+              <a href="https://github.com/rscohn2/syclreference/blob/master/source/programming-interface/runtime/context.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="context-class">
+<h1>Context class<a class="headerlink" href="#context-class" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">context</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -133,107 +217,133 @@
 </tbody>
 </table>
 <div class="section" id="constructor">
-<h2><code class="docutils literal notranslate"><span class="pre">(constructor)</span></code><a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<h2>(constructor)<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span>
-        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">device</span> <span class="o">&amp;</span><span class="n">dev</span><span class="p">,</span> <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">device</span> <span class="o">&amp;</span><span class="n">dev</span><span class="p">,</span> <span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span>
-        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">platform</span> <span class="o">&amp;</span><span class="n">plt</span><span class="p">,</span> <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">platform</span> <span class="o">&amp;</span><span class="n">plt</span><span class="p">,</span> <span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span>
-        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">device</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">deviceList</span><span class="p">,</span>
-        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">device</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">deviceList</span><span class="p">,</span>
-        <span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span> <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
-<span class="n">context</span><span class="p">(</span><span class="n">cl_context</span> <span class="n">clContext</span><span class="p">,</span> <span class="n">async_handler</span> <span class="n">asyncHandler</span> <span class="o">=</span> <span class="p">{});</span>
 </pre></div>
 </div>
-<p class="rubric">Arguments</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 45%" />
-<col style="width: 55%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">propList</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asyncHandler</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dev</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plt</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deviceList</span></code></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span>
+        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">device</span> <span class="o">&amp;</span><span class="n">dev</span><span class="p">,</span> <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">device</span> <span class="o">&amp;</span><span class="n">dev</span><span class="p">,</span> <span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span>
+        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">platform</span> <span class="o">&amp;</span><span class="n">plt</span><span class="p">,</span> <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">platform</span> <span class="o">&amp;</span><span class="n">plt</span><span class="p">,</span> <span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span>
+        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">device</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">deviceList</span><span class="p">,</span>
+        <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">const</span> <span class="n">vector_class</span><span class="o">&lt;</span><span class="n">device</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">deviceList</span><span class="p">,</span>
+        <span class="n">async_handler</span> <span class="n">asyncHandler</span><span class="p">,</span> <span class="n">const</span> <span class="n">property_list</span> <span class="o">&amp;</span><span class="n">propList</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">(</span><span class="n">cl_context</span> <span class="n">clContext</span><span class="p">,</span> <span class="n">async_handler</span> <span class="n">asyncHandler</span> <span class="o">=</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<p class="rubric">Parameters</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">propList</span></code> -</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">asyncHandler</span></code> -</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">dev</span></code> -</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">plt</span></code> -</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">deviceList</span></code> -</div>
+</div>
 </div>
 <div class="section" id="get">
-<h2><code class="docutils literal notranslate"><span class="pre">get</span></code><a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<h2>get<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cl_context</span> <span class="n">get</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p class="rubric">Returns</p>
 </div>
 <div class="section" id="is-host">
-<h2><code class="docutils literal notranslate"><span class="pre">is_host</span></code><a class="headerlink" href="#is-host" title="Permalink to this headline">¶</a></h2>
+<h2>is_host<a class="headerlink" href="#is-host" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">is_host</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p class="rubric">Returns</p>
 </div>
 <div class="section" id="get-platform">
-<h2><code class="docutils literal notranslate"><span class="pre">get_platform</span></code><a class="headerlink" href="#get-platform" title="Permalink to this headline">¶</a></h2>
+<h2>get_platform<a class="headerlink" href="#get-platform" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">platform</span> <span class="n">get_platform</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p class="rubric">Returns</p>
 </div>
 <div class="section" id="get-devices">
-<h2><code class="docutils literal notranslate"><span class="pre">get_devices</span></code><a class="headerlink" href="#get-devices" title="Permalink to this headline">¶</a></h2>
+<h2>get_devices<a class="headerlink" href="#get-devices" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vector_class</span><span class="o">&lt;</span><span class="n">device</span><span class="o">&gt;</span> <span class="n">get_devices</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p class="rubric">Returns</p>
 </div>
 <div class="section" id="get-info">
-<h2><code class="docutils literal notranslate"><span class="pre">get_info</span></code><a class="headerlink" href="#get-info" title="Permalink to this headline">¶</a></h2>
+<h2>get_info<a class="headerlink" href="#get-info" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">context</span> <span class="n">param</span><span class="o">&gt;</span>
 <span class="n">typename</span> <span class="n">info</span><span class="p">::</span><span class="n">param_traits</span><span class="o">&lt;</span><span class="n">info</span><span class="p">::</span><span class="n">context</span><span class="p">,</span> <span class="n">param</span><span class="o">&gt;</span><span class="p">::</span><span class="n">return_type</span> <span class="n">get_info</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
 </pre></div>
 </div>
-<p class="rubric">Return value</p>
+<p class="rubric">Returns</p>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
-          
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="device.html" class="btn btn-neutral float-right" title="Device class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="platform.html" class="btn btn-neutral float-left" title="Platform class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Intel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-    <div class="clearer"></div>
+
+    </section>
+
   </div>
-    <div class="footer">
-      &copy;2020, Intel.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../../_sources/programming-interface/runtime/context.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
+  
 
-    
 
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>

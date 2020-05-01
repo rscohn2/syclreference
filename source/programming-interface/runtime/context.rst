@@ -17,10 +17,11 @@
 context
 =======
 
-.. synopsis::
+::
+   
   class context;
   
-.. member-functions::
+.. rubric:: Member functions
 
 =================  =======================
 `(constructor)`_   constructs a context
@@ -35,31 +36,48 @@ get_info_          queries properties
 (constructor)
 =============
 
-.. synopsis::
+::
+   
   explicit context(const property_list &propList = {});
-.. synopsis::
+
+::  
+
   context(async_handler asyncHandler,
           const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(const device &dev, const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(const device &dev, async_handler asyncHandler,
           const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(const platform &plt, const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(const platform &plt, async_handler asyncHandler,
           const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(const vector_class<device> &deviceList,
           const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(const vector_class<device> &deviceList,
           async_handler asyncHandler, const property_list &propList = {});
-.. synopsis::
+
+::
+   
   context(cl_context clContext, async_handler asyncHandler = {});
 
-.. params::
+.. rubric:: Parameters
 
 | ``propList`` -
 | ``asyncHandler`` -
@@ -70,42 +88,49 @@ get_info_          queries properties
 get
 ===
 
-.. synopsis::
+::
+   
   cl_context get() const;
 
-.. returns::
+.. rubric:: Returns
+
 	    
 is_host
 =======
 
-.. synopsis::
+::
+   
   bool is_host() const;
 
-.. returns::
+.. rubric:: Returns
 	    
 get_platform
 ============
 
-.. synopsis::
+::
+   
   platform get_platform() const;
 
-.. returns::
+.. rubric:: Returns
+
 	    
 get_devices
 ===========
 
-.. synopsis::
+::
+   
   vector_class<device> get_devices() const;
 
-.. returns::
+.. rubric:: Returns
+
 	    
 get_info
 ========
 
-.. synopsis::
+::
+   
   template <info::context param>
   typename info::param_traits<info::context, param>::return_type get_info() const;
 
-
-.. returns::
+.. rubric:: Returns
 	    

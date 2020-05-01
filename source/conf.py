@@ -128,13 +128,14 @@ class ExampleDirective(Directive):
         return [nodes.rubric(text='Example')]
     
 def setup(app):
-    app.add_directive('tparams', TParamsDirective)
-    app.add_directive('params', ParamsDirective)
-    app.add_directive('returns', ReturnsDirective)
-    app.add_directive('member-types', MemberTypesDirective)
-    app.add_directive('member-functions', MemberFunctionsDirective)
-    app.add_directive('non-member-functions', NonMemberFunctionsDirective)
-    app.add_directive('example', ExampleDirective)
-    app.add_directive('synopsis', ParsedLiteral)
-    app.add_directive('exceptions', ExceptionsDirective)
+    if False:
+        app.add_directive('tparams', TParamsDirective)
+        app.add_directive('params', ParamsDirective)
+        app.add_directive('returns', ReturnsDirective)
+        app.add_directive('member-types', MemberTypesDirective)
+        app.add_directive('member-functions', MemberFunctionsDirective)
+        app.add_directive('non-member-functions', NonMemberFunctionsDirective)
+        app.add_directive('example', ExampleDirective)
+        app.add_directive('synopsis', ParsedLiteral)
+        app.add_directive('exceptions', ExceptionsDirective)
     return {'version': '0.1'}

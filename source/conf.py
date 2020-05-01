@@ -76,6 +76,13 @@ html_theme_options = {
     # 'page_width': 'max-width'
 }
 
+html_context = {
+    'display_github': True,
+    'github_user': 'rscohn2',
+    'github_repo': 'syclreference',
+    'github_version': 'master/source/'
+}
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
